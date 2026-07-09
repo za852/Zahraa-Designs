@@ -1,397 +1,1341 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>زهراء تكنولوجي | حزمة الخلفيات الرقمية</title>
-    <!-- font Cairo -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght=400;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <style>
-        /* ─────────────────────────────────────────────────────────────
-           GLOBAL STYLES & ANIMATIONS
-        ───────────────────────────────────────────────────────────── */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Cairo', sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: #ffffff;
-            color: #111827;
-            overflow-x: hidden;
-        }
-
-        /* Reveal on Scroll */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Text Gradient */
-        .text-gradient {
-            background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Blobs & Keyframes */
-        .blob {
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.15;
-            pointer-events: none;
-        }
-
-        .animate-blob {
-            animation: blobTransform 10s infinite alternate ease-in-out;
-        }
-
-        @keyframes blobTransform {
-            0% { transform: scale(1) translate(0, 0); }
-            50% { transform: scale(1.1) translate(20px, -30px); }
-            100% { transform: scale(0.9) translate(-10px, 20px); }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-12px); }
-        }
-
-        .animate-float {
-            animation: float 5s ease-in-out infinite;
-        }
-
-        /* Utilities */
-        .hover-lift {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .hover-lift:hover {
-            transform: translateY(-6px);
-        }
-
-        /* Responsive Grid fixes */
-        .grid-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 28px;
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 72px;
-            align-items: center;
-        }
-
-        @media (max-width: 768px) {
-            .hero-grid {
-                grid-template-columns: 1fr !important;
-                text-align: center;
-                gap: 40px;
-            }
-            .hero-grid > div:last-child {
-                order: -1;
-            }
-            .nav-container {
-                padding: 0 16px !important;
-            }
-        }
-
-        /* Gallery Overlay */
-        .gallery-item {
-            position: relative;
-            border-radius: 24px;
-            overflow: hidden;
-            aspect-ratio: 4/3;
-            background: #f5f3ff;
-            box-shadow: 0 6px 30px rgba(139,92,246,0.12);
-            cursor: pointer;
-        }
-        .gallery-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(76,29,149,0.7) 0%, transparent 60%);
-            display: flex;
-            align-items: flex-end;
-            padding: 20px 24px;
-            opacity: 0;
-            transition: opacity 0.35s ease;
-        }
-        .gallery-item:hover .gallery-overlay {
-            opacity: 1;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>زهراء تكنولوجي – حزمة الخلفيات الرقمية الاحترافية</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --purple: #8b5cf6;
+      --purple-dark: #7c3aed;
+      --purple-deeper: #6d28d9;
+      --purple-deepest: #4c1d95;
+      --green: #10b981;
+      --green-dark: #059669;
+      --red: #dc2626;
+      --gray-text: #6b7280;
+      --dark: #111827;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: #fff;
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+    /* ── Utility ── */
+    .text-gradient {
+      background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hover-lift {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+    }
+    .hover-lift:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(139,92,246,0.2) !important;
+    }
+    /* ── Reveal on scroll ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* ── Animations ── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(0px); }
+      50%      { transform: translateY(-16px); }
+    }
+    @keyframes blob {
+      0%,100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; transform: scale(1) rotate(0deg); }
+      33%      { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; transform: scale(1.05) rotate(60deg); }
+      66%      { border-radius: 20% 60% 30% 70% / 70% 30% 60% 40%; transform: scale(0.95) rotate(120deg); }
+    }
+    @keyframes pulseGlow {
+      0%,100% { box-shadow: 0 6px 24px rgba(139,92,246,0.45), 0 0 0 0 rgba(139,92,246,0.3); }
+      50%      { box-shadow: 0 10px 40px rgba(139,92,246,0.65), 0 0 0 12px rgba(139,92,246,0); }
+    }
+    @keyframes countUp {
+      from { opacity: 0; transform: scale(0.6); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    .blob {
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      opacity: 0.18;
+      filter: blur(60px);
+      animation: blob 12s ease-in-out infinite;
+    }
+    .animate-float { animation: float 5s ease-in-out infinite; }
+    .animate-pulse-glow { animation: pulseGlow 2.4s ease-in-out infinite; }
+    /* ── NAVBAR ── */
+    #navbar {
+      position: fixed;
+      top: 0; right: 0; left: 0;
+      z-index: 1000;
+      transition: all 0.4s ease;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid transparent;
+    }
+    #navbar.scrolled {
+      background: rgba(255,255,255,0.97);
+      border-bottom: 1px solid rgba(139,92,246,0.12);
+      box-shadow: 0 4px 30px rgba(139,92,246,0.08);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 14px; }
+    .nav-logo img {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 4px 16px rgba(139,92,246,0.3);
+      border: 2px solid rgba(139,92,246,0.2);
+      flex-shrink: 0;
+    }
+    .nav-logo-text { display: flex; flex-direction: column; line-height: 1.2; }
+    .nav-logo-text span:first-child {
+      font-size: 1.05rem; font-weight: 800; color: #111827;
+    }
+    .nav-logo-text span:last-child {
+      font-size: 0.68rem; font-weight: 500; color: var(--purple); letter-spacing: 0.5px;
+    }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+      color: #fff;
+      font-family: 'Cairo', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 10px 26px;
+      border-radius: 50px;
+      box-shadow: 0 4px 16px rgba(139,92,246,0.4);
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(139,92,246,0.55);
+    }
+    /* ── HERO ── */
+    #hero {
+      position: relative;
+      overflow: hidden;
+      padding-top: 148px;
+      padding-bottom: 110px;
+      background: linear-gradient(160deg, #ffffff 0%, #f5f3ff 45%, #ede9fe 100%);
+    }
+    .hero-blob-1 {
+      position: absolute; top: -80px; right: -100px;
+      width: 520px; height: 520px;
+      background: radial-gradient(circle, #8b5cf6 0%, #a78bfa 100%);
+      z-index: 0;
+    }
+    .hero-blob-2 {
+      position: absolute; bottom: -60px; left: -80px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, #7c3aed 0%, #c4b5fd 100%);
+      z-index: 0;
+      animation-delay: 3s;
+    }
+    .hero-glow {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 800px; height: 800px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(139,92,246,0.06) 0%, transparent 70%);
+      z-index: 0; pointer-events: none;
+    }
+    .hero-grid-pattern {
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%238b5cf6' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      z-index: 0; pointer-events: none;
+    }
+    .hero-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 28px;
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .hero-text { animation: fadeInUp 0.8s ease forwards; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(139,92,246,0.1);
+      border: 1px solid rgba(139,92,246,0.2);
+      border-radius: 50px;
+      padding: 6px 18px;
+      margin-bottom: 24px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--purple-dark);
+    }
+    .hero-h1 {
+      font-size: clamp(2rem, 4.5vw, 3.4rem);
+      font-weight: 900;
+      line-height: 1.25;
+      color: #111827;
+      margin-bottom: 22px;
+    }
+    .hero-desc {
+      font-size: clamp(1rem, 2vw, 1.12rem);
+      color: #6b7280;
+      line-height: 1.85;
+      margin-bottom: 38px;
+      max-width: 500px;
+    }
+    .hero-desc strong { color: var(--purple-dark); }
+    .hero-btns { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 40px; }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+      color: #fff;
+      font-family: 'Cairo', sans-serif;
+      font-weight: 800;
+      font-size: 1.05rem;
+      padding: 16px 40px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover { transform: translateY(-3px) scale(1.02); }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      color: var(--purple-dark);
+      font-family: 'Cairo', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      padding: 16px 36px;
+      border-radius: 50px;
+      border: 2px solid var(--purple);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .btn-secondary:hover {
+      background: rgba(139,92,246,0.08);
+      transform: translateY(-2px);
+    }
+    .social-proof { display: flex; align-items: center; gap: 16px; }
+    .stars { display: flex; gap: 4px; font-size: 1rem; }
+    .hero-img-wrap {
+      position: relative;
+      animation: float 5s ease-in-out infinite;
+    }
+    .hero-img-ring {
+      position: absolute; inset: -16px;
+      border-radius: 32px;
+      background: linear-gradient(135deg, rgba(139,92,246,0.2) 0%, rgba(167,139,250,0.1) 100%);
+      z-index: 0;
+    }
+    .hero-img-box {
+      position: relative; z-index: 1;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(139,92,246,0.25), 0 10px 30px rgba(0,0,0,0.1);
+      border: 1px solid rgba(139,92,246,0.15);
+    }
+    .hero-img-box img { width: 100%; height: auto; display: block; }
+    .hero-img-shine {
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 40%;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.08), transparent);
+      pointer-events: none;
+    }
+    .badge-bottom {
+      position: absolute; bottom: -18px; right: -18px;
+      background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%);
+      color: #fff;
+      font-weight: 800; font-size: 0.95rem;
+      padding: 12px 22px;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(139,92,246,0.4);
+      z-index: 2; white-space: nowrap;
+    }
+    .badge-top {
+      position: absolute; top: -18px; left: -18px;
+      background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+      color: #fff;
+      font-weight: 800; font-size: 0.85rem;
+      padding: 10px 18px;
+      border-radius: 18px;
+      box-shadow: 0 8px 24px rgba(5,150,105,0.35);
+      z-index: 2;
+    }
+    /* ── FEATURES STRIP ── */
+    #features {
+      background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 50%, #8b5cf6 100%);
+      padding: 56px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .features-dots {
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04' fill-rule='evenodd'%3E%3Ccircle cx='20' cy='20' r='2'/%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .features-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 28px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 32px;
+      position: relative;
+      z-index: 1;
+    }
+    .feature-card {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px;
+      padding: 28px 24px;
+      text-align: center;
+      color: #fff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .feature-card:hover { transform: translateY(-6px); }
+    .feature-icon { font-size: 2.4rem; margin-bottom: 12px; }
+    .feature-title { font-weight: 800; font-size: 1rem; margin-bottom: 8px; color: #fff; }
+    .feature-desc { font-size: 0.87rem; opacity: 0.75; line-height: 1.7; color: #fff; }
+    /* ── GALLERY ── */
+    #gallery {
+      padding: 100px 0;
+      background: #ffffff;
+    }
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+    .section-head { text-align: center; margin-bottom: 56px; }
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(139,92,246,0.08);
+      border: 1px solid rgba(139,92,246,0.15);
+      border-radius: 50px;
+      padding: 6px 18px;
+      margin-bottom: 18px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--purple-dark);
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 900;
+      color: #111827;
+      margin-bottom: 14px;
+    }
+    .section-sub {
+      color: #6b7280;
+      font-size: 1.05rem;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 28px;
+    }
+    .gallery-item {
+      border-radius: 24px;
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 4/3;
+      background: #f5f3ff;
+      box-shadow: 0 6px 30px rgba(139,92,246,0.12), 0 2px 8px rgba(0,0,0,0.06);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .gallery-item:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(139,92,246,0.2); }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .gallery-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(76,29,149,0.7) 0%, transparent 60%);
+      display: flex;
+      align-items: flex-end;
+      padding: 20px 24px;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    .overlay-tag {
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.95rem;
+      background: rgba(255,255,255,0.18);
+      backdrop-filter: blur(8px);
+      padding: 6px 16px;
+      border-radius: 50px;
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+    .gallery-tag-badge {
+      position: absolute; top: 14px; right: 14px;
+      background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 5px 14px;
+      border-radius: 50px;
+      box-shadow: 0 3px 10px rgba(139,92,246,0.35);
+    }
+    .gallery-more {
+      text-align: center;
+      margin-top: 44px;
+    }
+    .gallery-more-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+      border: 1px solid rgba(139,92,246,0.2);
+      border-radius: 50px;
+      padding: 14px 32px;
+      color: var(--purple-dark);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+    /* ── BONUS ── */
+    #bonus {
+      padding: 100px 0;
+      background: linear-gradient(160deg, #f5f3ff 0%, #ede9fe 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .bonus-dots {
+      position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(139,92,246,0.12) 1.5px, transparent 1.5px);
+      background-size: 28px 28px;
+      pointer-events: none;
+    }
+    .bonus-img-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .bonus-glow {
+      position: absolute; inset: -30px;
+      border-radius: 40px;
+      background: radial-gradient(ellipse at center, rgba(139,92,246,0.25) 0%, transparent 70%);
+      z-index: 0;
+    }
+    .bonus-img-box {
+      position: relative; z-index: 1;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(139,92,246,0.25), 0 10px 30px rgba(0,0,0,0.08);
+      border: 1px solid rgba(139,92,246,0.15);
+    }
+    .bonus-img-box img { width: 100%; height: auto; display: block; }
+    .bonus-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 28px;
+    }
+    .bonus-tag {
+      background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 8px 20px;
+      border-radius: 50px;
+      box-shadow: 0 4px 14px rgba(139,92,246,0.35);
+    }
+    /* ── COMPARISON ── */
+    #comparison {
+      padding: 100px 0;
+      background: #ffffff;
+    }
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+    }
+    .comp-card {
+      border-radius: 28px;
+      padding: 40px 36px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .comp-card:hover { transform: translateY(-6px); }
+    .comp-card-bad {
+      background: #fff;
+      box-shadow: 0 6px 30px rgba(0,0,0,0.07);
+      border: 1px solid #f3f4f6;
+    }
+    .comp-card-good {
+      background: linear-gradient(160deg, #4c1d95 0%, #6d28d9 50%, #7c3aed 100%);
+      box-shadow: 0 20px 60px rgba(139,92,246,0.35);
+      position: relative;
+      overflow: hidden;
+    }
+    .comp-card-good::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 50%;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.06), transparent);
+      pointer-events: none;
+    }
+    .comp-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .comp-icon {
+      width: 48px; height: 48px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+    .comp-icon-bad { background: #fee2e2; }
+    .comp-icon-good { background: rgba(255,255,255,0.15); }
+    .comp-head h3 { font-weight: 800; font-size: 1.15rem; }
+    .comp-head-bad h3 { color: #111827; }
+    .comp-head-good h3 { color: #fff; }
+    .comp-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 0;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .comp-item:not(:last-child) { border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .comp-item-bad { color: #dc2626; border-color: #f3f4f6 !important; }
+    .comp-item-good { color: #d9f99d; }
+    .comp-dot {
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+    }
+    .comp-dot-bad { background: #fee2e2; color: #dc2626; }
+    .comp-dot-good { background: rgba(255,255,255,0.2); color: #fff; }
+    .best-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 800;
+      padding: 5px 14px;
+      border-radius: 50px;
+      margin-right: 12px;
+      box-shadow: 0 3px 10px rgba(245,158,11,0.4);
+    }
+    /* ── TESTIMONIALS ── */
+    #testimonials {
+      padding: 100px 0;
+      background: linear-gradient(160deg, #f5f3ff 0%, #ede9fe 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .testi-card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 30px 28px;
+      box-shadow: 0 6px 30px rgba(139,92,246,0.08);
+      border: 1px solid rgba(139,92,246,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .testi-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(139,92,246,0.15); }
+    .testi-stars { color: #f59e0b; font-size: 0.9rem; margin-bottom: 14px; letter-spacing: 2px; }
+    .testi-text {
+      color: #374151;
+      font-size: 0.95rem;
+      line-height: 1.75;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .testi-avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 800;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .testi-name { font-weight: 800; font-size: 0.95rem; color: #111827; }
+    .testi-role { font-size: 0.8rem; color: #8b5cf6; font-weight: 600; }
+    /* ── PRICING ── */
+    #prices {
+      padding: 100px 0;
+      background: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .pricing-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(160deg, transparent 0%, rgba(139,92,246,0.03) 100%);
+      pointer-events: none;
+    }
+    .pricing-card {
+      max-width: 580px;
+      margin: 0 auto;
+      background: linear-gradient(160deg, #4c1d95 0%, #6d28d9 50%, #7c3aed 100%);
+      border-radius: 36px;
+      padding: 56px 52px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 40px 100px rgba(139,92,246,0.4), 0 10px 30px rgba(0,0,0,0.1);
+      color: #fff;
+    }
+    .pricing-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 50%;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.08), transparent);
+      pointer-events: none;
+    }
+    .pricing-shine {
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .pricing-shine-2 {
+      position: absolute;
+      bottom: -40px; left: -40px;
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .pricing-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 50px;
+      padding: 6px 18px;
+      margin-bottom: 28px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .pricing-title { font-size: 1.35rem; font-weight: 800; margin-bottom: 28px; opacity: 0.9; }
+    .pricing-amount { margin-bottom: 8px; }
+    .pricing-old {
+      font-size: 1.2rem;
+      text-decoration: line-through;
+      opacity: 0.5;
+      margin-left: 12px;
+    }
+    .pricing-new {
+      font-size: 4rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+    .pricing-currency { font-size: 2rem; vertical-align: super; margin-left: 4px; }
+    .pricing-per { font-size: 0.9rem; opacity: 0.65; margin-bottom: 36px; }
+    .pricing-features { text-align: right; margin-bottom: 40px; }
+    .pricing-feature {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 11px 0;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.92);
+    }
+    .pricing-feature:not(:last-child) { border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .pricing-check {
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+      color: #a7f3d0;
+    }
+    .pricing-cta {
+      display: block;
+      background: linear-gradient(135deg, #fff 0%, #f5f3ff 100%);
+      color: var(--purple-dark);
+      font-family: 'Cairo', sans-serif;
+      font-weight: 900;
+      font-size: 1.15rem;
+      padding: 18px 48px;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      margin-bottom: 20px;
+    }
+    .pricing-cta:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+    }
+    .pricing-guarantee {
+      font-size: 0.82rem;
+      opacity: 0.65;
+    }
+    .save-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 50px;
+      margin-bottom: 24px;
+      box-shadow: 0 3px 12px rgba(245,158,11,0.4);
+    }
+    /* ── FAQ ── */
+    #faq {
+      padding: 100px 0;
+      background: linear-gradient(160deg, #f5f3ff 0%, #ede9fe 100%);
+    }
+    .faq-list { max-width: 760px; margin: 0 auto; }
+    .faq-item {
+      background: #fff;
+      border-radius: 20px;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 16px rgba(139,92,246,0.07);
+      border: 1px solid rgba(139,92,246,0.08);
+      overflow: hidden;
+    }
+    .faq-q {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 20px 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: 'Cairo', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: #111827;
+      text-align: right;
+    }
+    .faq-q .faq-icon {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: rgba(139,92,246,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--purple-dark);
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      background: var(--purple);
+      color: #fff;
+    }
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+      padding: 0 24px;
+      color: #6b7280;
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+    .faq-item.open .faq-a { max-height: 200px; padding: 0 24px 20px; }
+    /* ── FOOTER ── */
+    footer {
+      background: linear-gradient(160deg, #1e0745 0%, #2d0a6e 50%, #4c1d95 100%);
+      padding: 60px 0 30px;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    footer::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.02' fill-rule='evenodd'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 28px;
+      position: relative;
+      z-index: 1;
+    }
+    .footer-top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+    .footer-brand { max-width: 340px; }
+    .footer-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+    .footer-logo img {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(139,92,246,0.4);
+    }
+    .footer-logo-text span:first-child {
+      display: block;
+      font-size: 1.1rem; font-weight: 800; color: #fff;
+    }
+    .footer-logo-text span:last-child {
+      display: block;
+      font-size: 0.7rem; color: #a78bfa; font-weight: 500;
+    }
+    .footer-brand p { color: rgba(255,255,255,0.55); font-size: 0.9rem; line-height: 1.75; }
+    .footer-links h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 16px; color: #fff; }
+    .footer-links a {
+      display: block;
+      color: rgba(255,255,255,0.55);
+      font-size: 0.88rem;
+      text-decoration: none;
+      margin-bottom: 10px;
+      transition: color 0.25s;
+    }
+    .footer-links a:hover { color: #c4b5fd; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .footer-copy { color: rgba(255,255,255,0.4); font-size: 0.85rem; }
+    .footer-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #25d366;
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 10px 22px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 14px rgba(37,211,102,0.35);
+    }
+    .footer-wa:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(37,211,102,0.5);
+    }
+    /* ── FLOATING WA BUTTON ── */
+    .wa-float {
+      position: fixed;
+      bottom: 32px;
+      left: 32px;
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      background: #25d366;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.7rem;
+      box-shadow: 0 6px 24px rgba(37,211,102,0.5);
+      text-decoration: none;
+      z-index: 999;
+      transition: all 0.3s ease;
+      animation: float 3s ease-in-out infinite;
+    }
+    .wa-float:hover { transform: scale(1.12); box-shadow: 0 10px 32px rgba(37,211,102,0.65); }
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr !important; text-align: center; gap: 40px; }
+      .hero-grid > div:last-child { order: -1; }
+      .hero-desc { max-width: 100%; }
+      .social-proof { justify-content: center; }
+      .hero-btns { justify-content: center; }
+      .badge-bottom { bottom: -14px; right: -8px; font-size: 0.82rem; padding: 10px 16px; }
+      .badge-top { top: -14px; left: -8px; font-size: 0.78rem; padding: 8px 14px; }
+    }
+    @media (max-width: 600px) {
+      .nav-inner { padding: 0 16px; }
+      .pricing-card { padding: 40px 24px; }
+      .comp-card { padding: 28px 22px; }
+    }
+  </style>
 </head>
 <body>
-
-    <!-- ─────────────────────────────────────────────────────────────
-       NAVBAR
-    ───────────────────────────────────────────────────────────── -->
-    <nav id="navbar" style="position: fixed; top: 0; right: 0; left: 0; z-index: 1000; transition: all 0.4s ease; background: rgba(255,255,255,0.85); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-bottom: 1px solid transparent;">
-        <div class="nav-container" style="max-width: 1200px; margin: 0 auto; padding: 0 28px; display: flex; align-items: center; justify-content: space-between; height: 76px;">
-            <!-- Logo -->
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <div style="width: 48px; height: 48px; border-radius: 50%; overflow: hidden; flex-shrink: 0; box-shadow: 0 4px 16px rgba(139,92,246,0.3); border: 2px solid rgba(139,92,246,0.2);">
-                    <img src="https://i.postimg.cc/sghHQSxJ/photo-2025-07-03-17-55-37.jpg" alt="شعار زهراء تكنولوجي" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div style="display: flex; flex-direction: column; line-height: 1.2;">
-                    <span style="font-size: 1.05rem; font-weight: 800; color: #111827;">زهراء تكنولوجي</span>
-                    <span style="font-size: 0.68rem; font-weight: 500; color: #8b5cf6; letter-spacing: 0.5px;">Zahraa Technology</span>
-                </div>
-            </div>
-            <!-- CTA -> Directed to WhatsApp -->
-            <a href="https://wa.me/9647515538709" target="_blank" class="hover-lift" style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); color: #fff; font-weight: 700; font-size: 0.9rem; padding: 10px 26px; border-radius: 50%; box-shadow: 0 4px 16px rgba(139,92,246,0.4); text-decoration: none;">
-                <span>🛒</span> اشترِ الآن
-            </a>
+<!-- ────────────────── NAVBAR ────────────────── -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <img src="https://i.postimg.cc/sghHQSxJ/photo-2025-07-03-17-55-37.jpg" alt="شعار زهراء تكنولوجي" />
+      <div class="nav-logo-text">
+        <span>زهراء تكنولوجي</span>
+        <span>Zahraa Technology</span>
+      </div>
+    </div>
+    <a href="#prices" class="nav-cta">🛒 اشترِ الآن</a>
+  </div>
+</nav>
+<!-- ────────────────── HERO ────────────────── -->
+<header id="hero">
+  <div class="hero-blob-1 blob"></div>
+  <div class="hero-blob-2 blob"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-grid-pattern"></div>
+  <div class="hero-grid">
+    <!-- Text -->
+    <div class="hero-text">
+      <div class="hero-badge"><span>✨</span> عرض حصري لفترة محدودة جداً</div>
+      <h1 class="hero-h1">
+        أكثر من <span class="text-gradient">110+ خلفية رقمية</span> احترافية لتصاميمك
+      </h1>
+      <p class="hero-desc">
+        ارتقِ بتصاميمك على <strong>Canva</strong> و<strong> الفوتوشوب</strong> باستخدام
+        حزمة الخلفيات الورقية الفاخرة المخصصة للمصممين وأصحاب المشاريع
+        الرقمية. جودة استثنائية بسعر لا يُصدَّق.
+      </p>
+      <div class="hero-btns">
+        <a href="#prices" class="btn-primary animate-pulse-glow">🚀 احصل على الحزمة الآن</a>
+        <a href="#gallery" class="btn-secondary">🖼️ تصفح المعرض</a>
+      </div>
+      <div class="social-proof">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <div>
+          <strong style="color:#111827">5.0</strong>
+          <span style="color:#6b7280;font-size:0.9rem;margin-right:6px">(أكثر من 200+ مصمم راضٍ)</span>
         </div>
-    </nav>
-
-    <!-- ─────────────────────────────────────────────────────────────
-       HERO SECTION
-    ───────────────────────────────────────────────────────────── -->
-    <header id="hero" style="position: relative; overflow: hidden; padding-top: 148px; padding-bottom: 110px; background: linear-gradient(160deg, #ffffff 0%, #f5f3ff 45%, #ede9fe 100%);">
-        <!-- Decorative Blobs -->
-        <div class="blob animate-blob" style="position: absolute; top: -80px; right: -100px; width: 520px; height: 520px; background: radial-gradient(circle, #8b5cf6 0%, #a78bfa 100%); z-index: 0;"></div>
-        <div class="blob animate-blob" style="position: absolute; bottom: -60px; left: -80px; width: 400px; height: 400px; background: radial-gradient(circle, #7c3aed 0%, #c4b5fd 100%); z-index: 0; animation-delay: 3s;"></div>
-        
-        <!-- Grid pattern overlay -->
-        <div style="position: absolute; inset: 0; background-image: url(&quot;data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%238b5cf6' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E&quot;); z-index: 0; pointer-events: none;"></div>
-
-        <div class="grid-container hero-grid" style="position: relative; z-index: 1;">
-            <!-- Text Content -->
-            <div>
-                <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.2); border-radius: 50%; padding: 6px 18px; margin-bottom: 24px; font-size: 0.85rem; font-weight: 700; color: #7c3aed;">
-                    <span>✨</span> عرض حصري لفترة محدودة جداً
-                </div>
-                <h1 style="font-size: 2.8rem; font-weight: 900; line-height: 1.25; color: #111827; margin-bottom: 22px;">
-                    أكثر من <span class="text-gradient">110+ خلفية رقمية</span> احترافية لتصاميمك
-                </h1>
-                <p style="font-size: 1.05rem; color: #6b7280; line-height: 1.85; margin-bottom: 38px; max-width: 500px;">
-                    ارتقِ بتصاميمك على <strong style="color: #7c3aed;">Canva</strong> و <strong style="color: #7c3aed;">الفوتوشوب</strong> باستخدام حزمة الخلفيات الورقية الفاخرة المخصصة للمصممين وأصحاب المشاريع الرقمية. جودة استثنائية بسعر لا يُصدَّق.
-                </p>
-                <div style="display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 40px;">
-                    <a href="https://wa.me/9647515538709" target="_blank" class="hover-lift" style="display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); color: #fff; font-weight: 800; padding: 16px 40px; border-radius: 50%; text-decoration: none; box-shadow: 0 4px 14px rgba(139,92,246,0.4);">
-                        <span>🚀</span> احصل على الحزمة الآن
-                    </a>
-                </div>
-                <!-- Social proof -->
-                <div style="display: flex; align-items: center; gap: 16px;">
-                    <div style="color: #f59e0b;">⭐⭐⭐⭐⭐</div>
-                    <div>
-                        <span style="font-weight: 800; color: #111827;">5.0</span>
-                        <span style="color: #6b7280; font-size: 0.9rem; margin-right: 6px;">(أكثر من 200+ مصمم راضٍ)</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Hero Image -->
-            <div class="animate-float" style="position: relative;">
-                <div style="position: absolute; inset: -16px; border-radius: 32px; background: linear-gradient(135deg, rgba(139,92,246,0.2) 0%, rgba(167,139,250,0.1) 100%); z-index: 0;"></div>
-                <div style="position: relative; z-index: 1; border-radius: 28px; overflow: hidden; box-shadow: 0 30px 80px rgba(139,92,246,0.25); border: 1px solid rgba(139,92,246,0.15);">
-                    <img src="https://i.postimg.cc/Y0HS1Qfy/Screenshot-2026-07-07-121503.png" alt="خلفيات رقمية احترافية زهراء تكنولوجي" style="width: 100%; height: auto; display: block;">
-                </div>
-                <div style="position: absolute; bottom: -18px; right: -18px; background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%); color: #fff; font-weight: 800; padding: 12px 22px; border-radius: 20px; box-shadow: 0 8px 24px rgba(139,92,246,0.4); z-index: 2;">110+ خلفية 🎨</div>
-                <div style="position: absolute; top: -18px; left: -18px; background: linear-gradient(135deg, #059669 0%, #10b981 100%); color: #fff; font-weight: 800; padding: 10px 18px; border-radius: 18px; box-shadow: 0 8px 24px rgba(5,150,105,0.35); z-index: 2;">🔥 9$ فقط</div>
-            </div>
+      </div>
+    </div>
+    <!-- Image -->
+    <div class="hero-img-wrap">
+      <div class="hero-img-ring"></div>
+      <div class="hero-img-box">
+        <img src="https://i.postimg.cc/Y0HS1Qfy/Screenshot-2026-07-07-121503.png" alt="خلفيات رقمية احترافية زهراء تكنولوجي" />
+        <div class="hero-img-shine"></div>
+      </div>
+      <div class="badge-bottom">110+ خلفية 🎨</div>
+      <div class="badge-top">🔥 0.99$ فقط</div>
+    </div>
+  </div>
+</header>
+<!-- ────────────────── FEATURES STRIP ────────────────── -->
+<section id="features">
+  <div class="features-dots"></div>
+  <div class="features-grid">
+    <div class="feature-card hover-lift">
+      <div class="feature-icon">🎨</div>
+      <h3 class="feature-title">+110 خلفية احترافية</h3>
+      <p class="feature-desc">مجموعة ضخمة ومتنوعة تكفي جميع احتياجاتك التصميمية لأشهر طويلة</p>
+    </div>
+    <div class="feature-card hover-lift">
+      <div class="feature-icon">⚡</div>
+      <h3 class="feature-title">تحميل فوري</h3>
+      <p class="feature-desc">بعد الدفع مباشرةً تستلم رابط التحميل، بدون انتظار أو تأخير</p>
+    </div>
+    <div class="feature-card hover-lift">
+      <div class="feature-icon">🖥️</div>
+      <h3 class="feature-title">متوافقة مع Canva & PS</h3>
+      <p class="feature-desc">جميع الملفات بصيغ عالية الدقة تعمل بسلاسة مع كل البرامج</p>
+    </div>
+    <div class="feature-card hover-lift">
+      <div class="feature-icon">🎁</div>
+      <h3 class="feature-title">هدايا ومكافآت مجانية</h3>
+      <p class="feature-desc">موك أب احترافية وقوالب جاهزة تُوفر عليك ساعات من العمل</p>
+    </div>
+  </div>
+</section>
+<!-- ────────────────── GALLERY ────────────────── -->
+<section id="gallery">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <div class="section-label">🖼️ معرض الأعمال</div>
+      <h2 class="section-title">لمحة عن <span class="text-gradient">التصاميم الفاخرة</span></h2>
+      <p class="section-sub">تصاميم راقية بدقة عالية جاهزة للاستخدام الفوري داخل الحزمة الكاملة</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item reveal">
+        <img src="https://i.postimg.cc/vHvvxzLv/2.png" alt="نموذج خلفية رقمية 1" />
+        <div class="gallery-overlay"><span class="overlay-tag">✨ ورقي فاخر</span></div>
+        <div class="gallery-tag-badge">ورقي فاخر</div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://i.postimg.cc/NMT6s7jP/3.png" alt="نموذج خلفية رقمية 2" />
+        <div class="gallery-overlay"><span class="overlay-tag">✨ عصري أنيق</span></div>
+        <div class="gallery-tag-badge">عصري أنيق</div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://i.postimg.cc/WbsGVZLZ/4.png" alt="نموذج خلفية رقمية 3" />
+        <div class="gallery-overlay"><span class="overlay-tag">✨ إبداعي مميز</span></div>
+        <div class="gallery-tag-badge">إبداعي مميز</div>
+      </div>
+    </div>
+    <div class="gallery-more reveal">
+      <div class="gallery-more-badge">
+        <span style="font-size:1.2rem">🎯</span>
+        +107 خلفية إضافية داخل الحزمة الكاملة
+        <span style="font-size:1.2rem">✨</span>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ────────────────── BONUS ────────────────── -->
+<section id="bonus">
+  <div class="bonus-dots"></div>
+  <div class="section-inner" style="position:relative;z-index:1">
+    <div class="section-head reveal">
+      <div class="section-label" style="background:rgba(139,92,246,0.1);border-color:rgba(139,92,246,0.2)">🎁 مكافآت حصرية مجانية</div>
+      <h2 class="section-title">هدايا مجانية <span class="text-gradient">تُضاعف قيمة حزمتك</span></h2>
+      <p class="section-sub" style="max-width:600px">بجانب الخلفيات، ستحصل على حزمة موك أب وقوالب احترافية جاهزة تُوفر عليك ساعات من العمل</p>
+    </div>
+    <div class="bonus-img-wrap reveal">
+      <div class="bonus-glow"></div>
+      <div class="bonus-img-box">
+        <img src="https://i.postimg.cc/bJXnBD9Q/5.png" alt="حزمة قوالب وهدايا إضافية" />
+      </div>
+      <div class="bonus-tags">
+        <div class="bonus-tag">🎨 موك أب احترافية</div>
+        <div class="bonus-tag">📁 قوالب جاهزة</div>
+        <div class="bonus-tag">🔄 تحديثات مجانية</div>
+        <div class="bonus-tag">⚡ تحميل فوري</div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ────────────────── COMPARISON ────────────────── -->
+<section id="comparison">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <div class="section-label">⚖️ لماذا نحن؟</div>
+      <h2 class="section-title">الفرق <span class="text-gradient">يتكلم عن نفسه</span></h2>
+      <p class="section-sub">مقارنة بسيطة وواضحة بين المحتوى العادي وحزمتنا الاحترافية</p>
+    </div>
+    <div class="comparison-grid">
+      <!-- Bad -->
+      <div class="comp-card comp-card-bad reveal hover-lift">
+        <div class="comp-head comp-head-bad">
+          <div class="comp-icon comp-icon-bad">😞</div>
+          <h3>المجموعات العادية</h3>
         </div>
-    </header>
-
-    <!-- ─────────────────────────────────────────────────────────────
-       FEATURES STRIP
-    ───────────────────────────────────────────────────────────── -->
-    <section style="background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 50%, #8b5cf6 100%); padding: 56px 0; position: relative; overflow: hidden;">
-        <div style="position: absolute; inset: 0; background-image: url(&quot;data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04' fill-rule='evenodd'%3E%3Ccircle cx='20' cy='20' r='2'/%3E%3C/g%3E%3C/svg%3E&quot;); pointer-events: none;"></div>
-        <div class="grid-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px; position: relative; z-index: 1;">
-            
-            <div class="hover-lift" style="background: rgba(255,255,255,0.08); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 28px 24px; text-align: center; color: #fff;">
-                <div style="font-size: 2.4rem; margin-bottom: 12px;">🎨</div>
-                <h3 style="font-weight: 800; font-size: 1rem; margin-bottom: 8px;">+110 خلفية احترافية</h3>
-                <p style="font-size: 0.87rem; opacity: 0.75; line-height: 1.7;">مجموعة ضخمة ومتنوعة تكفي جميع احتياجاتك التصميمية لأشهر طويلة</p>
-            </div>
-
-            <div class="hover-lift" style="background: rgba(255,255,255,0.08); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 28px 24px; text-align: center; color: #fff;">
-                <div style="font-size: 2.4rem; margin-bottom: 12px;">⚡</div>
-                <h3 style="font-weight: 800; font-size: 1rem; margin-bottom: 8px;">تحميل فوري</h3>
-                <p style="font-size: 0.87rem; opacity: 0.75; line-height: 1.7;">بعد الدفع مباشرةً تستلم رابط التحميل، بدون انتظار أو تأخير</p>
-            </div>
-
-            <div class="hover-lift" style="background: rgba(255,255,255,0.08); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 28px 24px; text-align: center; color: #fff;">
-                <div style="font-size: 2.4rem; margin-bottom: 12px;">🖥️</div>
-                <h3 style="font-weight: 800; font-size: 1rem; margin-bottom: 8px;">متوافقة مع Canva & PS</h3>
-                <p style="font-size: 0.87rem; opacity: 0.75; line-height: 1.7;">جميع الملفات بصيغ عالية الدقة تعمل بسلاسة مع كل البرامج</p>
-            </div>
-
-            <div class="hover-lift" style="background: rgba(255,255,255,0.08); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 28px 24px; text-align: center; color: #fff;">
-                <div style="font-size: 2.4rem; margin-bottom: 12px;">🎁</div>
-                <h3 style="font-weight: 800; font-size: 1rem; margin-bottom: 8px;">هدايا ومكافآت مجانية</h3>
-                <p style="font-size: 0.87rem; opacity: 0.75; line-height: 1.7;">موك أب احترافية وقوالب جاهزة تُوفر عليك ساعات من العمل</p>
-            </div>
-
+        <div class="comp-item comp-item-bad"><div class="comp-dot comp-dot-bad">✕</div> جودة ضعيفة ومبكسلة عند التكبير</div>
+        <div class="comp-item comp-item-bad"><div class="comp-dot comp-dot-bad">✕</div> ألوان باهتة وغير متناسقة</div>
+        <div class="comp-item comp-item-bad"><div class="comp-dot comp-dot-bad">✕</div> لا تحتوي على هدايا أو مكافآت</div>
+        <div class="comp-item comp-item-bad"><div class="comp-dot comp-dot-bad">✕</div> لا دعم ولا تحديثات مستقبلية</div>
+      </div>
+      <!-- Good -->
+      <div class="comp-card comp-card-good reveal hover-lift">
+        <div class="comp-head comp-head-good" style="position:relative;z-index:1">
+          <div class="comp-icon comp-icon-good">🏆</div>
+          <div>
+            <span class="best-tag">⭐ الأفضل</span>
+            <h3 style="color:#fff;display:inline">حزمة زهراء تكنولوجي</h3>
+          </div>
         </div>
-    </section>
-
-    <!-- ─────────────────────────────────────────────────────────────
-       GALLERY SECTION
-    ───────────────────────────────────────────────────────────── -->
-    <section id="gallery" style="padding: 100px 0; background: #ffffff;">
-        <div class="grid-container">
-            <div class="reveal" style="text-align: center; margin-bottom: 56px;">
-                <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(139,92,246,0.08); border: 1px solid rgba(139,92,246,0.15); border-radius: 50%; padding: 6px 18px; margin-bottom: 18px; font-size: 0.85rem; font-weight: 700; color: #7c3aed;">🖼️ معرض الأعمال</div>
-                <h2 style="font-size: 2.3rem; font-weight: 900; color: #111827; margin-bottom: 14px;">لمحة عن <span class="text-gradient">التصاميم الفاخرة</span></h2>
-                <p style="color: #6b7280; font-size: 1.05rem; max-width: 560px; margin: 0 auto;">تصاميم راقية بدقة عالية جاهزة للاستخدام الفوري داخل الحزمة الكاملة</p>
-            </div>
-
-            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 28px;">
-                <!-- Image 1 -->
-                <div class="reveal gallery-item hover-lift">
-                    <img src="https://i.postimg.cc/vHvvxzLv/2.png" alt="نموذج خلفية رقمية 1" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                    <div class="gallery-overlay"><span style="color: #fff; font-weight: 700; background: rgba(255,255,255,0.18); backdrop-filter: blur(8px); padding: 6px 16px; border-radius: 50%;">✨ ورقي فاخر</span></div>
-                </div>
-                <!-- Image 2 -->
-                <div class="reveal gallery-item hover-lift">
-                    <img src="https://i.postimg.cc/NMT6s7jP/3.png" alt="نموذج خلفية رقمية 2" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                    <div class="gallery-overlay"><span style="color: #fff; font-weight: 700; background: rgba(255,255,255,0.18); backdrop-filter: blur(8px); padding: 6px 16px; border-radius: 50%;">✨ عصري أنيق</span></div>
-                </div>
-                <!-- Image 3 -->
-                <div class="reveal gallery-item hover-lift">
-                    <img src="https://i.postimg.cc/WbsGVZLZ/4.png" alt="نموذج خلفية رقمية 3" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                    <div class="gallery-overlay"><span style="color: #fff; font-weight: 700; background: rgba(255,255,255,0.18); backdrop-filter: blur(8px); padding: 6px 16px; border-radius: 50%;">✨ إبداعي مميز</span></div>
-                </div>
-            </div>
-
-            <div class="reveal" style="text-align: center; margin-top: 44px;">
-                <div style="display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%); border: 1px solid rgba(139,92,246,0.2); border-radius: 50%; padding: 14px 32px; color: #7c3aed; font-weight: 700; font-size: 0.95rem;">
-                    <span>🎯</span> +107 خلفية إضافية داخل الحزمة الكاملة <span>✨</span>
-                </div>
-            </div>
+        <div class="comp-item comp-item-good" style="position:relative;z-index:1"><div class="comp-dot comp-dot-good">✓</div> دقة فائقة جاهزة للطباعة والتصميم</div>
+        <div class="comp-item comp-item-good" style="position:relative;z-index:1"><div class="comp-dot comp-dot-good">✓</div> ألوان مدروسة مخصصة لجذب العملاء</div>
+        <div class="comp-item comp-item-good" style="position:relative;z-index:1"><div class="comp-dot comp-dot-good">✓</div> تحديثات مستمرة وحزمة موك أب هدية</div>
+        <div class="comp-item comp-item-good" style="position:relative;z-index:1"><div class="comp-dot comp-dot-good">✓</div> دعم فوري عبر واتساب في أي وقت</div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ────────────────── TESTIMONIALS ────────────────── -->
+<section id="testimonials">
+  <div class="bonus-dots"></div>
+  <div class="section-inner" style="position:relative;z-index:1">
+    <div class="section-head reveal">
+      <div class="section-label">💬 آراء العملاء</div>
+      <h2 class="section-title">ماذا قال <span class="text-gradient">مصممونا</span></h2>
+      <p class="section-sub">تقييمات حقيقية من مصممين ورواد أعمال استخدموا حزمتنا</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"والله استثمار ممتاز! الخلفيات بجودة عالية جداً وكميتها وفيرة. وفّرت عليّ ساعات من البحث والتصميم. أنصح بها بشدة!"</p>
+        <div class="testi-author">
+          <div class="testi-avatar">ر</div>
+          <div>
+            <div class="testi-name">رنا العمري</div>
+            <div class="testi-role">مصممة جرافيك</div>
+          </div>
         </div>
-    </section>
-
-    <!-- ─────────────────────────────────────────────────────────────
-       BONUS SECTION
-    ───────────────────────────────────────────────────────────── -->
-    <section style="padding: 100px 0; background: linear-gradient(160deg, #f5f3ff 0%, #ede9fe 100%); position: relative; overflow: hidden;">
-        <div style="position: absolute; inset: 0; background-image: radial-gradient(rgba(139,92,246,0.12) 1.5px, transparent 1.5px); background-size: 28px 28px; pointer-events: none;"></div>
-        <div class="grid-container" style="position: relative; z-index: 1;">
-            <div class="reveal" style="text-align: center; margin-bottom: 50px;">
-                <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.2); border-radius: 50%; padding: 6px 18px; margin-bottom: 18px; font-size: 0.85rem; font-weight: 700; color: #7c3aed;">🎁 مكافآت حصرية مجانية</div>
-                <h2 style="font-size: 2.3rem; font-weight: 900; color: #111827; margin-bottom: 14px;">هدايا مجانية <span class="text-gradient">تُضاعف قيمة حزمتك</span></h2>
-                <p style="color: #6b7280; font-size: 1.05rem; max-width: 600px; margin: 0 auto;">بجانب الخلفيات، ستحصل على حزمة موك أب وقوالب احترافية جاهزة تُوفر عليك ساعات من العمل</p>
-            </div>
-
-            <div class="reveal" style="max-width: 860px; margin: 0 auto; position: relative;">
-                <div style="position: absolute; inset: -30px; border-radius: 40px; background: radial-gradient(ellipse at center, rgba(139,92,246,0.25) 0%, transparent 70%); z-index: 0;"></div>
-                <div style="position: relative; z-index: 1; border-radius: 28px; overflow: hidden; box-shadow: 0 30px 80px rgba(139,92,246,0.25); border: 1px solid rgba(139,92,246,0.15);">
-                    <img src="https://i.postimg.cc/bJXnBD9Q/5.png" alt="حزمة قوالب وهدايا إضافية" style="width: 100%; height: auto; display: block;">
-                </div>
-                
-                <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 28px;">
-                    <div style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); color: #fff; font-weight: 700; padding: 8px 20px; border-radius: 50%; box-shadow: 0 4px 14px rgba(139,92,246,0.35);">🎨 موك أب احترافية</div>
-                    <div style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); color: #fff; font-weight: 700; padding: 8px 20px; border-radius: 50%; box-shadow: 0 4px 14px rgba(139,92,246,0.35);">📁 قوالب جاهزة</div>
-                    <div style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); color: #fff; font-weight: 700; padding: 8px 20px; border-radius: 50%; box-shadow: 0 4px 14px rgba(139,92,246,0.35);">🔄 تحديثات مجانية</div>
-                    <div style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); color: #fff; font-weight: 700; padding: 8px 20px; border-radius: 50%; box-shadow: 0 4px 14px rgba(139,92,246,0.35);">⚡ تحميل فوري</div>
-                </div>
-            </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"اشتريت الحزمة وما ندمت! استخدمتها في Canva ومشت زي الحلاوة. الموك أب المجانية أفضل من أي شيء اشتريته قبل."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">م</div>
+          <div>
+            <div class="testi-name">محمد البلوشي</div>
+            <div class="testi-role">صاحب متجر إلكتروني</div>
+          </div>
         </div>
-    </section>
-
-    <!-- ─────────────────────────────────────────────────────────────
-       COMPARISON & PRICING SECTION
-    ───────────────────────────────────────────────────────────── -->
-    <section style="padding: 100px 0; background: #ffffff;" id="prices">
-        <div class="grid-container">
-            <div class="reveal" style="text-align: center; margin-bottom: 56px;">
-                <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(139,92,246,0.08); border: 1px solid rgba(139,92,246,0.15); border-radius: 50%; padding: 6px 18px; margin-bottom: 18px; font-size: 0.85rem; font-weight: 700; color: #7c3aed;">⚖️ السعر والمقارنة</div>
-                <h2 style="font-size: 2.3rem; font-weight: 900; color: #111827; margin-bottom: 14px;">الفرق <span class="text-gradient">يتكلم عن نفسه</span></h2>
-                <p style="color: #6b7280; font-size: 1.05rem; max-width: 560px; margin: 0 auto;">استثمر في حزمتك الآن بسعر خاص ومميز جداً لفترة محدودة</p>
-            </div>
-
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px;">
-                <!-- Bad card -->
-                <div class="reveal hover-lift" style="background: #fff; border-radius: 28px; padding: 40px 36px; box-shadow: 0 6px 30px rgba(0,0,0,0.07); border: 1px solid #f3f4f6;">
-                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 28px;">
-                        <div style="width: 48px; height: 48px; border-radius: 16px; background: #fee2e2; display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">😞</div>
-                        <h3 style="font-weight: 800; font-size: 1.15rem; color: #111827;">المجموعات العادية</h3>
-                    </div>
-                    <div style="color:#dc2626; font-weight:600; padding:12px 0; border-bottom:1px solid #f3f4f6;">✕ جودة ضعيفة ومبكسلة عند التكبير</div>
-                    <div style="color:#dc2626; font-weight:600; padding:12px 0; border-bottom:1px solid #f3f4f6;">✕ ألوان باهتة وغير متناسقة</div>
-                    <div style="color:#dc2626; font-weight:600; padding:12px 0; border-bottom:1px solid #f3f4f6;">✕ لا تحتوي على هدايا أو مكافآت</div>
-                    <div style="color:#dc2626; font-weight:600; padding:12px 0;">✕ لا دعم ولا تحديثات مستقبلية</div>
-                </div>
-
-                <!-- Good card (The 9$ Pricing Package) -->
-                <div class="reveal hover-lift" style="background: linear-gradient(160deg, #4c1d95 0%, #6d28d9 50%, #7c3aed 100%); border-radius: 28px; padding: 40px 36px; box-shadow: 0 20px 60px rgba(139,92,246,0.35); position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between;">
-                    <div style="position: absolute; top: 0; left: 0; right: 0; height: 50%; background: linear-gradient(to bottom, rgba(255,255,255,0.06), transparent); pointer-events: none;"></div>
-                    <div>
-                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; position: relative; z-index: 1;">
-                            <div style="display: flex; align-items: center; gap: 12px;">
-                                <div style="width: 48px; height: 48px; border-radius: 16px; background: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">👑</div>
-                                <h3 style="font-weight: 800; font-size: 1.15rem; color: #fff;">الحزمة الكاملة</h3>
-                            </div>
-                            <span style="background: #10b981; color: #fff; font-size: 0.75rem; font-weight: 700; padding: 4px 12px; border-radius: 50%;">الأكثر مبيعاً</span>
-                        </div>
-                        
-                        <!-- Price display -->
-                        <div style="color: #fff; margin-bottom: 24px;">
-                            <span style="font-size: 3rem; font-weight: 900; line-height: 1;">9$</span>
-                            <span style="font-size: 1rem; opacity: 0.7; text-decoration: line-through; margin-right: 8px;">29$</span>
-                        </div>
-
-                        <div style="color:#fff; font-weight:600; padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.1); font-size: 0.92rem;">✓ دقة فائقة جاهزة للطباعة والتصميم</div>
-                        <div style="color:#fff; font-weight:600; padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.1); font-size: 0.92rem;">✓ ألوان مدروسة مخصصة لجذب العملاء</div>
-                        <div style="color:#fff; font-weight:600; padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.1); font-size: 0.92rem;">✓ تحديثات مستمرة وحزمة موك أب هدية</div>
-                        <div style="color:#fff; font-weight:600; padding:12px 0; font-size: 0.92rem;">✓ دعم فوري عبر واتساب في أي وقت</div>
-                    </div>
-                    
-                    <a href="https://wa.me/9647515538709" target="_blank" class="hover-lift" style="display: flex; align-items: center; justify-content: center; gap: 8px; background: #ffffff; color: #7c3aed; font-weight: 800; padding: 14px; border-radius: 50%; text-decoration: none; margin-top: 28px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
-                        اشترِ الحزمة الآن 🚀
-                    </a>
-                </div>
-            </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"السعر لا يُصدق مقارنة بالجودة! استخدمتها في مشاريع عملائي وكلهم انبهروا. الدعم عبر واتساب كان سريع جداً."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">ن</div>
+          <div>
+            <div class="testi-name">نورة الشمري</div>
+            <div class="testi-role">فريلانسر تصميم</div>
+          </div>
         </div>
-    </section>
-
-    <!-- ─────────────────────────────────────────────────────────────
-       JAVASCRIPT FOR INTERACTION & EFFECTS
-    ───────────────────────────────────────────────────────────── -->
-    <script>
-        // Effect 1: Navbar Scroll Background Blur Switch
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 30) {
-                nav.style.background = 'rgba(255,255,255,0.97)';
-                nav.style.boxShadow = '0 4px 30px rgba(139,92,246,0.08)';
-                nav.style.borderBottom = '1px solid rgba(139,92,246,0.12)';
-            } else {
-                nav.style.background = 'rgba(255,255,255,0.85)';
-                nav.style.boxShadow = 'none';
-                nav.style.borderBottom = '1px solid transparent';
-            }
-        });
-
-        // Effect 2: Vanilla JS Intersection Observer for Reveal Animations
-        const revealElements = document.querySelectorAll('.reveal');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.12 });
-
-        revealElements.forEach((el) => observer.observe(el));
-    </script>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"منذ اشتريت الحزمة، تصاميمي تبدو أكثر احترافية بكثير. العملاء لاحظوا الفرق وزادت طلباتي. شكراً زهراء تكنولوجي!"</p>
+        <div class="testi-author">
+          <div class="testi-avatar">أ</div>
+          <div>
+            <div class="testi-name">أحمد الزهراني</div>
+            <div class="testi-role">منتج محتوى رقمي</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"خلفيات راقية ومتنوعة، ما توقعت إنها تكون بهالجودة بهالسعر البسيط. التحميل كان فوري وما في أي مشكلة. أنصح بها!"</p>
+        <div class="testi-author">
+          <div class="testi-avatar">س</div>
+          <div>
+            <div class="testi-name">سارة المطيري</div>
+            <div class="testi-role">مدونة ومؤثرة</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"استخدمت الخلفيات في تصميم هوية بصرية كاملة لعميل ومن جاب ردود فعل رائعة. حزمة ممتازة وقيمتها أكبر بكثير من سعرها."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">ع</div>
+          <div>
+            <div class="testi-name">عمر الحربي</div>
+            <div class="testi-role">مصمم هوية بصرية</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ────────────────── PRICING ────────────────── -->
+<section id="prices">
+  <div class="pricing-bg"></div>
+  <div class="section-inner" style="position:relative;z-index:1">
+    <div class="section-head reveal">
+      <div class="section-label">💰 الأسعار</div>
+      <h2 class="section-title">سعر لا يُقاوَم <span class="text-gradient">لقيمة استثنائية</span></h2>
+      <p class="section-sub">عرض محدود – احصل على الحزمة الكاملة بسعر لن يتكرر</p>
+    </div>
+    <div class="pricing-card reveal">
+      <div class="pricing-shine"></div>
+      <div class="pricing-shine-2"></div>
+      <div style="position:relative;z-index:1">
+        <div class="pricing-label">🔥 عرض محدود حصري</div>
+        <div class="save-badge">وفّر أكثر من 90%</div>
+        <p class="pricing-title">الحزمة الشاملة الكاملة</p>
+        <div class="pricing-amount">
+          <span class="pricing-old">15$</span>
+          <span class="pricing-new"><span class="pricing-currency">$</span>0.99</span>
+        </div>
+        <p class="pricing-per">دفعة واحدة · تحميل فوري · لا رسوم إضافية</p>
+        <div class="pricing-features">
+          <div class="pricing-feature"><div class="pricing-check">✓</div> +110 خلفية ورقية احترافية عالية الدقة</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div> موك أب احترافية مجانية (هدية)</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div> قوالب جاهزة للاستخدام الفوري</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div> متوافقة مع Canva والفوتوشوب</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div> تحديثات مستمرة مجانية للأبد</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div> دعم واتساب مباشر في أي وقت</div>
+        </div>
+        <a href="https://wa.me/message/GISCK6Y5YCFYK1" target="_blank" class="pricing-cta">
+          🚀 اشترِ الآن بـ 0.99$ فقط
+        </a>
+        <p class="pricing-guarantee">🔒 دفع آمن ومشفور · استلام فوري بعد الشراء</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ────────────────── FAQ ────────────────── -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <div class="section-label">❓ أسئلة شائعة</div>
+      <h2 class="section-title">إجابات على <span class="text-gradient">أكثر أسئلتكم</span></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ما صيغة الملفات وهل تعمل مع Canva؟
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">الملفات بصيغة PNG وJPG عالية الدقة، تعمل بشكل مثالي مع Canva وAdobe Photoshop وأي برنامج تصميم آخر. ما عليك سوى رفعها واستخدامها فوراً.</div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          كيف أستلم الحزمة بعد الدفع؟
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">بعد إتمام الدفع مباشرةً، ستُرسَل لك رسالة عبر واتساب تحتوي على رابط التحميل. الاستلام فوري ولا يستغرق أكثر من دقائق.</div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          هل يمكنني استخدام الخلفيات في مشاريع تجارية؟
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">نعم بالكامل! الترخيص يشمل الاستخدام الشخصي والتجاري. يمكنك استخدامها في مشاريع عملائك وعلاماتك التجارية بدون أي قيود.</div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          هل هناك تحديثات مستقبلية للحزمة؟
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">نعم! كل من يشتري الحزمة يحصل تلقائياً على جميع التحديثات المستقبلية مجاناً. نضيف خلفيات جديدة باستمرار.</div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ما طرق الدفع المتاحة؟
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">ندعم معظم طرق الدفع المتاحة في منطقتك. تواصل معنا عبر واتساب لمعرفة الطريقة الأنسب لك وإتمام عملية الشراء بسهولة.</div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ماذا تشمل الهدايا المجانية بالضبط؟
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">الهدايا تشمل: مجموعة موك أب احترافية جاهزة للعرض، وقوالب تصميم جاهزة يمكنك تخصيصها مباشرة. كلها ملفات عالية الجودة.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ────────────────── FOOTER ────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="https://i.postimg.cc/sghHQSxJ/photo-2025-07-03-17-55-37.jpg" alt="زهراء تكنولوجي" />
+          <div class="footer-logo-text">
+            <span>زهراء تكنولوجي</span>
+            <span>Zahraa Technology</span>
+          </div>
+        </div>
+        <p>نوفر حزم تصميم احترافية للمصممين ورواد الأعمال الرقميين. جودة استثنائية بأسعار في متناول الجميع.</p>
+      </div>
+      <div class="footer-links">
+        <h4>روابط سريعة</h4>
+        <a href="#hero">الرئيسية</a>
+        <a href="#gallery">معرض الأعمال</a>
+        <a href="#bonus">المكافآت</a>
+        <a href="#prices">الأسعار</a>
+        <a href="#faq">الأسئلة الشائعة</a>
+      </div>
+      <div class="footer-links">
+        <h4>تواصل معنا</h4>
+        <a href="https://wa.me/message/GISCK6Y5YCFYK1" target="_blank">📱 واتساب</a>
+        <a href="#prices">🛒 شراء مباشر</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 زهراء تكنولوجي – جميع الحقوق محفوظة</p>
+      <a href="https://wa.me/message/GISCK6Y5YCFYK1" target="_blank" class="footer-wa">
+        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        تواصل عبر واتساب
+      </a>
+    </div>
+  </div>
+</footer>
+<!-- ────────────────── FLOATING WA ────────────────── -->
+<a href="https://wa.me/message/GISCK6Y5YCFYK1" target="_blank" class="wa-float" title="تواصل عبر واتساب">
+  <svg width="28" height="28" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+<script>
+  /* ── Navbar scroll effect ── */
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 30);
+  });
+  /* ── Reveal on scroll ── */
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => revealObserver.observe(el));
+  /* ── FAQ accordion ── */
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+  /* ── Smooth scroll for anchor links ── */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
 </body>
 </html>
