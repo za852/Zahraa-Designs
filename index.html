@@ -3,1338 +3,954 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>زهراء تكنولوجي – حزمة الخلفيات الرقمية الاحترافية</title>
+  <title>زهراء تكنولوجي – خلفيات رقمية احترافية</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --purple: #8b5cf6;
-      --purple-dark: #7c3aed;
-      --purple-deeper: #6d28d9;
-      --purple-deepest: #4c1d95;
-      --green: #10b981;
-      --green-dark: #059669;
-      --red: #dc2626;
-      --gray-text: #6b7280;
-      --dark: #111827;
-    }
     html { scroll-behavior: smooth; }
     body {
       font-family: 'Cairo', sans-serif;
-      background: #fff;
-      color: var(--dark);
+      direction: rtl;
       overflow-x: hidden;
+      background: #fff;
+      color: #111827;
     }
-    /* ── Utility ── */
+    /* ── Scroll Progress ── */
+    .scroll-progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #8b5cf6, #7c3aed, #6d28d9);
+      z-index: 9999;
+      transition: width 0.1s linear;
+      border-radius: 0 2px 2px 0;
+      box-shadow: 0 0 8px rgba(139,92,246,0.6);
+    }
+    /* ── Text Gradient ── */
     .text-gradient {
-      background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+      background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-    .hover-lift {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: default;
+    /* ── Blob animation ── */
+    .blob {
+      filter: blur(80px);
+      opacity: 0.12;
+      animation: blobFloat 8s ease-in-out infinite;
+      border-radius: 50%;
     }
-    .hover-lift:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 50px rgba(139,92,246,0.2) !important;
+    @keyframes blobFloat {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(20px, -30px) scale(1.05); }
+      66% { transform: translate(-15px, 15px) scale(0.97); }
     }
-    /* ── Reveal on scroll ── */
+    /* ── Float animation ── */
+    .animate-float {
+      animation: floatAnim 4s ease-in-out infinite;
+    }
+    @keyframes floatAnim {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    /* ── Shimmer button ── */
+    .shimmer-btn {
+      background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 50%, #7c3aed 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .shimmer-btn::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+      animation: shimmer 2.5s infinite;
+    }
+    @keyframes shimmer {
+      0% { left: -100%; }
+      100% { left: 200%; }
+    }
+    /* ── Pulse glow ── */
+    .animate-pulse-glow {
+      animation: pulseGlow 2.5s ease-in-out infinite;
+    }
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 6px 24px rgba(139,92,246,0.45); }
+      50% { box-shadow: 0 10px 40px rgba(139,92,246,0.7), 0 0 0 6px rgba(139,92,246,0.15); }
+    }
+    /* ── Fade in up ── */
+    .animate-fade-in-up {
+      animation: fadeInUp 0.8s ease both;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    /* ── Dots pattern ── */
+    .dots-pattern {
+      background-image: radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .dots-pattern-purple {
+      background-image: radial-gradient(circle, rgba(139,92,246,0.12) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .footer-dots {
+      background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    /* ── Grid pattern ── */
+    .grid-pattern {
+      background-image:
+        linear-gradient(rgba(139,92,246,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(139,92,246,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    /* ── Countdown block ── */
+    .countdown-block {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 14px;
+      text-align: center;
+      transition: transform 0.2s ease;
+      backdrop-filter: blur(8px);
+    }
+    .countdown-block .num {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1;
+    }
+    .countdown-block .lbl {
+      font-size: 0.62rem;
+      color: rgba(255,255,255,0.7);
+      font-weight: 600;
+      margin-top: 3px;
+    }
+    .countdown-block.countdown-pop {
+      animation: countdownPop 0.35s ease;
+    }
+    @keyframes countdownPop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.18); }
+      100% { transform: scale(1); }
+    }
+    .countdown-sep {
+      color: rgba(255,255,255,0.7);
+      font-weight: 900;
+      font-size: 1.2rem;
+    }
+    /* ── Reveal ── */
     .reveal {
       opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
     .reveal.visible {
       opacity: 1;
       transform: translateY(0);
     }
-    /* ── Animations ── */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes float {
-      0%,100% { transform: translateY(0px); }
-      50%      { transform: translateY(-16px); }
-    }
-    @keyframes blob {
-      0%,100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; transform: scale(1) rotate(0deg); }
-      33%      { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; transform: scale(1.05) rotate(60deg); }
-      66%      { border-radius: 20% 60% 30% 70% / 70% 30% 60% 40%; transform: scale(0.95) rotate(120deg); }
-    }
-    @keyframes pulseGlow {
-      0%,100% { box-shadow: 0 6px 24px rgba(139,92,246,0.45), 0 0 0 0 rgba(139,92,246,0.3); }
-      50%      { box-shadow: 0 10px 40px rgba(139,92,246,0.65), 0 0 0 12px rgba(139,92,246,0); }
-    }
-    @keyframes countUp {
-      from { opacity: 0; transform: scale(0.6); }
-      to   { opacity: 1; transform: scale(1); }
-    }
-    .blob {
-      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-      opacity: 0.18;
-      filter: blur(60px);
-      animation: blob 12s ease-in-out infinite;
-    }
-    .animate-float { animation: float 5s ease-in-out infinite; }
-    .animate-pulse-glow { animation: pulseGlow 2.4s ease-in-out infinite; }
-    /* ── NAVBAR ── */
-    #navbar {
-      position: fixed;
-      top: 0; right: 0; left: 0;
-      z-index: 1000;
-      transition: all 0.4s ease;
-      background: rgba(255,255,255,0.85);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border-bottom: 1px solid transparent;
-    }
-    #navbar.scrolled {
-      background: rgba(255,255,255,0.97);
-      border-bottom: 1px solid rgba(139,92,246,0.12);
-      box-shadow: 0 4px 30px rgba(139,92,246,0.08);
-    }
-    .nav-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 28px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 76px;
-    }
-    .nav-logo { display: flex; align-items: center; gap: 14px; }
-    .nav-logo img {
-      width: 48px; height: 48px;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0 4px 16px rgba(139,92,246,0.3);
-      border: 2px solid rgba(139,92,246,0.2);
-      flex-shrink: 0;
-    }
-    .nav-logo-text { display: flex; flex-direction: column; line-height: 1.2; }
-    .nav-logo-text span:first-child {
-      font-size: 1.05rem; font-weight: 800; color: #111827;
-    }
-    .nav-logo-text span:last-child {
-      font-size: 0.68rem; font-weight: 500; color: var(--purple); letter-spacing: 0.5px;
-    }
-    .nav-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
-      color: #fff;
-      font-family: 'Cairo', sans-serif;
-      font-weight: 700;
-      font-size: 0.9rem;
-      padding: 10px 26px;
-      border-radius: 50px;
-      box-shadow: 0 4px 16px rgba(139,92,246,0.4);
-      transition: all 0.3s ease;
-      text-decoration: none;
-    }
-    .nav-cta:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(139,92,246,0.55);
-    }
-    /* ── HERO ── */
-    #hero {
-      position: relative;
-      overflow: hidden;
-      padding-top: 148px;
-      padding-bottom: 110px;
-      background: linear-gradient(160deg, #ffffff 0%, #f5f3ff 45%, #ede9fe 100%);
-    }
-    .hero-blob-1 {
-      position: absolute; top: -80px; right: -100px;
-      width: 520px; height: 520px;
-      background: radial-gradient(circle, #8b5cf6 0%, #a78bfa 100%);
-      z-index: 0;
-    }
-    .hero-blob-2 {
-      position: absolute; bottom: -60px; left: -80px;
-      width: 400px; height: 400px;
-      background: radial-gradient(circle, #7c3aed 0%, #c4b5fd 100%);
-      z-index: 0;
-      animation-delay: 3s;
-    }
-    .hero-glow {
-      position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%,-50%);
-      width: 800px; height: 800px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(139,92,246,0.06) 0%, transparent 70%);
-      z-index: 0; pointer-events: none;
-    }
-    .hero-grid-pattern {
-      position: absolute; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%238b5cf6' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-      z-index: 0; pointer-events: none;
-    }
-    .hero-grid {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 28px;
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 72px;
-      align-items: center;
-    }
-    .hero-text { animation: fadeInUp 0.8s ease forwards; }
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(139,92,246,0.1);
-      border: 1px solid rgba(139,92,246,0.2);
-      border-radius: 50px;
-      padding: 6px 18px;
-      margin-bottom: 24px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--purple-dark);
-    }
-    .hero-h1 {
-      font-size: clamp(2rem, 4.5vw, 3.4rem);
-      font-weight: 900;
-      line-height: 1.25;
-      color: #111827;
-      margin-bottom: 22px;
-    }
-    .hero-desc {
-      font-size: clamp(1rem, 2vw, 1.12rem);
-      color: #6b7280;
-      line-height: 1.85;
-      margin-bottom: 38px;
-      max-width: 500px;
-    }
-    .hero-desc strong { color: var(--purple-dark); }
-    .hero-btns { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 40px; }
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
-      color: #fff;
-      font-family: 'Cairo', sans-serif;
-      font-weight: 800;
-      font-size: 1.05rem;
-      padding: 16px 40px;
-      border-radius: 50px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-    .btn-primary:hover { transform: translateY(-3px) scale(1.02); }
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: transparent;
-      color: var(--purple-dark);
-      font-family: 'Cairo', sans-serif;
-      font-weight: 700;
-      font-size: 1.05rem;
-      padding: 16px 36px;
-      border-radius: 50px;
-      border: 2px solid var(--purple);
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-    .btn-secondary:hover {
-      background: rgba(139,92,246,0.08);
-      transform: translateY(-2px);
-    }
-    .social-proof { display: flex; align-items: center; gap: 16px; }
-    .stars { display: flex; gap: 4px; font-size: 1rem; }
-    .hero-img-wrap {
-      position: relative;
-      animation: float 5s ease-in-out infinite;
-    }
-    .hero-img-ring {
-      position: absolute; inset: -16px;
-      border-radius: 32px;
-      background: linear-gradient(135deg, rgba(139,92,246,0.2) 0%, rgba(167,139,250,0.1) 100%);
-      z-index: 0;
-    }
-    .hero-img-box {
-      position: relative; z-index: 1;
-      border-radius: 28px;
-      overflow: hidden;
-      box-shadow: 0 30px 80px rgba(139,92,246,0.25), 0 10px 30px rgba(0,0,0,0.1);
-      border: 1px solid rgba(139,92,246,0.15);
-    }
-    .hero-img-box img { width: 100%; height: auto; display: block; }
-    .hero-img-shine {
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 40%;
-      background: linear-gradient(to bottom, rgba(255,255,255,0.08), transparent);
-      pointer-events: none;
-    }
-    .badge-bottom {
-      position: absolute; bottom: -18px; right: -18px;
-      background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%);
-      color: #fff;
-      font-weight: 800; font-size: 0.95rem;
-      padding: 12px 22px;
-      border-radius: 20px;
-      box-shadow: 0 8px 24px rgba(139,92,246,0.4);
-      z-index: 2; white-space: nowrap;
-    }
-    .badge-top {
-      position: absolute; top: -18px; left: -18px;
-      background: linear-gradient(135deg, #059669 0%, #10b981 100%);
-      color: #fff;
-      font-weight: 800; font-size: 0.85rem;
-      padding: 10px 18px;
-      border-radius: 18px;
-      box-shadow: 0 8px 24px rgba(5,150,105,0.35);
-      z-index: 2;
-    }
-    /* ── FEATURES STRIP ── */
-    #features {
-      background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 50%, #8b5cf6 100%);
-      padding: 56px 0;
-      position: relative;
-      overflow: hidden;
-    }
-    .features-dots {
-      position: absolute; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04' fill-rule='evenodd'%3E%3Ccircle cx='20' cy='20' r='2'/%3E%3C/g%3E%3C/svg%3E");
-      pointer-events: none;
-    }
-    .features-grid {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 28px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 32px;
-      position: relative;
-      z-index: 1;
-    }
-    .feature-card {
-      background: rgba(255,255,255,0.08);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 20px;
-      padding: 28px 24px;
-      text-align: center;
-      color: #fff;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .feature-card:hover { transform: translateY(-6px); }
-    .feature-icon { font-size: 2.4rem; margin-bottom: 12px; }
-    .feature-title { font-weight: 800; font-size: 1rem; margin-bottom: 8px; color: #fff; }
-    .feature-desc { font-size: 0.87rem; opacity: 0.75; line-height: 1.7; color: #fff; }
-    /* ── GALLERY ── */
-    #gallery {
-      padding: 100px 0;
-      background: #ffffff;
-    }
-    .section-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 28px;
-    }
-    .section-head { text-align: center; margin-bottom: 56px; }
-    .section-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(139,92,246,0.08);
-      border: 1px solid rgba(139,92,246,0.15);
-      border-radius: 50px;
-      padding: 6px 18px;
-      margin-bottom: 18px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--purple-dark);
-    }
-    .section-title {
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 900;
-      color: #111827;
-      margin-bottom: 14px;
-    }
-    .section-sub {
-      color: #6b7280;
-      font-size: 1.05rem;
-      max-width: 560px;
-      margin: 0 auto;
-    }
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 28px;
-    }
-    .gallery-item {
-      border-radius: 24px;
-      overflow: hidden;
-      position: relative;
-      aspect-ratio: 4/3;
-      background: #f5f3ff;
-      box-shadow: 0 6px 30px rgba(139,92,246,0.12), 0 2px 8px rgba(0,0,0,0.06);
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .gallery-item:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(139,92,246,0.2); }
-    .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .gallery-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(76,29,149,0.7) 0%, transparent 60%);
-      display: flex;
-      align-items: flex-end;
-      padding: 20px 24px;
-      opacity: 0;
-      transition: opacity 0.35s ease;
-    }
-    .gallery-item:hover .gallery-overlay { opacity: 1; }
-    .overlay-tag {
-      color: #fff;
-      font-weight: 700;
-      font-size: 0.95rem;
-      background: rgba(255,255,255,0.18);
-      backdrop-filter: blur(8px);
-      padding: 6px 16px;
-      border-radius: 50px;
-      border: 1px solid rgba(255,255,255,0.25);
-    }
-    .gallery-tag-badge {
-      position: absolute; top: 14px; right: 14px;
-      background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
-      color: #fff;
-      font-size: 0.78rem;
-      font-weight: 700;
-      padding: 5px 14px;
-      border-radius: 50px;
-      box-shadow: 0 3px 10px rgba(139,92,246,0.35);
-    }
-    .gallery-more {
-      text-align: center;
-      margin-top: 44px;
-    }
-    .gallery-more-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
-      border: 1px solid rgba(139,92,246,0.2);
-      border-radius: 50px;
-      padding: 14px 32px;
-      color: var(--purple-dark);
-      font-weight: 700;
-      font-size: 0.95rem;
-    }
-    /* ── BONUS ── */
-    #bonus {
-      padding: 100px 0;
-      background: linear-gradient(160deg, #f5f3ff 0%, #ede9fe 100%);
-      position: relative;
-      overflow: hidden;
-    }
-    .bonus-dots {
-      position: absolute; inset: 0;
-      background-image: radial-gradient(rgba(139,92,246,0.12) 1.5px, transparent 1.5px);
-      background-size: 28px 28px;
-      pointer-events: none;
-    }
-    .bonus-img-wrap {
-      max-width: 860px;
-      margin: 0 auto;
-      position: relative;
-    }
-    .bonus-glow {
-      position: absolute; inset: -30px;
-      border-radius: 40px;
-      background: radial-gradient(ellipse at center, rgba(139,92,246,0.25) 0%, transparent 70%);
-      z-index: 0;
-    }
-    .bonus-img-box {
-      position: relative; z-index: 1;
-      border-radius: 28px;
-      overflow: hidden;
-      box-shadow: 0 30px 80px rgba(139,92,246,0.25), 0 10px 30px rgba(0,0,0,0.08);
-      border: 1px solid rgba(139,92,246,0.15);
-    }
-    .bonus-img-box img { width: 100%; height: auto; display: block; }
-    .bonus-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      justify-content: center;
-      margin-top: 28px;
-    }
-    .bonus-tag {
-      background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
-      color: #fff;
-      font-weight: 700;
-      font-size: 0.88rem;
-      padding: 8px 20px;
-      border-radius: 50px;
-      box-shadow: 0 4px 14px rgba(139,92,246,0.35);
-    }
-    /* ── COMPARISON ── */
-    #comparison {
-      padding: 100px 0;
-      background: #ffffff;
-    }
-    .comparison-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 28px;
-    }
-    .comp-card {
-      border-radius: 28px;
-      padding: 40px 36px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .comp-card:hover { transform: translateY(-6px); }
-    .comp-card-bad {
-      background: #fff;
-      box-shadow: 0 6px 30px rgba(0,0,0,0.07);
-      border: 1px solid #f3f4f6;
-    }
-    .comp-card-good {
-      background: linear-gradient(160deg, #4c1d95 0%, #6d28d9 50%, #7c3aed 100%);
-      box-shadow: 0 20px 60px rgba(139,92,246,0.35);
-      position: relative;
-      overflow: hidden;
-    }
-    .comp-card-good::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 50%;
-      background: linear-gradient(to bottom, rgba(255,255,255,0.06), transparent);
-      pointer-events: none;
-    }
-    .comp-head {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 28px;
-    }
-    .comp-icon {
-      width: 48px; height: 48px;
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      flex-shrink: 0;
-    }
-    .comp-icon-bad { background: #fee2e2; }
-    .comp-icon-good { background: rgba(255,255,255,0.15); }
-    .comp-head h3 { font-weight: 800; font-size: 1.15rem; }
-    .comp-head-bad h3 { color: #111827; }
-    .comp-head-good h3 { color: #fff; }
-    .comp-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 13px 0;
-      font-weight: 600;
-      font-size: 0.95rem;
-    }
-    .comp-item:not(:last-child) { border-bottom: 1px solid rgba(255,255,255,0.08); }
-    .comp-item-bad { color: #dc2626; border-color: #f3f4f6 !important; }
-    .comp-item-good { color: #d9f99d; }
-    .comp-dot {
-      width: 26px; height: 26px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8rem;
-      flex-shrink: 0;
-    }
-    .comp-dot-bad { background: #fee2e2; color: #dc2626; }
-    .comp-dot-good { background: rgba(255,255,255,0.2); color: #fff; }
-    .best-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-      color: #fff;
-      font-size: 0.8rem;
-      font-weight: 800;
-      padding: 5px 14px;
-      border-radius: 50px;
-      margin-right: 12px;
-      box-shadow: 0 3px 10px rgba(245,158,11,0.4);
-    }
-    /* ── TESTIMONIALS ── */
-    #testimonials {
-      padding: 100px 0;
-      background: linear-gradient(160deg, #f5f3ff 0%, #ede9fe 100%);
-      position: relative;
-      overflow: hidden;
-    }
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 24px;
-    }
-    .testi-card {
-      background: #fff;
-      border-radius: 24px;
-      padding: 30px 28px;
-      box-shadow: 0 6px 30px rgba(139,92,246,0.08);
-      border: 1px solid rgba(139,92,246,0.08);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .testi-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(139,92,246,0.15); }
-    .testi-stars { color: #f59e0b; font-size: 0.9rem; margin-bottom: 14px; letter-spacing: 2px; }
-    .testi-text {
-      color: #374151;
-      font-size: 0.95rem;
-      line-height: 1.75;
-      margin-bottom: 20px;
-      font-style: italic;
-    }
-    .testi-author { display: flex; align-items: center; gap: 12px; }
-    .testi-avatar {
-      width: 42px; height: 42px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-weight: 800;
-      font-size: 1rem;
-      flex-shrink: 0;
-    }
-    .testi-name { font-weight: 800; font-size: 0.95rem; color: #111827; }
-    .testi-role { font-size: 0.8rem; color: #8b5cf6; font-weight: 600; }
-    /* ── PRICING ── */
-    #prices {
-      padding: 100px 0;
-      background: #fff;
-      position: relative;
-      overflow: hidden;
-    }
-    .pricing-bg {
-      position: absolute; inset: 0;
-      background: linear-gradient(160deg, transparent 0%, rgba(139,92,246,0.03) 100%);
-      pointer-events: none;
-    }
-    .pricing-card {
-      max-width: 580px;
-      margin: 0 auto;
-      background: linear-gradient(160deg, #4c1d95 0%, #6d28d9 50%, #7c3aed 100%);
-      border-radius: 36px;
-      padding: 56px 52px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 40px 100px rgba(139,92,246,0.4), 0 10px 30px rgba(0,0,0,0.1);
-      color: #fff;
-    }
-    .pricing-card::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 50%;
-      background: linear-gradient(to bottom, rgba(255,255,255,0.08), transparent);
-      pointer-events: none;
-    }
-    .pricing-shine {
-      position: absolute;
-      top: -60px; right: -60px;
-      width: 200px; height: 200px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .pricing-shine-2 {
-      position: absolute;
-      bottom: -40px; left: -40px;
-      width: 160px; height: 160px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,255,255,0.07) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .pricing-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 50px;
-      padding: 6px 18px;
-      margin-bottom: 28px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: #fff;
-    }
-    .pricing-title { font-size: 1.35rem; font-weight: 800; margin-bottom: 28px; opacity: 0.9; }
-    .pricing-amount { margin-bottom: 8px; }
-    .pricing-old {
-      font-size: 1.2rem;
-      text-decoration: line-through;
-      opacity: 0.5;
-      margin-left: 12px;
-    }
-    .pricing-new {
-      font-size: 4rem;
-      font-weight: 900;
-      line-height: 1;
-    }
-    .pricing-currency { font-size: 2rem; vertical-align: super; margin-left: 4px; }
-    .pricing-per { font-size: 0.9rem; opacity: 0.65; margin-bottom: 36px; }
-    .pricing-features { text-align: right; margin-bottom: 40px; }
-    .pricing-feature {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 11px 0;
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: rgba(255,255,255,0.92);
-    }
-    .pricing-feature:not(:last-child) { border-bottom: 1px solid rgba(255,255,255,0.1); }
-    .pricing-check {
-      width: 26px; height: 26px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.75rem;
-      flex-shrink: 0;
-      color: #a7f3d0;
-    }
-    .pricing-cta {
-      display: block;
-      background: linear-gradient(135deg, #fff 0%, #f5f3ff 100%);
-      color: var(--purple-dark);
-      font-family: 'Cairo', sans-serif;
-      font-weight: 900;
-      font-size: 1.15rem;
-      padding: 18px 48px;
-      border-radius: 50px;
-      text-decoration: none;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
-      transition: all 0.3s ease;
-      margin-bottom: 20px;
-    }
-    .pricing-cta:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.25);
-    }
-    .pricing-guarantee {
-      font-size: 0.82rem;
-      opacity: 0.65;
-    }
-    .save-badge {
-      display: inline-block;
-      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-      color: #fff;
-      font-size: 0.82rem;
-      font-weight: 800;
-      padding: 4px 14px;
-      border-radius: 50px;
-      margin-bottom: 24px;
-      box-shadow: 0 3px 12px rgba(245,158,11,0.4);
-    }
-    /* ── FAQ ── */
-    #faq {
-      padding: 100px 0;
-      background: linear-gradient(160deg, #f5f3ff 0%, #ede9fe 100%);
-    }
-    .faq-list { max-width: 760px; margin: 0 auto; }
-    .faq-item {
-      background: #fff;
-      border-radius: 20px;
-      margin-bottom: 14px;
-      box-shadow: 0 4px 16px rgba(139,92,246,0.07);
-      border: 1px solid rgba(139,92,246,0.08);
-      overflow: hidden;
-    }
-    .faq-q {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 20px 24px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-family: 'Cairo', sans-serif;
-      font-weight: 700;
-      font-size: 1rem;
-      color: #111827;
-      text-align: right;
-    }
-    .faq-q .faq-icon {
-      width: 32px; height: 32px;
-      border-radius: 50%;
-      background: rgba(139,92,246,0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--purple-dark);
-      font-size: 1.1rem;
-      flex-shrink: 0;
-      transition: transform 0.3s ease, background 0.3s ease;
-    }
-    .faq-item.open .faq-icon {
-      transform: rotate(45deg);
-      background: var(--purple);
-      color: #fff;
-    }
-    .faq-a {
+    /* ── Hover lift ── */
+    .hover-lift {
+      transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    }
+    .hover-lift:hover {
+      transform: translateY(-6px) !important;
+      box-shadow: 0 20px 50px rgba(139,92,246,0.18) !important;
+    }
+    /* ── FAQ answer ── */
+    .faq-answer {
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.4s ease, padding 0.3s ease;
       padding: 0 24px;
       color: #6b7280;
-      font-size: 0.95rem;
+      font-size: 0.93rem;
       line-height: 1.8;
     }
-    .faq-item.open .faq-a { max-height: 200px; padding: 0 24px 20px; }
-    /* ── FOOTER ── */
-    footer {
-      background: linear-gradient(160deg, #1e0745 0%, #2d0a6e 50%, #4c1d95 100%);
-      padding: 60px 0 30px;
-      color: #fff;
-      position: relative;
-      overflow: hidden;
+    .faq-answer.open {
+      max-height: 300px;
+      padding: 0 24px 20px;
     }
-    footer::before {
-      content: '';
-      position: absolute; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.02' fill-rule='evenodd'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/svg%3E");
-      pointer-events: none;
-    }
-    .footer-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 28px;
-      position: relative;
-      z-index: 1;
-    }
-    .footer-top {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 40px;
-      margin-bottom: 48px;
-    }
-    .footer-brand { max-width: 340px; }
-    .footer-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-    .footer-logo img {
-      width: 48px; height: 48px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid rgba(139,92,246,0.4);
-    }
-    .footer-logo-text span:first-child {
-      display: block;
-      font-size: 1.1rem; font-weight: 800; color: #fff;
-    }
-    .footer-logo-text span:last-child {
-      display: block;
-      font-size: 0.7rem; color: #a78bfa; font-weight: 500;
-    }
-    .footer-brand p { color: rgba(255,255,255,0.55); font-size: 0.9rem; line-height: 1.75; }
-    .footer-links h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 16px; color: #fff; }
-    .footer-links a {
-      display: block;
-      color: rgba(255,255,255,0.55);
-      font-size: 0.88rem;
-      text-decoration: none;
-      margin-bottom: 10px;
-      transition: color 0.25s;
-    }
-    .footer-links a:hover { color: #c4b5fd; }
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding-top: 28px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-    }
-    .footer-copy { color: rgba(255,255,255,0.4); font-size: 0.85rem; }
-    .footer-wa {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #25d366;
-      color: #fff;
-      font-weight: 700;
-      font-size: 0.88rem;
-      padding: 10px 22px;
-      border-radius: 50px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 14px rgba(37,211,102,0.35);
-    }
-    .footer-wa:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 22px rgba(37,211,102,0.5);
-    }
-    /* ── FLOATING WA BUTTON ── */
-    .wa-float {
-      position: fixed;
-      bottom: 32px;
-      left: 32px;
-      width: 60px; height: 60px;
-      border-radius: 50%;
-      background: #25d366;
-      color: #fff;
+    .faq-icon-btn {
+      transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.7rem;
-      box-shadow: 0 6px 24px rgba(37,211,102,0.5);
-      text-decoration: none;
-      z-index: 999;
-      transition: all 0.3s ease;
-      animation: float 3s ease-in-out infinite;
     }
-    .wa-float:hover { transform: scale(1.12); box-shadow: 0 10px 32px rgba(37,211,102,0.65); }
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      .hero-grid { grid-template-columns: 1fr !important; text-align: center; gap: 40px; }
-      .hero-grid > div:last-child { order: -1; }
-      .hero-desc { max-width: 100%; }
-      .social-proof { justify-content: center; }
-      .hero-btns { justify-content: center; }
-      .badge-bottom { bottom: -14px; right: -8px; font-size: 0.82rem; padding: 10px 16px; }
-      .badge-top { top: -14px; left: -8px; font-size: 0.78rem; padding: 8px 14px; }
+    .faq-icon-btn.open {
+      transform: rotate(45deg);
+    }
+    /* ── Pricing card inner ── */
+    .pricing-card-inner {
+      animation: fadeInUp 0.8s ease 0.2s both;
+    }
+    /* ── Hero grid responsive ── */
+    @media (max-width: 768px) {
+      .hero-grid {
+        grid-template-columns: 1fr !important;
+        gap: 40px !important;
+      }
+      .hero-img-col {
+        order: -1;
+      }
+      .hero-btns-wrap {
+        justify-content: center;
+      }
+      .social-proof-wrap {
+        justify-content: center;
+      }
+      .hero-text-center-mobile {
+        text-align: center;
+      }
     }
     @media (max-width: 600px) {
-      .nav-inner { padding: 0 16px; }
-      .pricing-card { padding: 40px 24px; }
-      .comp-card { padding: 28px 22px; }
+      .comp-card {
+        padding: 28px 20px !important;
+      }
     }
   </style>
 </head>
 <body>
-<!-- ────────────────── NAVBAR ────────────────── -->
-<nav id="navbar">
-  <div class="nav-inner">
-    <div class="nav-logo">
-      <img src="https://i.postimg.cc/sghHQSxJ/photo-2025-07-03-17-55-37.jpg" alt="شعار زهراء تكنولوجي" />
-      <div class="nav-logo-text">
-        <span>زهراء تكنولوجي</span>
-        <span>Zahraa Technology</span>
+<!-- Scroll Progress -->
+<div class="scroll-progress" id="scrollProgress"></div>
+<!-- Navbar -->
+<nav id="navbar" style="
+  position: fixed; top: 0; right: 0; left: 0; z-index: 1000;
+  transition: all 0.4s ease;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid transparent;
+  box-shadow: none;
+">
+  <div style="max-width:1200px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:76px;">
+    <div style="display:flex;align-items:center;gap:14px;">
+      <img src="https://i.postimg.cc/sghHQSxJ/photo-2025-07-03-17-55-37.jpg" alt="زهراء تكنولوجي"
+        style="width:48px;height:48px;border-radius:50%;object-fit:cover;box-shadow:0 4px 16px rgba(139,92,246,0.3);border:2px solid rgba(139,92,246,0.2);flex-shrink:0;" />
+      <div style="display:flex;flex-direction:column;line-height:1.2;">
+        <span style="font-size:1.05rem;font-weight:800;color:#111827;">زهراء تكنولوجي</span>
+        <span style="font-size:0.68rem;font-weight:500;color:#7c3aed;letter-spacing:0.5px;">Zahraa Technology</span>
       </div>
     </div>
-    <a href="#prices" class="nav-cta">🛒 اشترِ الآن</a>
+    <a href="https://wa.me/message/GISCK6Y5YCFYK1" target="_blank" rel="noreferrer"
+      class="nav-cta"
+      style="
+        display:inline-flex;align-items:center;gap:8px;
+        background:linear-gradient(135deg,#8b5cf6 0%,#7c3aed 100%);
+        color:#fff;font-family:'Cairo',sans-serif;font-weight:700;font-size:0.9rem;
+        padding:10px 26px;border-radius:50px;
+        box-shadow:0 4px 16px rgba(139,92,246,0.4);
+        text-decoration:none;transition:all 0.3s ease;
+      "
+      onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(139,92,246,0.55)';"
+      onmouseout="this.style.transform='';this.style.boxShadow='0 4px 16px rgba(139,92,246,0.4)';"
+    >🛒 اشترِ الآن</a>
   </div>
 </nav>
-<!-- ────────────────── HERO ────────────────── -->
-<header id="hero">
-  <div class="hero-blob-1 blob"></div>
-  <div class="hero-blob-2 blob"></div>
-  <div class="hero-glow"></div>
-  <div class="hero-grid-pattern"></div>
-  <div class="hero-grid">
+<!-- Countdown Banner -->
+<div style="
+  background:linear-gradient(135deg,#4c1d95 0%,#6d28d9 50%,#8b5cf6 100%);
+  padding:14px 20px;text-align:center;position:relative;overflow:hidden;
+  margin-top:76px;
+">
+  <div class="dots-pattern" style="position:absolute;inset:0;pointer-events:none;"></div>
+  <div style="position:relative;z-index:1;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:16px;">
+    <div style="display:flex;align-items:center;gap:8px;">
+      <span style="font-size:1.1rem;">🔥</span>
+      <span style="color:#fff;font-weight:800;font-size:0.95rem;">ينتهي العرض المميز خلال:</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:6px;">
+      <div class="countdown-block" id="banner-h" style="min-width:56px;padding:8px 14px;">
+        <div class="num" id="bh">23</div>
+        <div class="lbl">ساعة</div>
+      </div>
+      <span class="countdown-sep">:</span>
+      <div class="countdown-block" id="banner-m" style="min-width:56px;padding:8px 14px;">
+        <div class="num" id="bm">47</div>
+        <div class="lbl">دقيقة</div>
+      </div>
+      <span class="countdown-sep">:</span>
+      <div class="countdown-block" id="banner-s" style="min-width:56px;padding:8px 14px;">
+        <div class="num" id="bs">33</div>
+        <div class="lbl">ثانية</div>
+      </div>
+    </div>
+    <a href="#prices" style="
+      background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;
+      font-weight:800;font-size:0.85rem;padding:8px 20px;border-radius:50px;
+      text-decoration:none;box-shadow:0 3px 12px rgba(245,158,11,0.45);white-space:nowrap;
+    ">احصل عليه الآن ⚡</a>
+  </div>
+</div>
+<!-- Hero -->
+<header id="hero" style="
+  position:relative;overflow:hidden;
+  padding-top:80px;padding-bottom:110px;
+  background:linear-gradient(160deg,#ffffff 0%,#f5f3ff 45%,#ede9fe 100%);
+">
+  <div class="blob" style="position:absolute;top:-80px;right:-100px;width:520px;height:520px;background:radial-gradient(circle,#8b5cf6 0%,#a78bfa 100%);z-index:0;"></div>
+  <div class="blob" style="position:absolute;bottom:-60px;left:-80px;width:400px;height:400px;background:radial-gradient(circle,#7c3aed 0%,#c4b5fd 100%);z-index:0;animation-delay:3s;"></div>
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(139,92,246,0.06) 0%,transparent 70%);z-index:0;pointer-events:none;"></div>
+  <div class="grid-pattern" style="position:absolute;inset:0;z-index:0;pointer-events:none;"></div>
+  <div class="hero-grid" style="
+    max-width:1200px;margin:0 auto;padding:0 28px;
+    position:relative;z-index:1;
+    display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;
+  ">
     <!-- Text -->
-    <div class="hero-text">
-      <div class="hero-badge"><span>✨</span> عرض حصري لفترة محدودة جداً</div>
-      <h1 class="hero-h1">
+    <div class="animate-fade-in-up">
+      <div style="
+        display:inline-flex;align-items:center;gap:8px;
+        background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.2);
+        border-radius:50px;padding:6px 18px;margin-bottom:24px;
+        font-size:0.85rem;font-weight:700;color:#7c3aed;
+      ">✨ عرض حصري لفترة محدودة جداً</div>
+      <h1 style="font-size:clamp(2rem,4.5vw,3.4rem);font-weight:900;line-height:1.25;color:#111827;margin-bottom:22px;">
         أكثر من <span class="text-gradient">110+ خلفية رقمية</span> احترافية لتصاميمك
       </h1>
-      <p class="hero-desc">
-        ارتقِ بتصاميمك على <strong>Canva</strong> و<strong> الفوتوشوب</strong> باستخدام
-        حزمة الخلفيات الورقية الفاخرة المخصصة للمصممين وأصحاب المشاريع
-        الرقمية. جودة استثنائية بسعر لا يُصدَّق.
+      <p style="font-size:clamp(1rem,2vw,1.12rem);color:#6b7280;line-height:1.85;margin-bottom:38px;max-width:500px;">
+        ارتقِ بتصاميمك على <strong style="color:#7c3aed;">Canva</strong> و<strong style="color:#7c3aed;">الفوتوشوب</strong> باستخدام حزمة الخلفيات الورقية الفاخرة المخصصة للمصممين وأصحاب المشاريع الرقمية. جودة استثنائية بسعر لا يُصدَّق.
       </p>
-      <div class="hero-btns">
-        <a href="#prices" class="btn-primary animate-pulse-glow">🚀 احصل على الحزمة الآن</a>
-        <a href="#gallery" class="btn-secondary">🖼️ تصفح المعرض</a>
+      <div class="hero-btns-wrap" style="display:flex;flex-wrap:wrap;gap:16px;margin-bottom:40px;">
+        <a href="https://wa.me/message/GISCK6Y5YCFYK1" target="_blank" rel="noreferrer"
+          class="animate-pulse-glow shimmer-btn"
+          style="
+            display:inline-flex;align-items:center;gap:10px;
+            color:#fff;font-family:'Cairo',sans-serif;font-weight:800;font-size:1.05rem;
+            padding:16px 40px;border-radius:50px;text-decoration:none;
+            transition:all 0.3s ease;
+          "
+          onmouseover="this.style.transform='translateY(-3px) scale(1.02)';"
+          onmouseout="this.style.transform='';"
+        >🚀 احصل على الحزمة الآن</a>
+        <a href="#gallery"
+          style="
+            display:inline-flex;align-items:center;gap:10px;
+            background:transparent;color:#7c3aed;
+            font-family:'Cairo',sans-serif;font-weight:700;font-size:1.05rem;
+            padding:16px 36px;border-radius:50px;
+            border:2px solid #8b5cf6;text-decoration:none;
+            transition:all 0.3s ease;
+          "
+          onmouseover="this.style.background='rgba(139,92,246,0.08)';this.style.transform='translateY(-2px)';"
+          onmouseout="this.style.background='transparent';this.style.transform='';"
+        >🖼️ تصفح المعرض</a>
       </div>
-      <div class="social-proof">
-        <div class="stars">⭐⭐⭐⭐⭐</div>
+      <div class="social-proof-wrap" style="display:flex;align-items:center;gap:16px;">
+        <div style="display:flex;gap:4px;font-size:1rem;">⭐⭐⭐⭐⭐</div>
         <div>
-          <strong style="color:#111827">5.0</strong>
-          <span style="color:#6b7280;font-size:0.9rem;margin-right:6px">(أكثر من 200+ مصمم راضٍ)</span>
+          <strong style="color:#111827;">5.0</strong>
+          <span style="color:#6b7280;font-size:0.9rem;margin-right:6px;">(أكثر من 200+ مصمم راضٍ)</span>
         </div>
       </div>
     </div>
     <!-- Image -->
-    <div class="hero-img-wrap">
-      <div class="hero-img-ring"></div>
-      <div class="hero-img-box">
-        <img src="https://i.postimg.cc/Y0HS1Qfy/Screenshot-2026-07-07-121503.png" alt="خلفيات رقمية احترافية زهراء تكنولوجي" />
-        <div class="hero-img-shine"></div>
+    <div class="hero-img-col animate-float" style="position:relative;">
+      <div style="position:absolute;inset:-16px;border-radius:32px;background:linear-gradient(135deg,rgba(139,92,246,0.2) 0%,rgba(167,139,250,0.1) 100%);z-index:0;"></div>
+      <div style="position:relative;z-index:1;border-radius:28px;overflow:hidden;box-shadow:0 30px 80px rgba(139,92,246,0.25),0 10px 30px rgba(0,0,0,0.1);border:1px solid rgba(139,92,246,0.15);">
+        <img src="https://i.postimg.cc/Y0HS1Qfy/Screenshot-2026-07-07-121503.png" alt="خلفيات رقمية احترافية"
+          style="width:100%;height:auto;display:block;" />
+        <div style="position:absolute;top:0;left:0;right:0;height:40%;background:linear-gradient(to bottom,rgba(255,255,255,0.08),transparent);pointer-events:none;"></div>
       </div>
-      <div class="badge-bottom">110+ خلفية 🎨</div>
-      <div class="badge-top">🔥 0.99$ فقط</div>
+      <div style="
+        position:absolute;bottom:-18px;right:-18px;
+        background:linear-gradient(135deg,#7c3aed 0%,#8b5cf6 100%);
+        color:#fff;font-weight:800;font-size:0.95rem;
+        padding:12px 22px;border-radius:20px;
+        box-shadow:0 8px 24px rgba(139,92,246,0.4);
+        z-index:2;white-space:nowrap;
+      ">110+ خلفية 🎨</div>
+      <div style="
+        position:absolute;top:-18px;left:-18px;
+        background:linear-gradient(135deg,#059669 0%,#10b981 100%);
+        color:#fff;font-weight:800;font-size:0.85rem;
+        padding:10px 18px;border-radius:18px;
+        box-shadow:0 8px 24px rgba(5,150,105,0.35);
+        z-index:2;
+      ">🔥 3$ فقط</div>
     </div>
   </div>
 </header>
-<!-- ────────────────── FEATURES STRIP ────────────────── -->
-<section id="features">
-  <div class="features-dots"></div>
-  <div class="features-grid">
-    <div class="feature-card hover-lift">
-      <div class="feature-icon">🎨</div>
-      <h3 class="feature-title">+110 خلفية احترافية</h3>
-      <p class="feature-desc">مجموعة ضخمة ومتنوعة تكفي جميع احتياجاتك التصميمية لأشهر طويلة</p>
+<!-- Features Strip -->
+<section id="features" style="
+  background:linear-gradient(135deg,#4c1d95 0%,#7c3aed 50%,#8b5cf6 100%);
+  padding:70px 0;position:relative;overflow:hidden;
+">
+  <div class="dots-pattern" style="position:absolute;inset:0;pointer-events:none;"></div>
+  <div style="max-width:1200px;margin:0 auto;padding:0 28px;position:relative;z-index:1;">
+    <div style="text-align:center;margin-bottom:48px;">
+      <div style="
+        display:inline-flex;align-items:center;gap:8px;
+        background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);
+        border-radius:50px;padding:6px 20px;margin-bottom:14px;
+        font-size:0.85rem;font-weight:700;color:#fff;
+      ">⚡ لماذا تختار حزمتنا؟</div>
+      <h2 style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:900;color:#fff;margin-bottom:10px;">كل ما تحتاجه في حزمة واحدة</h2>
+      <p style="color:rgba(255,255,255,0.7);font-size:1rem;max-width:500px;margin:0 auto;">صُمِّمت الحزمة بعناية لتلبي احتياجات كل مصمم، مبتدئاً كان أم محترفاً</p>
     </div>
-    <div class="feature-card hover-lift">
-      <div class="feature-icon">⚡</div>
-      <h3 class="feature-title">تحميل فوري</h3>
-      <p class="feature-desc">بعد الدفع مباشرةً تستلم رابط التحميل، بدون انتظار أو تأخير</p>
-    </div>
-    <div class="feature-card hover-lift">
-      <div class="feature-icon">🖥️</div>
-      <h3 class="feature-title">متوافقة مع Canva & PS</h3>
-      <p class="feature-desc">جميع الملفات بصيغ عالية الدقة تعمل بسلاسة مع كل البرامج</p>
-    </div>
-    <div class="feature-card hover-lift">
-      <div class="feature-icon">🎁</div>
-      <h3 class="feature-title">هدايا ومكافآت مجانية</h3>
-      <p class="feature-desc">موك أب احترافية وقوالب جاهزة تُوفر عليك ساعات من العمل</p>
-    </div>
-  </div>
-</section>
-<!-- ────────────────── GALLERY ────────────────── -->
-<section id="gallery">
-  <div class="section-inner">
-    <div class="section-head reveal">
-      <div class="section-label">🖼️ معرض الأعمال</div>
-      <h2 class="section-title">لمحة عن <span class="text-gradient">التصاميم الفاخرة</span></h2>
-      <p class="section-sub">تصاميم راقية بدقة عالية جاهزة للاستخدام الفوري داخل الحزمة الكاملة</p>
-    </div>
-    <div class="gallery-grid">
-      <div class="gallery-item reveal">
-        <img src="https://i.postimg.cc/vHvvxzLv/2.png" alt="نموذج خلفية رقمية 1" />
-        <div class="gallery-overlay"><span class="overlay-tag">✨ ورقي فاخر</span></div>
-        <div class="gallery-tag-badge">ورقي فاخر</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;">
+      <div class="hover-lift" style="background:rgba(255,255,255,0.08);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:28px 24px;text-align:center;color:#fff;box-shadow:0 4px 20px rgba(0,0,0,0.1);">
+        <div style="font-size:2.4rem;margin-bottom:12px;">🎨</div>
+        <h3 style="font-weight:800;font-size:1rem;margin-bottom:8px;color:#fff;">+110 خلفية احترافية</h3>
+        <p style="font-size:0.87rem;opacity:0.75;line-height:1.7;color:#fff;">مجموعة ضخمة ومتنوعة تكفي جميع احتياجاتك التصميمية لأشهر طويلة</p>
       </div>
-      <div class="gallery-item reveal">
-        <img src="https://i.postimg.cc/NMT6s7jP/3.png" alt="نموذج خلفية رقمية 2" />
-        <div class="gallery-overlay"><span class="overlay-tag">✨ عصري أنيق</span></div>
-        <div class="gallery-tag-badge">عصري أنيق</div>
+      <div class="hover-lift" style="background:rgba(255,255,255,0.08);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:28px 24px;text-align:center;color:#fff;box-shadow:0 4px 20px rgba(0,0,0,0.1);">
+        <div style="font-size:2.4rem;margin-bottom:12px;">⚡</div>
+        <h3 style="font-weight:800;font-size:1rem;margin-bottom:8px;color:#fff;">تحميل فوري</h3>
+        <p style="font-size:0.87rem;opacity:0.75;line-height:1.7;color:#fff;">بعد الدفع مباشرةً تستلم رابط التحميل، بدون انتظار أو تأخير</p>
       </div>
-      <div class="gallery-item reveal">
-        <img src="https://i.postimg.cc/WbsGVZLZ/4.png" alt="نموذج خلفية رقمية 3" />
-        <div class="gallery-overlay"><span class="overlay-tag">✨ إبداعي مميز</span></div>
-        <div class="gallery-tag-badge">إبداعي مميز</div>
+      <div class="hover-lift" style="background:rgba(255,255,255,0.08);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:28px 24px;text-align:center;color:#fff;box-shadow:0 4px 20px rgba(0,0,0,0.1);">
+        <div style="font-size:2.4rem;margin-bottom:12px;">🖥️</div>
+        <h3 style="font-weight:800;font-size:1rem;margin-bottom:8px;color:#fff;">متوافقة مع Canva & PS</h3>
+        <p style="font-size:0.87rem;opacity:0.75;line-height:1.7;color:#fff;">جميع الملفات بصيغ عالية الدقة تعمل بسلاسة مع كل البرامج</p>
       </div>
-    </div>
-    <div class="gallery-more reveal">
-      <div class="gallery-more-badge">
-        <span style="font-size:1.2rem">🎯</span>
-        +107 خلفية إضافية داخل الحزمة الكاملة
-        <span style="font-size:1.2rem">✨</span>
+      <div class="hover-lift" style="background:rgba(255,255,255,0.08);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:28px 24px;text-align:center;color:#fff;box-shadow:0 4px 20px rgba(0,0,0,0.1);">
+        <div style="font-size:2.4rem;margin-bottom:12px;">🎁</div>
+        <h3 style="font-weight:800;font-size:1rem;margin-bottom:8px;color:#fff;">هدايا ومكافآت مجانية</h3>
+        <p style="font-size:0.87rem;opacity:0.75;line-height:1.7;color:#fff;">موك أب احترافية وقوالب جاهزة تُوفر عليك ساعات من العمل</p>
+      </div>
+      <div class="hover-lift" style="background:rgba(255,255,255,0.08);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:28px 24px;text-align:center;color:#fff;box-shadow:0 4px 20px rgba(0,0,0,0.1);">
+        <div style="font-size:2.4rem;margin-bottom:12px;">🔒</div>
+        <h3 style="font-weight:800;font-size:1rem;margin-bottom:8px;color:#fff;">ترخيص تجاري كامل</h3>
+        <p style="font-size:0.87rem;opacity:0.75;line-height:1.7;color:#fff;">استخدم الخلفيات في مشاريعك الشخصية والتجارية بلا قيود</p>
+      </div>
+      <div class="hover-lift" style="background:rgba(255,255,255,0.08);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:28px 24px;text-align:center;color:#fff;box-shadow:0 4px 20px rgba(0,0,0,0.1);">
+        <div style="font-size:2.4rem;margin-bottom:12px;">🔄</div>
+        <h3 style="font-weight:800;font-size:1rem;margin-bottom:8px;color:#fff;">تحديثات مجانية للأبد</h3>
+        <p style="font-size:0.87rem;opacity:0.75;line-height:1.7;color:#fff;">ادفع مرة واحدة واستمتع بجميع الإضافات والتحديثات المستقبلية</p>
       </div>
     </div>
   </div>
 </section>
-<!-- ────────────────── BONUS ────────────────── -->
-<section id="bonus">
-  <div class="bonus-dots"></div>
-  <div class="section-inner" style="position:relative;z-index:1">
-    <div class="section-head reveal">
-      <div class="section-label" style="background:rgba(139,92,246,0.1);border-color:rgba(139,92,246,0.2)">🎁 مكافآت حصرية مجانية</div>
-      <h2 class="section-title">هدايا مجانية <span class="text-gradient">تُضاعف قيمة حزمتك</span></h2>
-      <p class="section-sub" style="max-width:600px">بجانب الخلفيات، ستحصل على حزمة موك أب وقوالب احترافية جاهزة تُوفر عليك ساعات من العمل</p>
+<!-- Gallery -->
+<section id="gallery" style="padding:100px 0;background:#ffffff;">
+  <div style="max-width:1200px;margin:0 auto;padding:0 28px;">
+    <div class="reveal" style="text-align:center;margin-bottom:56px;">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.15);border-radius:50px;padding:6px 18px;margin-bottom:18px;font-size:0.85rem;font-weight:700;color:#7c3aed;">🖼️ معرض الأعمال</div>
+      <h2 style="font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;color:#111827;margin-bottom:14px;">لمحة عن <span class="text-gradient">التصاميم الفاخرة</span></h2>
+      <p style="color:#6b7280;font-size:1.05rem;max-width:560px;margin:0 auto;">تصاميم راقية بدقة عالية جاهزة للاستخدام الفوري داخل الحزمة الكاملة</p>
     </div>
-    <div class="bonus-img-wrap reveal">
-      <div class="bonus-glow"></div>
-      <div class="bonus-img-box">
-        <img src="https://i.postimg.cc/bJXnBD9Q/5.png" alt="حزمة قوالب وهدايا إضافية" />
-      </div>
-      <div class="bonus-tags">
-        <div class="bonus-tag">🎨 موك أب احترافية</div>
-        <div class="bonus-tag">📁 قوالب جاهزة</div>
-        <div class="bonus-tag">🔄 تحديثات مجانية</div>
-        <div class="bonus-tag">⚡ تحميل فوري</div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- ────────────────── COMPARISON ────────────────── -->
-<section id="comparison">
-  <div class="section-inner">
-    <div class="section-head reveal">
-      <div class="section-label">⚖️ لماذا نحن؟</div>
-      <h2 class="section-title">الفرق <span class="text-gradient">يتكلم عن نفسه</span></h2>
-      <p class="section-sub">مقارنة بسيطة وواضحة بين المحتوى العادي وحزمتنا الاحترافية</p>
-    </div>
-    <div class="comparison-grid">
-      <!-- Bad -->
-      <div class="comp-card comp-card-bad reveal hover-lift">
-        <div class="comp-head comp-head-bad">
-          <div class="comp-icon comp-icon-bad">😞</div>
-          <h3>المجموعات العادية</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:28px;">
+      <!-- Card 1 -->
+      <div class="reveal gallery-card" style="border-radius:24px;overflow:hidden;position:relative;aspect-ratio:4/3;background:#f5f3ff;box-shadow:0 6px 30px rgba(139,92,246,0.12),0 2px 8px rgba(0,0,0,0.06);transition:transform 0.3s ease,box-shadow 0.3s ease;cursor:pointer;"
+        onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 50px rgba(139,92,246,0.2)';this.querySelector('.gal-overlay').style.opacity='1';"
+        onmouseout="this.style.transform='';this.style.boxShadow='0 6px 30px rgba(139,92,246,0.12),0 2px 8px rgba(0,0,0,0.06)';this.querySelector('.gal-overlay').style.opacity='0';">
+        <img src="https://i.postimg.cc/vHvvxzLv/2.png" alt="ورقي فاخر" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        <div class="gal-overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(76,29,149,0.7) 0%,transparent 60%);display:flex;align-items:flex-end;padding:20px 24px;opacity:0;transition:opacity 0.35s ease;">
+          <span style="color:#fff;font-weight:700;font-size:0.95rem;background:rgba(255,255,255,0.18);backdrop-filter:blur(8px);padding:6px 16px;border-radius:50px;border:1px solid rgba(255,255,255,0.25);">✨ ورقي فاخر</span>
         </div>
-        <div class="comp-item comp-item-bad"><div class="comp-dot comp-dot-bad">✕</div> جودة ضعيفة ومبكسلة عند التكبير</div>
-        <div class="comp-item comp-item-bad"><div class="comp-dot comp-dot-bad">✕</div> ألوان باهتة وغير متناسقة</div>
-        <div class="comp-item comp-item-bad"><div class="comp-dot comp-dot-bad">✕</div> لا تحتوي على هدايا أو مكافآت</div>
-        <div class="comp-item comp-item-bad"><div class="comp-dot comp-dot-bad">✕</div> لا دعم ولا تحديثات مستقبلية</div>
+        <div style="position:absolute;top:14px;right:14px;background:linear-gradient(135deg,#8b5cf6 0%,#7c3aed 100%);color:#fff;font-size:0.78rem;font-weight:700;padding:5px 14px;border-radius:50px;box-shadow:0 3px 10px rgba(139,92,246,0.35);">ورقي فاخر</div>
+      </div>
+      <!-- Card 2 -->
+      <div class="reveal gallery-card" style="border-radius:24px;overflow:hidden;position:relative;aspect-ratio:4/3;background:#f5f3ff;box-shadow:0 6px 30px rgba(139,92,246,0.12),0 2px 8px rgba(0,0,0,0.06);transition:transform 0.3s ease,box-shadow 0.3s ease;cursor:pointer;"
+        onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 50px rgba(139,92,246,0.2)';this.querySelector('.gal-overlay').style.opacity='1';"
+        onmouseout="this.style.transform='';this.style.boxShadow='0 6px 30px rgba(139,92,246,0.12),0 2px 8px rgba(0,0,0,0.06)';this.querySelector('.gal-overlay').style.opacity='0';">
+        <img src="https://i.postimg.cc/NMT6s7jP/3.png" alt="عصري أنيق" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        <div class="gal-overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(76,29,149,0.7) 0%,transparent 60%);display:flex;align-items:flex-end;padding:20px 24px;opacity:0;transition:opacity 0.35s ease;">
+          <span style="color:#fff;font-weight:700;font-size:0.95rem;background:rgba(255,255,255,0.18);backdrop-filter:blur(8px);padding:6px 16px;border-radius:50px;border:1px solid rgba(255,255,255,0.25);">✨ عصري أنيق</span>
+        </div>
+        <div style="position:absolute;top:14px;right:14px;background:linear-gradient(135deg,#8b5cf6 0%,#7c3aed 100%);color:#fff;font-size:0.78rem;font-weight:700;padding:5px 14px;border-radius:50px;box-shadow:0 3px 10px rgba(139,92,246,0.35);">عصري أنيق</div>
+      </div>
+      <!-- Card 3 -->
+      <div class="reveal gallery-card" style="border-radius:24px;overflow:hidden;position:relative;aspect-ratio:4/3;background:#f5f3ff;box-shadow:0 6px 30px rgba(139,92,246,0.12),0 2px 8px rgba(0,0,0,0.06);transition:transform 0.3s ease,box-shadow 0.3s ease;cursor:pointer;"
+        onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 50px rgba(139,92,246,0.2)';this.querySelector('.gal-overlay').style.opacity='1';"
+        onmouseout="this.style.transform='';this.style.boxShadow='0 6px 30px rgba(139,92,246,0.12),0 2px 8px rgba(0,0,0,0.06)';this.querySelector('.gal-overlay').style.opacity='0';">
+        <img src="https://i.postimg.cc/WbsGVZLZ/4.png" alt="إبداعي مميز" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        <div class="gal-overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(76,29,149,0.7) 0%,transparent 60%);display:flex;align-items:flex-end;padding:20px 24px;opacity:0;transition:opacity 0.35s ease;">
+          <span style="color:#fff;font-weight:700;font-size:0.95rem;background:rgba(255,255,255,0.18);backdrop-filter:blur(8px);padding:6px 16px;border-radius:50px;border:1px solid rgba(255,255,255,0.25);">✨ إبداعي مميز</span>
+        </div>
+        <div style="position:absolute;top:14px;right:14px;background:linear-gradient(135deg,#8b5cf6 0%,#7c3aed 100%);color:#fff;font-size:0.78rem;font-weight:700;padding:5px 14px;border-radius:50px;box-shadow:0 3px 10px rgba(139,92,246,0.35);">إبداعي مميز</div>
+      </div>
+    </div>
+    <div class="reveal" style="text-align:center;margin-top:44px;">
+      <div style="display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#f5f3ff 0%,#ede9fe 100%);border:1px solid rgba(139,92,246,0.2);border-radius:50px;padding:14px 32px;color:#7c3aed;font-weight:700;font-size:0.95rem;">
+        <span style="font-size:1.2rem;">🎯</span>
+        +107 خلفية إضافية داخل الحزمة الكاملة
+        <span style="font-size:1.2rem;">✨</span>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- What's Inside -->
+<section style="padding:100px 0;background:#fff;">
+  <div style="max-width:1200px;margin:0 auto;padding:0 28px;">
+    <div class="reveal" style="text-align:center;margin-bottom:56px;">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.15);border-radius:50px;padding:6px 18px;margin-bottom:18px;font-size:0.85rem;font-weight:700;color:#7c3aed;">📦 محتوى الحزمة</div>
+      <h2 style="font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;color:#111827;margin-bottom:14px;">ماذا <span class="text-gradient">ستحصل عليه بالضبط؟</span></h2>
+      <p style="color:#6b7280;font-size:1.05rem;max-width:560px;margin:0 auto;">شفافية تامة – كل ما يوجد داخل الحزمة موضَّح أمامك</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;">
+      <div class="reveal hover-lift" style="background:linear-gradient(160deg,#f9fafb 0%,#f5f3ff 100%);border:1px solid rgba(139,92,246,0.1);border-radius:24px;padding:32px 28px;box-shadow:0 4px 20px rgba(139,92,246,0.06);">
+        <div style="width:56px;height:56px;border-radius:16px;margin-bottom:18px;background:linear-gradient(135deg,rgba(139,92,246,0.1),rgba(124,58,237,0.15));display:flex;align-items:center;justify-content:center;font-size:1.8rem;">🖼️</div>
+        <h3 style="font-weight:800;font-size:1.05rem;color:#111827;margin-bottom:10px;">+110 خلفية ورقية</h3>
+        <p style="color:#6b7280;font-size:0.9rem;line-height:1.7;">PNG/JPG بدقة عالية جداً تصل إلى 4K، متنوعة الأنماط والألوان</p>
+      </div>
+      <div class="reveal hover-lift" style="background:linear-gradient(160deg,#f9fafb 0%,#f5f3ff 100%);border:1px solid rgba(139,92,246,0.1);border-radius:24px;padding:32px 28px;box-shadow:0 4px 20px rgba(139,92,246,0.06);">
+        <div style="width:56px;height:56px;border-radius:16px;margin-bottom:18px;background:linear-gradient(135deg,rgba(139,92,246,0.1),rgba(124,58,237,0.15));display:flex;align-items:center;justify-content:center;font-size:1.8rem;">📦</div>
+        <h3 style="font-weight:800;font-size:1.05rem;color:#111827;margin-bottom:10px;">حزمة موك أب</h3>
+        <p style="color:#6b7280;font-size:0.9rem;line-height:1.7;">موك أب احترافية جاهزة لعرض تصاميمك بطريقة مبهرة</p>
+      </div>
+      <div class="reveal hover-lift" style="background:linear-gradient(160deg,#f9fafb 0%,#f5f3ff 100%);border:1px solid rgba(139,92,246,0.1);border-radius:24px;padding:32px 28px;box-shadow:0 4px 20px rgba(139,92,246,0.06);">
+        <div style="width:56px;height:56px;border-radius:16px;margin-bottom:18px;background:linear-gradient(135deg,rgba(139,92,246,0.1),rgba(124,58,237,0.15));display:flex;align-items:center;justify-content:center;font-size:1.8rem;">📐</div>
+        <h3 style="font-weight:800;font-size:1.05rem;color:#111827;margin-bottom:10px;">قوالب جاهزة</h3>
+        <p style="color:#6b7280;font-size:0.9rem;line-height:1.7;">قوالب Canva مُعدَّة مسبقاً قابلة للتعديل الفوري</p>
+      </div>
+      <div class="reveal hover-lift" style="background:linear-gradient(160deg,#f9fafb 0%,#f5f3ff 100%);border:1px solid rgba(139,92,246,0.1);border-radius:24px;padding:32px 28px;box-shadow:0 4px 20px rgba(139,92,246,0.06);">
+        <div style="width:56px;height:56px;border-radius:16px;margin-bottom:18px;background:linear-gradient(135deg,rgba(139,92,246,0.1),rgba(124,58,237,0.15));display:flex;align-items:center;justify-content:center;font-size:1.8rem;">📚</div>
+        <h3 style="font-weight:800;font-size:1.05rem;color:#111827;margin-bottom:10px;">دليل الاستخدام</h3>
+        <p style="color:#6b7280;font-size:0.9rem;line-height:1.7;">دليل مفصل يشرح كيفية الاستفادة القصوى من الحزمة</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Bonus -->
+<section id="bonus" style="padding:100px 0;background:linear-gradient(160deg,#f5f3ff 0%,#ede9fe 100%);position:relative;overflow:hidden;">
+  <div class="dots-pattern-purple" style="position:absolute;inset:0;pointer-events:none;"></div>
+  <div style="max-width:1200px;margin:0 auto;padding:0 28px;position:relative;z-index:1;">
+    <div class="reveal" style="text-align:center;margin-bottom:56px;">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.2);border-radius:50px;padding:6px 18px;margin-bottom:18px;font-size:0.85rem;font-weight:700;color:#7c3aed;">🎁 مكافآت حصرية مجانية</div>
+      <h2 style="font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;color:#111827;margin-bottom:14px;">هدايا مجانية <span class="text-gradient">تُضاعف قيمة حزمتك</span></h2>
+      <p style="color:#6b7280;font-size:1.05rem;max-width:600px;margin:0 auto;">بجانب الخلفيات، ستحصل على حزمة موك أب وقوالب احترافية جاهزة تُوفر عليك ساعات من العمل</p>
+    </div>
+    <div class="reveal" style="max-width:860px;margin:0 auto;position:relative;">
+      <div style="position:absolute;inset:-30px;border-radius:40px;background:radial-gradient(ellipse at center,rgba(139,92,246,0.25) 0%,transparent 70%);z-index:0;"></div>
+      <div style="position:relative;z-index:1;border-radius:28px;overflow:hidden;box-shadow:0 30px 80px rgba(139,92,246,0.25),0 10px 30px rgba(0,0,0,0.08);border:1px solid rgba(139,92,246,0.15);">
+        <img src="https://i.postimg.cc/bJXnBD9Q/5.png" alt="حزمة قوالب وهدايا إضافية" style="width:100%;height:auto;display:block;" />
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:28px;">
+        <div style="background:linear-gradient(135deg,#8b5cf6 0%,#7c3aed 100%);color:#fff;font-weight:700;font-size:0.88rem;padding:8px 20px;border-radius:50px;box-shadow:0 4px 14px rgba(139,92,246,0.35);">🎨 موك أب احترافية</div>
+        <div style="background:linear-gradient(135deg,#8b5cf6 0%,#7c3aed 100%);color:#fff;font-weight:700;font-size:0.88rem;padding:8px 20px;border-radius:50px;box-shadow:0 4px 14px rgba(139,92,246,0.35);">📁 قوالب جاهزة</div>
+        <div style="background:linear-gradient(135deg,#8b5cf6 0%,#7c3aed 100%);color:#fff;font-weight:700;font-size:0.88rem;padding:8px 20px;border-radius:50px;box-shadow:0 4px 14px rgba(139,92,246,0.35);">🔄 تحديثات مجانية</div>
+        <div style="background:linear-gradient(135deg,#8b5cf6 0%,#7c3aed 100%);color:#fff;font-weight:700;font-size:0.88rem;padding:8px 20px;border-radius:50px;box-shadow:0 4px 14px rgba(139,92,246,0.35);">⚡ تحميل فوري</div>
+        <div style="background:linear-gradient(135deg,#8b5cf6 0%,#7c3aed 100%);color:#fff;font-weight:700;font-size:0.88rem;padding:8px 20px;border-radius:50px;box-shadow:0 4px 14px rgba(139,92,246,0.35);">🖥️ متوافقة مع Canva</div>
+        <div style="background:linear-gradient(135deg,#8b5cf6 0%,#7c3aed 100%);color:#fff;font-weight:700;font-size:0.88rem;padding:8px 20px;border-radius:50px;box-shadow:0 4px 14px rgba(139,92,246,0.35);">🔒 ترخيص تجاري</div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Comparison -->
+<section id="comparison" style="padding:100px 0;background:linear-gradient(160deg,#f9fafb 0%,#f5f3ff 100%);">
+  <div style="max-width:1200px;margin:0 auto;padding:0 28px;">
+    <div class="reveal" style="text-align:center;margin-bottom:56px;">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.15);border-radius:50px;padding:6px 18px;margin-bottom:18px;font-size:0.85rem;font-weight:700;color:#7c3aed;">⚖️ لماذا نحن؟</div>
+      <h2 style="font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;color:#111827;margin-bottom:14px;">الفرق <span class="text-gradient">يتكلم عن نفسه</span></h2>
+      <p style="color:#6b7280;font-size:1.05rem;max-width:560px;margin:0 auto;">مقارنة بسيطة وواضحة بين المحتوى العادي وحزمتنا الاحترافية</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;">
+      <!-- Bad -->
+      <div class="comp-card reveal hover-lift" style="background:#fff;border:1px solid #f3f4f6;border-radius:28px;padding:40px 36px;box-shadow:0 6px 30px rgba(0,0,0,0.07);">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:28px;">
+          <div style="width:48px;height:48px;border-radius:16px;background:#fee2e2;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;">😞</div>
+          <h3 style="font-weight:800;font-size:1.15rem;color:#111827;">المجموعات العادية</h3>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:13px 0;font-weight:600;font-size:0.95rem;color:#dc2626;border-bottom:1px solid #f3f4f6;">
+          <div style="width:26px;height:26px;border-radius:50%;background:#fee2e2;color:#dc2626;display:flex;align-items:center;justify-content:center;font-size:0.8rem;flex-shrink:0;">✕</div>جودة ضعيفة ومبكسلة عند التكبير
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:13px 0;font-weight:600;font-size:0.95rem;color:#dc2626;border-bottom:1px solid #f3f4f6;">
+          <div style="width:26px;height:26px;border-radius:50%;background:#fee2e2;color:#dc2626;display:flex;align-items:center;justify-content:center;font-size:0.8rem;flex-shrink:0;">✕</div>ألوان باهتة وغير متناسقة
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:13px 0;font-weight:600;font-size:0.95rem;color:#dc2626;border-bottom:1px solid #f3f4f6;">
+          <div style="width:26px;height:26px;border-radius:50%;background:#fee2e2;color:#dc2626;display:flex;align-items:center;justify-content:center;font-size:0.8rem;flex-shrink:0;">✕</div>لا تحتوي على هدايا أو مكافآت
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:13px 0;font-weight:600;font-size:0.95rem;color:#dc2626;border-bottom:1px solid #f3f4f6;">
+          <div style="width:26px;height:26px;border-radius:50%;background:#fee2e2;color:#dc2626;display:flex;align-items:center;justify-content:center;font-size:0.8rem;flex-shrink:0;">✕</div>لا دعم ولا تحديثات مستقبلية
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:13px 0;font-weight:600;font-size:0.95rem;color:#dc2626;">
+          <div style="width:26px;height:26px;border-radius:50%;background:#fee2e2;color:#dc2626;display:flex;align-items:center;justify-content:center;font-size:0.8rem;flex-shrink:0;">✕</div>بدون ترخيص تجاري واضح
+        </div>
       </div>
       <!-- Good -->
-      <div class="comp-card comp-card-good reveal hover-lift">
-        <div class="comp-head comp-head-good" style="position:relative;z-index:1">
-          <div class="comp-icon comp-icon-good">🏆</div>
-          <div>
-            <span class="best-tag">⭐ الأفضل</span>
-            <h3 style="color:#fff;display:inline">حزمة زهراء تكنولوجي</h3>
+      <div class="comp-card reveal hover-lift" style="background:linear-gradient(160deg,#4c1d95 0%,#6d28d9 50%,#7c3aed 100%);border-radius:28px;padding:40px 36px;box-shadow:0 20px 60px rgba(139,92,246,0.35);position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:50%;background:linear-gradient(to bottom,rgba(255,255,255,0.06),transparent);pointer-events:none;"></div>
+        <div style="position:relative;z-index:1;">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:28px;flex-wrap:wrap;">
+            <div style="width:48px;height:48px;border-radius:16px;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;">🏆</div>
+            <div>
+              <span style="display:inline-block;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;font-size:0.8rem;font-weight:800;padding:4px 12px;border-radius:50px;margin-left:8px;box-shadow:0 3px 10px rgba(245,158,11,0.4);">⭐ الأفضل</span>
+              <h3 style="font-weight:800;font-size:1.1rem;color:#fff;display:inline;">حزمة زهراء تكنولوجي</h3>
+            </div>
           </div>
-        </div>
-        <div class="comp-item comp-item-good" style="position:relative;z-index:1"><div class="comp-dot comp-dot-good">✓</div> دقة فائقة جاهزة للطباعة والتصميم</div>
-        <div class="comp-item comp-item-good" style="position:relative;z-index:1"><div class="comp-dot comp-dot-good">✓</div> ألوان مدروسة مخصصة لجذب العملاء</div>
-        <div class="comp-item comp-item-good" style="position:relative;z-index:1"><div class="comp-dot comp-dot-good">✓</div> تحديثات مستمرة وحزمة موك أب هدية</div>
-        <div class="comp-item comp-item-good" style="position:relative;z-index:1"><div class="comp-dot comp-dot-good">✓</div> دعم فوري عبر واتساب في أي وقت</div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- ────────────────── TESTIMONIALS ────────────────── -->
-<section id="testimonials">
-  <div class="bonus-dots"></div>
-  <div class="section-inner" style="position:relative;z-index:1">
-    <div class="section-head reveal">
-      <div class="section-label">💬 آراء العملاء</div>
-      <h2 class="section-title">ماذا قال <span class="text-gradient">مصممونا</span></h2>
-      <p class="section-sub">تقييمات حقيقية من مصممين ورواد أعمال استخدموا حزمتنا</p>
-    </div>
-    <div class="testimonials-grid">
-      <div class="testi-card reveal">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"والله استثمار ممتاز! الخلفيات بجودة عالية جداً وكميتها وفيرة. وفّرت عليّ ساعات من البحث والتصميم. أنصح بها بشدة!"</p>
-        <div class="testi-author">
-          <div class="testi-avatar">ر</div>
-          <div>
-            <div class="testi-name">رنا العمري</div>
-            <div class="testi-role">مصممة جرافيك</div>
+          <div style="display:flex;align-items:center;gap:12px;padding:13px 0;font-weight:600;font-size:0.95rem;color:#d9f99d;border-bottom:1px solid rgba(255,255,255,0.1);">
+            <div style="width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,0.2);color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.8rem;flex-shrink:0;">✓</div>دقة فائقة جاهزة للطباعة والتصميم
           </div>
-        </div>
-      </div>
-      <div class="testi-card reveal">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"اشتريت الحزمة وما ندمت! استخدمتها في Canva ومشت زي الحلاوة. الموك أب المجانية أفضل من أي شيء اشتريته قبل."</p>
-        <div class="testi-author">
-          <div class="testi-avatar">م</div>
-          <div>
-            <div class="testi-name">محمد البلوشي</div>
-            <div class="testi-role">صاحب متجر إلكتروني</div>
+          <div style="display:flex;align-items:center;gap:12px;padding:13px 0;font-weight:600;font-size:0.95rem;color:#d9f99d;border-bottom:1px solid rgba(255,255,255,0.1);">
+            <div style="width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,0.2);color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.8rem;flex-shrink:0;">✓</div>ألوان مدروسة مخصصة لجذب العملاء
           </div>
-        </div>
-      </div>
-      <div class="testi-card reveal">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"السعر لا يُصدق مقارنة بالجودة! استخدمتها في مشاريع عملائي وكلهم انبهروا. الدعم عبر واتساب كان سريع جداً."</p>
-        <div class="testi-author">
-          <div class="testi-avatar">ن</div>
-          <div>
-            <div class="testi-name">نورة الشمري</div>
-            <div class="testi-role">فريلانسر تصميم</div>
+          <div style="display:flex;align-items:center;gap:12px;padding:13px 0;font-weight:600;font-size:0.95rem;color:#d9f99d;border-bottom:1px solid rgba(255,255,255,0.1);">
+            <div style="width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,0.2);color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.8rem;flex-shrink:0;">✓</div>تحديثات مستمرة وحزمة موك أب هدية
           </div>
-        </div>
-      </div>
-      <div class="testi-card reveal">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"منذ اشتريت الحزمة، تصاميمي تبدو أكثر احترافية بكثير. العملاء لاحظوا الفرق وزادت طلباتي. شكراً زهراء تكنولوجي!"</p>
-        <div class="testi-author">
-          <div class="testi-avatar">أ</div>
-          <div>
-            <div class="testi-name">أحمد الزهراني</div>
-            <div class="testi-role">منتج محتوى رقمي</div>
+          <div style="display:flex;align-items:center;gap:12px;padding:13px 0;font-weight:600;font-size:0.95rem;color:#d9f99d;border-bottom:1px solid rgba(255,255,255,0.1);">
+            <div style="width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,0.2);color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.8rem;flex-shrink:0;">✓</div>دعم فوري عبر واتساب في أي وقت
           </div>
-        </div>
-      </div>
-      <div class="testi-card reveal">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"خلفيات راقية ومتنوعة، ما توقعت إنها تكون بهالجودة بهالسعر البسيط. التحميل كان فوري وما في أي مشكلة. أنصح بها!"</p>
-        <div class="testi-author">
-          <div class="testi-avatar">س</div>
-          <div>
-            <div class="testi-name">سارة المطيري</div>
-            <div class="testi-role">مدونة ومؤثرة</div>
-          </div>
-        </div>
-      </div>
-      <div class="testi-card reveal">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"استخدمت الخلفيات في تصميم هوية بصرية كاملة لعميل ومن جاب ردود فعل رائعة. حزمة ممتازة وقيمتها أكبر بكثير من سعرها."</p>
-        <div class="testi-author">
-          <div class="testi-avatar">ع</div>
-          <div>
-            <div class="testi-name">عمر الحربي</div>
-            <div class="testi-role">مصمم هوية بصرية</div>
+          <div style="display:flex;align-items:center;gap:12px;padding:13px 0;font-weight:600;font-size:0.95rem;color:#d9f99d;">
+            <div style="width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,0.2);color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.8rem;flex-shrink:0;">✓</div>ترخيص تجاري كامل لمشاريعك
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-<!-- ────────────────── PRICING ────────────────── -->
-<section id="prices">
-  <div class="pricing-bg"></div>
-  <div class="section-inner" style="position:relative;z-index:1">
-    <div class="section-head reveal">
-      <div class="section-label">💰 الأسعار</div>
-      <h2 class="section-title">سعر لا يُقاوَم <span class="text-gradient">لقيمة استثنائية</span></h2>
-      <p class="section-sub">عرض محدود – احصل على الحزمة الكاملة بسعر لن يتكرر</p>
+<!-- Testimonials -->
+<section id="testimonials" style="padding:100px 0;background:linear-gradient(160deg,#f5f3ff 0%,#ede9fe 100%);position:relative;overflow:hidden;">
+  <div class="dots-pattern-purple" style="position:absolute;inset:0;pointer-events:none;"></div>
+  <div style="max-width:1200px;margin:0 auto;padding:0 28px;position:relative;z-index:1;">
+    <div class="reveal" style="text-align:center;margin-bottom:56px;">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.2);border-radius:50px;padding:6px 18px;margin-bottom:18px;font-size:0.85rem;font-weight:700;color:#7c3aed;">💬 آراء العملاء</div>
+      <h2 style="font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;color:#111827;margin-bottom:14px;">ماذا قال <span class="text-gradient">مصممونا</span></h2>
+      <p style="color:#6b7280;font-size:1.05rem;max-width:560px;margin:0 auto;">تقييمات حقيقية من مصممين ورواد أعمال استخدموا حزمتنا</p>
     </div>
-    <div class="pricing-card reveal">
-      <div class="pricing-shine"></div>
-      <div class="pricing-shine-2"></div>
-      <div style="position:relative;z-index:1">
-        <div class="pricing-label">🔥 عرض محدود حصري</div>
-        <div class="save-badge">وفّر أكثر من 90%</div>
-        <p class="pricing-title">الحزمة الشاملة الكاملة</p>
-        <div class="pricing-amount">
-          <span class="pricing-old">15$</span>
-          <span class="pricing-new"><span class="pricing-currency">$</span>0.99</span>
-        </div>
-        <p class="pricing-per">دفعة واحدة · تحميل فوري · لا رسوم إضافية</p>
-        <div class="pricing-features">
-          <div class="pricing-feature"><div class="pricing-check">✓</div> +110 خلفية ورقية احترافية عالية الدقة</div>
-          <div class="pricing-feature"><div class="pricing-check">✓</div> موك أب احترافية مجانية (هدية)</div>
-          <div class="pricing-feature"><div class="pricing-check">✓</div> قوالب جاهزة للاستخدام الفوري</div>
-          <div class="pricing-feature"><div class="pricing-check">✓</div> متوافقة مع Canva والفوتوشوب</div>
-          <div class="pricing-feature"><div class="pricing-check">✓</div> تحديثات مستمرة مجانية للأبد</div>
-          <div class="pricing-feature"><div class="pricing-check">✓</div> دعم واتساب مباشر في أي وقت</div>
-        </div>
-        <a href="https://wa.me/message/GISCK6Y5YCFYK1" target="_blank" class="pricing-cta">
-          🚀 اشترِ الآن بـ 0.99$ فقط
-        </a>
-        <p class="pricing-guarantee">🔒 دفع آمن ومشفور · استلام فوري بعد الشراء</p>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- ────────────────── FAQ ────────────────── -->
-<section id="faq">
-  <div class="section-inner">
-    <div class="section-head reveal">
-      <div class="section-label">❓ أسئلة شائعة</div>
-      <h2 class="section-title">إجابات على <span class="text-gradient">أكثر أسئلتكم</span></h2>
-    </div>
-    <div class="faq-list">
-      <div class="faq-item reveal">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          ما صيغة الملفات وهل تعمل مع Canva؟
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">الملفات بصيغة PNG وJPG عالية الدقة، تعمل بشكل مثالي مع Canva وAdobe Photoshop وأي برنامج تصميم آخر. ما عليك سوى رفعها واستخدامها فوراً.</div>
-      </div>
-      <div class="faq-item reveal">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          كيف أستلم الحزمة بعد الدفع؟
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">بعد إتمام الدفع مباشرةً، ستُرسَل لك رسالة عبر واتساب تحتوي على رابط التحميل. الاستلام فوري ولا يستغرق أكثر من دقائق.</div>
-      </div>
-      <div class="faq-item reveal">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          هل يمكنني استخدام الخلفيات في مشاريع تجارية؟
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">نعم بالكامل! الترخيص يشمل الاستخدام الشخصي والتجاري. يمكنك استخدامها في مشاريع عملائك وعلاماتك التجارية بدون أي قيود.</div>
-      </div>
-      <div class="faq-item reveal">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          هل هناك تحديثات مستقبلية للحزمة؟
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">نعم! كل من يشتري الحزمة يحصل تلقائياً على جميع التحديثات المستقبلية مجاناً. نضيف خلفيات جديدة باستمرار.</div>
-      </div>
-      <div class="faq-item reveal">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          ما طرق الدفع المتاحة؟
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">ندعم معظم طرق الدفع المتاحة في منطقتك. تواصل معنا عبر واتساب لمعرفة الطريقة الأنسب لك وإتمام عملية الشراء بسهولة.</div>
-      </div>
-      <div class="faq-item reveal">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          ماذا تشمل الهدايا المجانية بالضبط؟
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">الهدايا تشمل: مجموعة موك أب احترافية جاهزة للعرض، وقوالب تصميم جاهزة يمكنك تخصيصها مباشرة. كلها ملفات عالية الجودة.</div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- ────────────────── FOOTER ────────────────── -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <div class="footer-logo">
-          <img src="https://i.postimg.cc/sghHQSxJ/photo-2025-07-03-17-55-37.jpg" alt="زهراء تكنولوجي" />
-          <div class="footer-logo-text">
-            <span>زهراء تكنولوجي</span>
-            <span>Zahraa Technology</span>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;">
+      <div class="reveal testi-card" style="background:#fff;border-radius:24px;padding:30px 28px;box-shadow:0 6px 30px rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.08);transition:transform 0.3s ease,box-shadow 0.3s ease;"
+        onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 16px 40px rgba(139,92,246,0.15)';"
+        onmouseout="this.style.transform='';this.style.boxShadow='0 6px 30px rgba(139,92,246,0.08)';">
+        <div style="color:#f59e0b;font-size:0.9rem;margin-bottom:14px;letter-spacing:2px;">★★★★★</div>
+        <p style="color:#374151;font-size:0.95rem;line-height:1.75;margin-bottom:20px;font-style:italic;">"والله استثمار ممتاز! الخلفيات بجودة عالية جداً وكميتها وفيرة. وفّرت عليّ ساعات من البحث والتصميم. أنصح بها بشدة!"</p>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#8b5cf6,#7c3aed);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:1rem;flex-shrink:0;">ر</div>
+          <div>
+            <div style="font-weight:800;font-size:0.95rem;color:#111827;">رنا العمري</div>
+            <div style="font-size:0.8rem;color:#8b5cf6;font-weight:600;">مصممة جرافيك</div>
           </div>
         </div>
-        <p>نوفر حزم تصميم احترافية للمصممين ورواد الأعمال الرقميين. جودة استثنائية بأسعار في متناول الجميع.</p>
       </div>
-      <div class="footer-links">
-        <h4>روابط سريعة</h4>
-        <a href="#hero">الرئيسية</a>
-        <a href="#gallery">معرض الأعمال</a>
-        <a href="#bonus">المكافآت</a>
-        <a href="#prices">الأسعار</a>
-        <a href="#faq">الأسئلة الشائعة</a>
+      <div class="reveal testi-card" style="background:#fff;border-radius:24px;padding:30px 28px;box-shadow:0 6px 30px rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.08);transition:transform 0.3s ease,box-shadow 0.3s ease;"
+        onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 16px 40px rgba(139,92,246,0.15)';"
+        onmouseout="this.style.transform='';this.style.boxShadow='0 6px 30px rgba(139,92,246,0.08)';">
+        <div style="color:#f59e0b;font-size:0.9rem;margin-bottom:14px;letter-spacing:2px;">★★★★★</div>
+        <p style="color:#374151;font-size:0.95rem;line-height:1.75;margin-bottom:20px;font-style:italic;">"اشتريت الحزمة وما ندمت! استخدمتها في Canva ومشت زي الحلاوة. الموك أب المجانية أفضل من أي شيء اشتريته قبل."</p>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#8b5cf6,#7c3aed);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:1rem;flex-shrink:0;">م</div>
+          <div>
+            <div style="font-weight:800;font-size:0.95rem;color:#111827;">محمد البلوشي</div>
+            <div style="font-size:0.8rem;color:#8b5cf6;font-weight:600;">صاحب متجر إلكتروني</div>
+          </div>
+        </div>
       </div>
-      <div class="footer-links">
-        <h4>تواصل معنا</h4>
-        <a href="https://wa.me/message/GISCK6Y5YCFYK1" target="_blank">📱 واتساب</a>
-        <a href="#prices">🛒 شراء مباشر</a>
+      <div class="reveal testi-card" style="background:#fff;border-radius:24px;padding:30px 28px;box-shadow:0 6px 30px rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.08);transition:transform 0.3s ease,box-shadow 0.3s ease;"
+        onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 16px 40px rgba(139,92,246,0.15)';"
+        onmouseout="this.style.transform='';this.style.boxShadow='0 6px 30px rgba(139,92,246,0.08)';">
+        <div style="color:#f59e0b;font-size:0.9rem;margin-bottom:14px;letter-spacing:2px;">★★★★★</div>
+        <p style="color:#374151;font-size:0.95rem;line-height:1.75;margin-bottom:20px;font-style:italic;">"السعر لا يُصدق مقارنة بالجودة! استخدمتها في مشاريع عملائي وكلهم انبهروا. الدعم عبر واتساب كان سريع جداً."</p>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#8b5cf6,#7c3aed);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:1rem;flex-shrink:0;">ن</div>
+          <div>
+            <div style="font-weight:800;font-size:0.95rem;color:#111827;">نورة الشمري</div>
+            <div style="font-size:0.8rem;color:#8b5cf6;font-weight:600;">فريلانسر تصميم</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal testi-card" style="background:#fff;border-radius:24px;padding:30px 28px;box-shadow:0 6px 30px rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.08);transition:transform 0.3s ease,box-shadow 0.3s ease;"
+        onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 16px 40px rgba(139,92,246,0.15)';"
+        onmouseout="this.style.transform='';this.style.boxShadow='0 6px 30px rgba(139,92,246,0.08)';">
+        <div style="color:#f59e0b;font-size:0.9rem;margin-bottom:14px;letter-spacing:2px;">★★★★★</div>
+        <p style="color:#374151;font-size:0.95rem;line-height:1.75;margin-bottom:20px;font-style:italic;">"منذ اشتريت الحزمة، تصاميمي تبدو أكثر احترافية بكثير. العملاء لاحظوا الفرق وزادت طلباتي. شكراً زهراء تكنولوجي!"</p>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#8b5cf6,#7c3aed);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:1rem;flex-shrink:0;">أ</div>
+          <div>
+            <div style="font-weight:800;font-size:0.95rem;color:#111827;">أحمد الزهراني</div>
+            <div style="font-size:0.8rem;color:#8b5cf6;font-weight:600;">منتج محتوى رقمي</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal testi-card" style="background:#fff;border-radius:24px;padding:30px 28px;box-shadow:0 6px 30px rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.08);transition:transform 0.3s ease,box-shadow 0.3s ease;"
+        onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 16px 40px rgba(139,92,246,0.15)';"
+        onmouseout="this.style.transform='';this.style.boxShadow='0 6px 30px rgba(139,92,246,0.08)';">
+        <div style="color:#f59e0b;font-size:0.9rem;margin-bottom:14px;letter-spacing:2px;">★★★★★</div>
+        <p style="color:#374151;font-size:0.95rem;line-height:1.75;margin-bottom:20px;font-style:italic;">"خلفيات راقية ومتنوعة، ما توقعت إنها تكون بهالجودة بهالسعر البسيط. التحميل كان فوري وما في أي مشكلة. أنصح بها!"</p>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#8b5cf6,#7c3aed);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:1rem;flex-shrink:0;">س</div>
+          <div>
+            <div style="font-weight:800;font-size:0.95rem;color:#111827;">سارة المطيري</div>
+            <div style="font-size:0.8rem;color:#8b5cf6;font-weight:600;">مدونة ومؤثرة</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal testi-card" style="background:#fff;border-radius:24px;padding:30px 28px;box-shadow:0 6px 30px rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.08);transition:transform 0.3s ease,box-shadow 0.3s ease;"
+        onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 16px 40px rgba(139,92,246,0.15)';"
+        onmouseout="this.style.transform='';this.style.boxShadow='0 6px 30px rgba(139,92,246,0.08)';">
+        <div style="color:#f59e0b;font-size:0.9rem;margin-bottom:14px;letter-spacing:2px;">★★★★★</div>
+        <p style="color:#374151;font-size:0.95rem;line-height:1.75;margin-bottom:20px;font-style:italic;">"استخدمت الخلفيات في تصميم هوية بصرية كاملة لعميل ومن جاب ردود فعل رائعة. حزمة ممتازة وقيمتها أكبر بكثير من سعرها."</p>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#8b5cf6,#7c3aed);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:1rem;flex-shrink:0;">ع</div>
+          <div>
+            <div style="font-weight:800;font-size:0.95rem;color:#111827;">عمر الحربي</div>
+            <div style="font-size:0.8rem;color:#8b5cf6;font-weight:600;">مصمم هوية بصرية</div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p class="footer-copy">© 2025 زهراء تكنولوجي – جميع الحقوق محفوظة</p>
-      <a href="https://wa.me/message/GISCK6Y5YCFYK1" target="_blank" class="footer-wa">
-        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </div>
+</section>
+<!-- Pricing -->
+<section id="prices" style="padding:100px 0;background:#fff;position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background:linear-gradient(160deg,transparent 0%,rgba(139,92,246,0.03) 100%);pointer-events:none;"></div>
+  <div style="max-width:1200px;margin:0 auto;padding:0 28px;position:relative;z-index:1;">
+    <div class="reveal" style="text-align:center;margin-bottom:56px;">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.15);border-radius:50px;padding:6px 18px;margin-bottom:18px;font-size:0.85rem;font-weight:700;color:#7c3aed;">💰 الأسعار</div>
+      <h2 style="font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;color:#111827;margin-bottom:14px;">سعر لا يُقاوَم <span class="text-gradient">لقيمة استثنائية</span></h2>
+      <p style="color:#6b7280;font-size:1.05rem;max-width:560px;margin:0 auto;">عرض محدود – احصل على الحزمة الكاملة بسعر لن يتكرر</p>
+    </div>
+    <div class="reveal pricing-card-inner" style="max-width:580px;margin:0 auto;background:linear-gradient(160deg,#4c1d95 0%,#6d28d9 50%,#7c3aed 100%);border-radius:36px;padding:56px 52px;text-align:center;position:relative;overflow:hidden;box-shadow:0 40px 100px rgba(139,92,246,0.4),0 10px 30px rgba(0,0,0,0.1);color:#fff;">
+      <div style="position:absolute;top:0;left:0;right:0;height:50%;background:linear-gradient(to bottom,rgba(255,255,255,0.08),transparent);pointer-events:none;"></div>
+      <div style="position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,0.1) 0%,transparent 70%);pointer-events:none;"></div>
+      <div style="position:absolute;bottom:-40px;left:-40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,0.07) 0%,transparent 70%);pointer-events:none;"></div>
+      <div style="position:relative;z-index:1;">
+        <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.2);border-radius:50px;padding:6px 18px;margin-bottom:16px;font-size:0.85rem;font-weight:700;color:#fff;">🔥 عرض محدود حصري</div>
+        <div style="display:inline-block;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;font-size:0.82rem;font-weight:800;padding:5px 16px;border-radius:50px;margin-bottom:20px;box-shadow:0 3px 12px rgba(245,158,11,0.4);">وفّر أكثر من 80%</div>
+        <p style="font-size:1.35rem;font-weight:800;margin-bottom:24px;opacity:0.9;">الحزمة الشاملة الكاملة</p>
+        <div style="margin-bottom:8px;">
+          <span style="font-size:1.2rem;text-decoration:line-through;opacity:0.5;margin-left:12px;">15$</span>
+          <span style="font-size:4rem;font-weight:900;line-height:1;"><span style="font-size:2rem;vertical-align:super;margin-left:4px;">$</span>3</span>
+        </div>
+        <p style="font-size:0.9rem;opacity:0.65;margin-bottom:28px;">دفعة واحدة · تحميل فوري · لا رسوم إضافية</p>
+        <!-- Inline countdown -->
+        <div style="background:rgba(0,0,0,0.2);border-radius:20px;padding:16px 20px;margin-bottom:32px;border:1px solid rgba(255,255,255,0.1);">
+          <p style="font-size:0.85rem;opacity:0.75;margin-bottom:12px;font-weight:600;">⏰ ينتهي العرض خلال:</p>
+          <div style="display:flex;align-items:center;justify-content:center;gap:8px;">
+            <div class="countdown-block" id="price-h" style="min-width:60px;padding:10px 14px;">
+              <div class="num" id="ph">23</div>
+              <div class="lbl">ساعة</div>
+            </div>
+            <span class="countdown-sep" style="font-size:1.5rem;">:</span>
+            <div class="countdown-block" id="price-m" style="min-width:60px;padding:10px 14px;">
+              <div class="num" id="pm">47</div>
+              <div class="lbl">دقيقة</div>
+            </div>
+            <span class="countdown-sep" style="font-size:1.5rem;">:</span>
+            <div class="countdown-block" id="price-s" style="min-width:60px;padding:10px 14px;">
+              <div class="num" id="ps">33</div>
+              <div class="lbl">ثانية</div>
+            </div>
+          </div>
+        </div>
+        <!-- Features -->
+        <div style="text-align:right;margin-bottom:36px;">
+          <div style="display:flex;align-items:center;gap:12px;padding:11px 0;font-size:0.95rem;font-weight:600;color:rgba(255,255,255,0.92);border-bottom:1px solid rgba(255,255,255,0.1);">
+            <div style="width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:0.75rem;flex-shrink:0;color:#a7f3d0;">✓</div>+110 خلفية ورقية احترافية عالية الدقة
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:11px 0;font-size:0.95rem;font-weight:600;color:rgba(255,255,255,0.92);border-bottom:1px solid rgba(255,255,255,0.1);">
+            <div style="width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:0.75rem;flex-shrink:0;color:#a7f3d0;">✓</div>موك أب احترافية مجانية (هدية)
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:11px 0;font-size:0.95rem;font-weight:600;color:rgba(255,255,255,0.92);border-bottom:1px solid rgba(255,255,255,0.1);">
+            <div style="width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:0.75rem;flex-shrink:0;color:#a7f3d0;">✓</div>قوالب جاهزة للاستخدام الفوري
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:11px 0;font-size:0.95rem;font-weight:600;color:rgba(255,255,255,0.92);border-bottom:1px solid rgba(255,255,255,0.1);">
+            <div style="width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:0.75rem;flex-shrink:0;color:#a7f3d0;">✓</div>متوافقة مع Canva والفوتوشوب
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:11px 0;font-size:0.95rem;font-weight:600;color:rgba(255,255,255,0.92);border-bottom:1px solid rgba(255,255,255,0.1);">
+            <div style="width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:0.75rem;flex-shrink:0;color:#a7f3d0;">✓</div>تحديثات مستمرة مجانية للأبد
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:11px 0;font-size:0.95rem;font-weight:600;color:rgba(255,255,255,0.92);border-bottom:1px solid rgba(255,255,255,0.1);">
+            <div style="width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:0.75rem;flex-shrink:0;color:#a7f3d0;">✓</div>ترخيص تجاري كامل
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:11px 0;font-size:0.95rem;font-weight:600;color:rgba(255,255,255,0.92);">
+            <div style="width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:0.75rem;flex-shrink:0;color:#a7f3d0;">✓</div>دعم واتساب مباشر في أي وقت
+          </div>
+        </div>
+        <a href="https://wa.me/message/GISCK6Y5YCFYK1" target="_blank" rel="noreferrer"
+          class="shimmer-btn"
+          style="display:block;color:#fff;font-family:'Cairo',sans-serif;font-weight:900;font-size:1.15rem;padding:18px 48px;border-radius:50px;text-decoration:none;box-shadow:0 8px 30px rgba(0,0,0,0.25);transition:all 0.3s ease;margin-bottom:16px;border:2px solid rgba(255,255,255,0.3);"
+          onmouseover="this.style.transform='translateY(-3px) scale(1.02)';this.style.boxShadow='0 16px 40px rgba(0,0,0,0.3)';"
+          onmouseout="this.style.transform='';this.style.boxShadow='0 8px 30px rgba(0,0,0,0.25)';"
+        >🚀 اشترِ الآن بـ 3$ فقط</a>
+        <p style="font-size:0.82rem;opacity:0.65;">🔒 دفع آمن ومشفور · استلام فوري بعد الشراء</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- FAQ -->
+<section id="faq" style="padding:100px 0;background:linear-gradient(160deg,#f5f3ff 0%,#ede9fe 100%);">
+  <div style="max-width:1200px;margin:0 auto;padding:0 28px;">
+    <div class="reveal" style="text-align:center;margin-bottom:56px;">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.2);border-radius:50px;padding:6px 18px;margin-bottom:18px;font-size:0.85rem;font-weight:700;color:#7c3aed;">❓ أسئلة شائعة</div>
+      <h2 style="font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;color:#111827;margin-bottom:14px;">إجابات على <span class="text-gradient">أكثر أسئلتكم</span></h2>
+    </div>
+    <div style="max-width:760px;margin:0 auto;" id="faq-container">
+      <!-- FAQ items injected by JS -->
+    </div>
+  </div>
+</section>
+<!-- Footer -->
+<footer style="background:linear-gradient(160deg,#1e0745 0%,#2d0a6e 50%,#4c1d95 100%);padding:60px 0 30px;color:#fff;position:relative;overflow:hidden;">
+  <div class="footer-dots" style="position:absolute;inset:0;pointer-events:none;"></div>
+  <div style="max-width:1200px;margin:0 auto;padding:0 28px;position:relative;z-index:1;">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:40px;margin-bottom:48px;">
+      <div style="max-width:340px;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+          <img src="https://i.postimg.cc/sghHQSxJ/photo-2025-07-03-17-55-37.jpg" alt="زهراء تكنولوجي" style="width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid rgba(139,92,246,0.4);" />
+          <div>
+            <span style="display:block;font-size:1.1rem;font-weight:800;color:#fff;">زهراء تكنولوجي</span>
+            <span style="display:block;font-size:0.7rem;color:#a78bfa;font-weight:500;">Zahraa Technology</span>
+          </div>
+        </div>
+        <p style="color:rgba(255,255,255,0.55);font-size:0.9rem;line-height:1.75;">نوفر حزم تصميم احترافية للمصممين ورواد الأعمال الرقميين. جودة استثنائية بأسعار في متناول الجميع.</p>
+      </div>
+      <div>
+        <h4 style="font-size:0.95rem;font-weight:700;margin-bottom:16px;color:#fff;">روابط سريعة</h4>
+        <a href="#hero" style="display:block;color:rgba(255,255,255,0.55);font-size:0.88rem;text-decoration:none;margin-bottom:10px;transition:color 0.25s;" onmouseover="this.style.color='#c4b5fd';" onmouseout="this.style.color='rgba(255,255,255,0.55)';">الرئيسية</a>
+        <a href="#gallery" style="display:block;color:rgba(255,255,255,0.55);font-size:0.88rem;text-decoration:none;margin-bottom:10px;transition:color 0.25s;" onmouseover="this.style.color='#c4b5fd';" onmouseout="this.style.color='rgba(255,255,255,0.55)';">معرض الأعمال</a>
+        <a href="#bonus" style="display:block;color:rgba(255,255,255,0.55);font-size:0.88rem;text-decoration:none;margin-bottom:10px;transition:color 0.25s;" onmouseover="this.style.color='#c4b5fd';" onmouseout="this.style.color='rgba(255,255,255,0.55)';">المكافآت</a>
+        <a href="#prices" style="display:block;color:rgba(255,255,255,0.55);font-size:0.88rem;text-decoration:none;margin-bottom:10px;transition:color 0.25s;" onmouseover="this.style.color='#c4b5fd';" onmouseout="this.style.color='rgba(255,255,255,0.55)';">الأسعار</a>
+        <a href="#faq" style="display:block;color:rgba(255,255,255,0.55);font-size:0.88rem;text-decoration:none;margin-bottom:10px;transition:color 0.25s;" onmouseover="this.style.color='#c4b5fd';" onmouseout="this.style.color='rgba(255,255,255,0.55)';">الأسئلة الشائعة</a>
+      </div>
+      <div>
+        <h4 style="font-size:0.95rem;font-weight:700;margin-bottom:16px;color:#fff;">تواصل معنا</h4>
+        <a href="https://wa.me/message/GISCK6Y5YCFYK1" target="_blank" rel="noreferrer" style="display:block;color:rgba(255,255,255,0.55);font-size:0.88rem;text-decoration:none;margin-bottom:10px;transition:color 0.25s;" onmouseover="this.style.color='#c4b5fd';" onmouseout="this.style.color='rgba(255,255,255,0.55)';">📱 واتساب</a>
+        <a href="#prices" style="display:block;color:rgba(255,255,255,0.55);font-size:0.88rem;text-decoration:none;margin-bottom:10px;transition:color 0.25s;" onmouseover="this.style.color='#c4b5fd';" onmouseout="this.style.color='rgba(255,255,255,0.55)';">🛒 شراء مباشر</a>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:28px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;">
+      <p style="color:rgba(255,255,255,0.4);font-size:0.85rem;">© 2025 زهراء تكنولوجي – جميع الحقوق محفوظة</p>
+      <a href="https://wa.me/message/GISCK6Y5YCFYK1" target="_blank" rel="noreferrer"
+        style="display:inline-flex;align-items:center;gap:8px;background:#25d366;color:#fff;font-weight:700;font-size:0.88rem;padding:10px 22px;border-radius:50px;text-decoration:none;box-shadow:0 4px 14px rgba(37,211,102,0.35);transition:all 0.3s ease;"
+        onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 22px rgba(37,211,102,0.5)';"
+        onmouseout="this.style.transform='';this.style.boxShadow='0 4px 14px rgba(37,211,102,0.35)';">
+        <svg width="18" height="18" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         تواصل عبر واتساب
       </a>
     </div>
   </div>
 </footer>
-<!-- ────────────────── FLOATING WA ────────────────── -->
-<a href="https://wa.me/message/GISCK6Y5YCFYK1" target="_blank" class="wa-float" title="تواصل عبر واتساب">
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/message/GISCK6Y5YCFYK1" target="_blank" rel="noreferrer"
+  title="تواصل عبر واتساب"
+  class="animate-float"
+  style="position:fixed;bottom:32px;left:32px;width:60px;height:60px;border-radius:50%;background:#25d366;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.7rem;box-shadow:0 6px 24px rgba(37,211,102,0.5);text-decoration:none;z-index:999;transition:transform 0.3s ease;"
+  onmouseover="this.style.transform='scale(1.15)';"
+  onmouseout="this.style.transform='';">
   <svg width="28" height="28" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 <script>
-  /* ── Navbar scroll effect ── */
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 30);
-  });
-  /* ── Reveal on scroll ── */
-  const revealEls = document.querySelectorAll('.reveal');
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) e.target.classList.add('visible');
-    });
-  }, { threshold: 0.12 });
-  revealEls.forEach(el => revealObserver.observe(el));
-  /* ── FAQ accordion ── */
-  function toggleFaq(btn) {
-    const item = btn.closest('.faq-item');
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
+  // ── Constants ──
+  const WA_LINK = 'https://wa.me/message/GISCK6Y5YCFYK1';
+  // ── Countdown (shared timer) ──
+  let totalSecs = 23 * 3600 + 47 * 60 + 33;
+  function pad(n) { return String(n).padStart(2, '0'); }
+  function updateCountdowns() {
+    totalSecs--;
+    if (totalSecs < 0) totalSecs = 23 * 3600 + 47 * 60 + 33;
+    const h = Math.floor(totalSecs / 3600);
+    const m = Math.floor((totalSecs % 3600) / 60);
+    const s = totalSecs % 60;
+    // Banner
+    const bh = document.getElementById('bh');
+    const bm = document.getElementById('bm');
+    const bs = document.getElementById('bs');
+    if (bh) bh.textContent = pad(h);
+    if (bm) bm.textContent = pad(m);
+    if (bs) bs.textContent = pad(s);
+    // Price section
+    const ph = document.getElementById('ph');
+    const pm = document.getElementById('pm');
+    const ps = document.getElementById('ps');
+    if (ph) ph.textContent = pad(h);
+    if (pm) pm.textContent = pad(m);
+    if (ps) ps.textContent = pad(s);
+    // Pop animation on second change
+    popBlock('banner-s');
+    popBlock('price-s');
+    if (s === 59) { popBlock('banner-m'); popBlock('price-m'); }
+    if (m === 59 && s === 59) { popBlock('banner-h'); popBlock('price-h'); }
   }
-  /* ── Smooth scroll for anchor links ── */
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const target = document.querySelector(a.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  function popBlock(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.classList.remove('countdown-pop');
+    void el.offsetWidth; // reflow
+    el.classList.add('countdown-pop');
+    setTimeout(() => el.classList.remove('countdown-pop'), 350);
+  }
+  setInterval(updateCountdowns, 1000);
+  // ── Scroll Progress ──
+  window.addEventListener('scroll', () => {
+    const doc = document.documentElement;
+    const scrolled = doc.scrollTop;
+    const total = doc.scrollHeight - doc.clientHeight;
+    const pct = total > 0 ? (scrolled / total) * 100 : 0;
+    document.getElementById('scrollProgress').style.width = pct + '%';
+  }, { passive: true });
+  // ── Navbar scroll effect ──
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    if (window.scrollY > 30) {
+      nav.style.background = 'rgba(255,255,255,0.97)';
+      nav.style.borderBottom = '1px solid rgba(139,92,246,0.12)';
+      nav.style.boxShadow = '0 4px 30px rgba(139,92,246,0.08)';
+    } else {
+      nav.style.background = 'rgba(255,255,255,0.85)';
+      nav.style.borderBottom = '1px solid transparent';
+      nav.style.boxShadow = 'none';
+    }
+  }, { passive: true });
+  // ── Reveal on scroll ──
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  // ── Smooth scroll ──
+  document.addEventListener('click', (e) => {
+    const anchor = e.target.closest('a[href^="#"]');
+    if (anchor) {
+      const href = anchor.getAttribute('href');
+      if (href && href.length > 1) {
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    }
+  });
+  // ── FAQ ──
+  const faqs = [
+    { q: 'ما صيغة الملفات وهل تعمل مع Canva؟', a: 'الملفات بصيغة PNG وJPG عالية الدقة، تعمل بشكل مثالي مع Canva وAdobe Photoshop وأي برنامج تصميم آخر. ما عليك سوى رفعها واستخدامها فوراً.' },
+    { q: 'كيف أستلم الحزمة بعد الدفع؟', a: 'بعد إتمام الدفع مباشرةً، ستُرسَل لك رسالة عبر واتساب تحتوي على رابط التحميل. الاستلام فوري ولا يستغرق أكثر من دقائق.' },
+    { q: 'هل يمكنني استخدام الخلفيات في مشاريع تجارية؟', a: 'نعم بالكامل! الترخيص يشمل الاستخدام الشخصي والتجاري. يمكنك استخدامها في مشاريع عملائك وعلاماتك التجارية بدون أي قيود.' },
+    { q: 'هل هناك تحديثات مستقبلية للحزمة؟', a: 'نعم! كل من يشتري الحزمة يحصل تلقائياً على جميع التحديثات المستقبلية مجاناً. نضيف خلفيات جديدة باستمرار.' },
+    { q: 'ما طرق الدفع المتاحة؟', a: 'ندعم معظم طرق الدفع المتاحة في منطقتك. تواصل معنا عبر واتساب لمعرفة الطريقة الأنسب لك وإتمام عملية الشراء بسهولة.' },
+    { q: 'ماذا تشمل الهدايا المجانية بالضبط؟', a: 'الهدايا تشمل: مجموعة موك أب احترافية جاهزة للعرض، وقوالب تصميم جاهزة يمكنك تخصيصها مباشرة. كلها ملفات عالية الجودة.' },
+  ];
+  const faqContainer = document.getElementById('faq-container');
+  let openFaqIdx = null;
+  faqs.forEach((faq, i) => {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'reveal';
+    wrapper.style.cssText = 'background:#fff;border-radius:20px;margin-bottom:14px;box-shadow:0 4px 16px rgba(139,92,246,0.07);border:1px solid rgba(139,92,246,0.08);overflow:hidden;';
+    const btn = document.createElement('button');
+    btn.style.cssText = 'width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;background:none;border:none;cursor:pointer;font-family:Cairo,sans-serif;font-weight:700;font-size:1rem;color:#111827;text-align:right;';
+    btn.innerHTML = `
+      <span>${faq.q}</span>
+      <span class="faq-icon-btn" id="faq-icon-${i}" style="width:32px;height:32px;border-radius:50%;background:rgba(139,92,246,0.1);color:#7c3aed;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;transition:all 0.3s ease;">+</span>
+    `;
+    const answer = document.createElement('div');
+    answer.className = 'faq-answer';
+    answer.id = `faq-answer-${i}`;
+    answer.textContent = faq.a;
+    btn.addEventListener('click', () => {
+      if (openFaqIdx === i) {
+        openFaqIdx = null;
+        answer.classList.remove('open');
+        document.getElementById(`faq-icon-${i}`).classList.remove('open');
+      } else {
+        if (openFaqIdx !== null) {
+          document.getElementById(`faq-answer-${openFaqIdx}`).classList.remove('open');
+          document.getElementById(`faq-icon-${openFaqIdx}`).classList.remove('open');
+        }
+        openFaqIdx = i;
+        answer.classList.add('open');
+        document.getElementById(`faq-icon-${i}`).classList.add('open');
       }
     });
+    wrapper.appendChild(btn);
+    wrapper.appendChild(answer);
+    faqContainer.appendChild(wrapper);
+    // Observe newly created reveal elements
+    revealObserver.observe(wrapper);
   });
 </script>
 </body>
