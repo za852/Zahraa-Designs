@@ -27,6 +27,7 @@
       transition: width 0.1s linear;
       border-radius: 0 2px 2px 0;
       box-shadow: 0 0 8px rgba(139,92,246,0.6);
+      width: 0%;
     }
     /* ── Text Gradient ── */
     .text-gradient {
@@ -41,6 +42,7 @@
       opacity: 0.12;
       animation: blobFloat 8s ease-in-out infinite;
       border-radius: 50%;
+      position: absolute;
     }
     @keyframes blobFloat {
       0%, 100% { transform: translate(0, 0) scale(1); }
@@ -90,7 +92,7 @@
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    /* ── Dots pattern ── */
+    /* ── Dots patterns ── */
     .dots-pattern {
       background-image: radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px);
       background-size: 24px 24px;
@@ -144,7 +146,7 @@
       font-weight: 900;
       font-size: 1.2rem;
     }
-    /* ── Reveal ── */
+    /* ── Reveal on scroll ── */
     .reveal {
       opacity: 0;
       transform: translateY(24px);
@@ -184,12 +186,13 @@
     }
     .faq-icon-btn.open {
       transform: rotate(45deg);
+      background: rgba(139,92,246,0.2) !important;
     }
-    /* ── Pricing card inner ── */
+    /* ── Pricing card animation ── */
     .pricing-card-inner {
       animation: fadeInUp 0.8s ease 0.2s both;
     }
-    /* ── Hero grid responsive ── */
+    /* ── Responsive ── */
     @media (max-width: 768px) {
       .hero-grid {
         grid-template-columns: 1fr !important;
@@ -199,26 +202,131 @@
         order: -1;
       }
       .hero-btns-wrap {
-        justify-content: center;
+        justify-content: center !important;
       }
       .social-proof-wrap {
-        justify-content: center;
+        justify-content: center !important;
       }
-      .hero-text-center-mobile {
+      .hero-text-col {
         text-align: center;
+      }
+      .hero-text-col p {
+        margin-left: auto;
+        margin-right: auto;
       }
     }
     @media (max-width: 600px) {
       .comp-card {
         padding: 28px 20px !important;
       }
+      .pricing-inner-pad {
+        padding: 36px 24px !important;
+      }
+    }
+    /* ── Gallery card ── */
+    .gallery-card {
+      border-radius: 24px;
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 4/3;
+      background: #f5f3ff;
+      box-shadow: 0 6px 30px rgba(139,92,246,0.12), 0 2px 8px rgba(0,0,0,0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .gallery-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(139,92,246,0.2);
+    }
+    .gallery-card:hover .gal-overlay {
+      opacity: 1 !important;
+    }
+    .gal-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(76,29,149,0.7) 0%, transparent 60%);
+      display: flex;
+      align-items: flex-end;
+      padding: 20px 24px;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+    /* ── Testimonial card ── */
+    .testi-card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 30px 28px;
+      box-shadow: 0 6px 30px rgba(139,92,246,0.08);
+      border: 1px solid rgba(139,92,246,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .testi-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px rgba(139,92,246,0.15);
+    }
+    /* ── Feature card ── */
+    .feature-card {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px;
+      padding: 28px 24px;
+      text-align: center;
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .feature-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+    }
+    /* ── Floating WhatsApp ── */
+    .wa-float {
+      position: fixed;
+      bottom: 32px;
+      left: 32px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #25d366;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 24px rgba(37,211,102,0.5);
+      text-decoration: none;
+      z-index: 999;
+      transition: transform 0.3s ease;
+      animation: floatAnim 4s ease-in-out infinite;
+    }
+    .wa-float:hover {
+      transform: scale(1.15) !important;
+      animation-play-state: paused;
+    }
+    /* ── Navbar CTA hover ── */
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(139,92,246,0.55) !important;
+    }
+    /* ── Inside items ── */
+    .inside-card {
+      background: linear-gradient(160deg, #f9fafb 0%, #f5f3ff 100%);
+      border: 1px solid rgba(139,92,246,0.1);
+      border-radius: 24px;
+      padding: 32px 28px;
+      box-shadow: 0 4px 20px rgba(139,92,246,0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .inside-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(139,92,246,0.18);
     }
   </style>
 </head>
 <body>
-<!-- Scroll Progress -->
+<!-- ══ Scroll Progress Bar ══ -->
 <div class="scroll-progress" id="scrollProgress"></div>
-<!-- Navbar -->
+<!-- ══ Navbar ══ -->
 <nav id="navbar" style="
   position: fixed; top: 0; right: 0; left: 0; z-index: 1000;
   transition: all 0.4s ease;
@@ -229,30 +337,30 @@
   box-shadow: none;
 ">
   <div style="max-width:1200px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:76px;">
+    <!-- Logo -->
     <div style="display:flex;align-items:center;gap:14px;">
-      <img src="https://i.postimg.cc/sghHQSxJ/photo-2025-07-03-17-55-37.jpg" alt="زهراء تكنولوجي"
-        style="width:48px;height:48px;border-radius:50%;object-fit:cover;box-shadow:0 4px 16px rgba(139,92,246,0.3);border:2px solid rgba(139,92,246,0.2);flex-shrink:0;" />
+      <img
+        src="https://i.postimg.cc/sghHQSxJ/photo-2025-07-03-17-55-37.jpg"
+        alt="زهراء تكنولوجي"
+        style="width:48px;height:48px;border-radius:50%;object-fit:cover;box-shadow:0 4px 16px rgba(139,92,246,0.3);border:2px solid rgba(139,92,246,0.2);flex-shrink:0;"
+      />
       <div style="display:flex;flex-direction:column;line-height:1.2;">
         <span style="font-size:1.05rem;font-weight:800;color:#111827;">زهراء تكنولوجي</span>
         <span style="font-size:0.68rem;font-weight:500;color:#7c3aed;letter-spacing:0.5px;">Zahraa Technology</span>
       </div>
     </div>
-    <a href="https://wa.me/message/GISCK6Y5YCFYK1" target="_blank" rel="noreferrer"
-      class="nav-cta"
-      style="
-        display:inline-flex;align-items:center;gap:8px;
-        background:linear-gradient(135deg,#8b5cf6 0%,#7c3aed 100%);
-        color:#fff;font-family:'Cairo',sans-serif;font-weight:700;font-size:0.9rem;
-        padding:10px 26px;border-radius:50px;
-        box-shadow:0 4px 16px rgba(139,92,246,0.4);
-        text-decoration:none;transition:all 0.3s ease;
-      "
-      onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(139,92,246,0.55)';"
-      onmouseout="this.style.transform='';this.style.boxShadow='0 4px 16px rgba(139,92,246,0.4)';"
-    >🛒 اشترِ الآن</a>
+    <!-- CTA -->
+    <a href="https://wa.me/9647515538709" target="_blank" rel="noreferrer" class="nav-cta" style="
+      display:inline-flex;align-items:center;gap:8px;
+      background:linear-gradient(135deg,#8b5cf6 0%,#7c3aed 100%);
+      color:#fff;font-family:'Cairo',sans-serif;font-weight:700;font-size:0.9rem;
+      padding:10px 26px;border-radius:50px;
+      box-shadow:0 4px 16px rgba(139,92,246,0.4);
+      text-decoration:none;transition:all 0.3s ease;
+    ">🛒 اشترِ الآن</a>
   </div>
 </nav>
-<!-- Countdown Banner -->
+<!-- ══ Countdown Banner ══ -->
 <div style="
   background:linear-gradient(135deg,#4c1d95 0%,#6d28d9 50%,#8b5cf6 100%);
   padding:14px 20px;text-align:center;position:relative;overflow:hidden;
@@ -282,19 +390,21 @@
     </div>
     <a href="#prices" style="
       background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;
-      font-weight:800;font-size:0.85rem;padding:8px 20px;border-radius:50px;
-      text-decoration:none;box-shadow:0 3px 12px rgba(245,158,11,0.45);white-space:nowrap;
+      font-family:'Cairo',sans-serif;font-weight:800;font-size:0.85rem;
+      padding:8px 20px;border-radius:50px;
+      text-decoration:none;box-shadow:0 3px 12px rgba(245,158,11,0.45);
+      white-space:nowrap;
     ">احصل عليه الآن ⚡</a>
   </div>
 </div>
-<!-- Hero -->
+<!-- ══ Hero ══ -->
 <header id="hero" style="
   position:relative;overflow:hidden;
   padding-top:80px;padding-bottom:110px;
   background:linear-gradient(160deg,#ffffff 0%,#f5f3ff 45%,#ede9fe 100%);
 ">
-  <div class="blob" style="position:absolute;top:-80px;right:-100px;width:520px;height:520px;background:radial-gradient(circle,#8b5cf6 0%,#a78bfa 100%);z-index:0;"></div>
-  <div class="blob" style="position:absolute;bottom:-60px;left:-80px;width:400px;height:400px;background:radial-gradient(circle,#7c3aed 0%,#c4b5fd 100%);z-index:0;animation-delay:3s;"></div>
+  <div class="blob" style="top:-80px;right:-100px;width:520px;height:520px;background:radial-gradient(circle,#8b5cf6 0%,#a78bfa 100%);z-index:0;"></div>
+  <div class="blob" style="bottom:-60px;left:-80px;width:400px;height:400px;background:radial-gradient(circle,#7c3aed 0%,#c4b5fd 100%);z-index:0;animation-delay:3s;"></div>
   <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(139,92,246,0.06) 0%,transparent 70%);z-index:0;pointer-events:none;"></div>
   <div class="grid-pattern" style="position:absolute;inset:0;z-index:0;pointer-events:none;"></div>
   <div class="hero-grid" style="
@@ -302,8 +412,8 @@
     position:relative;z-index:1;
     display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;
   ">
-    <!-- Text -->
-    <div class="animate-fade-in-up">
+    <!-- Text Column -->
+    <div class="animate-fade-in-up hero-text-col">
       <div style="
         display:inline-flex;align-items:center;gap:8px;
         background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.2);
@@ -314,49 +424,52 @@
         أكثر من <span class="text-gradient">110+ خلفية رقمية</span> احترافية لتصاميمك
       </h1>
       <p style="font-size:clamp(1rem,2vw,1.12rem);color:#6b7280;line-height:1.85;margin-bottom:38px;max-width:500px;">
-        ارتقِ بتصاميمك على <strong style="color:#7c3aed;">Canva</strong> و<strong style="color:#7c3aed;">الفوتوشوب</strong> باستخدام حزمة الخلفيات الورقية الفاخرة المخصصة للمصممين وأصحاب المشاريع الرقمية. جودة استثنائية بسعر لا يُصدَّق.
+        ارتقِ بتصاميمك على <strong style="color:#7c3aed;">Canva</strong> و<strong style="color:#7c3aed;">الفوتوشوب</strong>
+        باستخدام حزمة الخلفيات الورقية الفاخرة المخصصة للمصممين وأصحاب المشاريع الرقمية.
+        جودة استثنائية بسعر لا يُصدَّق.
       </p>
       <div class="hero-btns-wrap" style="display:flex;flex-wrap:wrap;gap:16px;margin-bottom:40px;">
-        <a href="https://wa.me/message/GISCK6Y5YCFYK1" target="_blank" rel="noreferrer"
+        <a href="https://wa.me/9647515538709" target="_blank" rel="noreferrer"
           class="animate-pulse-glow shimmer-btn"
           style="
             display:inline-flex;align-items:center;gap:10px;
             color:#fff;font-family:'Cairo',sans-serif;font-weight:800;font-size:1.05rem;
             padding:16px 40px;border-radius:50px;text-decoration:none;
-            transition:all 0.3s ease;
+            transition:transform 0.3s ease;
           "
-          onmouseover="this.style.transform='translateY(-3px) scale(1.02)';"
-          onmouseout="this.style.transform='';"
         >🚀 احصل على الحزمة الآن</a>
-        <a href="#gallery"
-          style="
-            display:inline-flex;align-items:center;gap:10px;
-            background:transparent;color:#7c3aed;
-            font-family:'Cairo',sans-serif;font-weight:700;font-size:1.05rem;
-            padding:16px 36px;border-radius:50px;
-            border:2px solid #8b5cf6;text-decoration:none;
-            transition:all 0.3s ease;
-          "
-          onmouseover="this.style.background='rgba(139,92,246,0.08)';this.style.transform='translateY(-2px)';"
-          onmouseout="this.style.background='transparent';this.style.transform='';"
+        <a href="#gallery" style="
+          display:inline-flex;align-items:center;gap:10px;
+          background:transparent;color:#7c3aed;
+          font-family:'Cairo',sans-serif;font-weight:700;font-size:1.05rem;
+          padding:16px 36px;border-radius:50px;
+          border:2px solid #8b5cf6;text-decoration:none;
+          transition:all 0.3s ease;
+        "
+        onmouseover="this.style.background='rgba(139,92,246,0.08)';this.style.transform='translateY(-2px)';"
+        onmouseout="this.style.background='transparent';this.style.transform='';"
         >🖼️ تصفح المعرض</a>
       </div>
       <div class="social-proof-wrap" style="display:flex;align-items:center;gap:16px;">
-        <div style="display:flex;gap:4px;font-size:1rem;">⭐⭐⭐⭐⭐</div>
+        <div style="font-size:1rem;letter-spacing:2px;">⭐⭐⭐⭐⭐</div>
         <div>
           <strong style="color:#111827;">5.0</strong>
           <span style="color:#6b7280;font-size:0.9rem;margin-right:6px;">(أكثر من 200+ مصمم راضٍ)</span>
         </div>
       </div>
     </div>
-    <!-- Image -->
+    <!-- Image Column -->
     <div class="hero-img-col animate-float" style="position:relative;">
       <div style="position:absolute;inset:-16px;border-radius:32px;background:linear-gradient(135deg,rgba(139,92,246,0.2) 0%,rgba(167,139,250,0.1) 100%);z-index:0;"></div>
       <div style="position:relative;z-index:1;border-radius:28px;overflow:hidden;box-shadow:0 30px 80px rgba(139,92,246,0.25),0 10px 30px rgba(0,0,0,0.1);border:1px solid rgba(139,92,246,0.15);">
-        <img src="https://i.postimg.cc/Y0HS1Qfy/Screenshot-2026-07-07-121503.png" alt="خلفيات رقمية احترافية"
-          style="width:100%;height:auto;display:block;" />
+        <img
+          src="https://i.postimg.cc/Y0HS1Qfy/Screenshot-2026-07-07-121503.png"
+          alt="خلفيات رقمية احترافية"
+          style="width:100%;height:auto;display:block;"
+        />
         <div style="position:absolute;top:0;left:0;right:0;height:40%;background:linear-gradient(to bottom,rgba(255,255,255,0.08),transparent);pointer-events:none;"></div>
       </div>
+      <!-- Badge: count -->
       <div style="
         position:absolute;bottom:-18px;right:-18px;
         background:linear-gradient(135deg,#7c3aed 0%,#8b5cf6 100%);
@@ -365,6 +478,7 @@
         box-shadow:0 8px 24px rgba(139,92,246,0.4);
         z-index:2;white-space:nowrap;
       ">110+ خلفية 🎨</div>
+      <!-- Badge: price -->
       <div style="
         position:absolute;top:-18px;left:-18px;
         background:linear-gradient(135deg,#059669 0%,#10b981 100%);
@@ -376,7 +490,7 @@
     </div>
   </div>
 </header>
-<!-- Features Strip -->
+<!-- ══ Features Strip ══ -->
 <section id="features" style="
   background:linear-gradient(135deg,#4c1d95 0%,#7c3aed 50%,#8b5cf6 100%);
   padding:70px 0;position:relative;overflow:hidden;
@@ -394,40 +508,40 @@
       <p style="color:rgba(255,255,255,0.7);font-size:1rem;max-width:500px;margin:0 auto;">صُمِّمت الحزمة بعناية لتلبي احتياجات كل مصمم، مبتدئاً كان أم محترفاً</p>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;">
-      <div class="hover-lift" style="background:rgba(255,255,255,0.08);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:28px 24px;text-align:center;color:#fff;box-shadow:0 4px 20px rgba(0,0,0,0.1);">
+      <div class="feature-card">
         <div style="font-size:2.4rem;margin-bottom:12px;">🎨</div>
-        <h3 style="font-weight:800;font-size:1rem;margin-bottom:8px;color:#fff;">+110 خلفية احترافية</h3>
-        <p style="font-size:0.87rem;opacity:0.75;line-height:1.7;color:#fff;">مجموعة ضخمة ومتنوعة تكفي جميع احتياجاتك التصميمية لأشهر طويلة</p>
+        <h3 style="font-weight:800;font-size:1rem;margin-bottom:8px;">+110 خلفية احترافية</h3>
+        <p style="font-size:0.87rem;opacity:0.75;line-height:1.7;">مجموعة ضخمة ومتنوعة تكفي جميع احتياجاتك التصميمية لأشهر طويلة</p>
       </div>
-      <div class="hover-lift" style="background:rgba(255,255,255,0.08);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:28px 24px;text-align:center;color:#fff;box-shadow:0 4px 20px rgba(0,0,0,0.1);">
+      <div class="feature-card">
         <div style="font-size:2.4rem;margin-bottom:12px;">⚡</div>
-        <h3 style="font-weight:800;font-size:1rem;margin-bottom:8px;color:#fff;">تحميل فوري</h3>
-        <p style="font-size:0.87rem;opacity:0.75;line-height:1.7;color:#fff;">بعد الدفع مباشرةً تستلم رابط التحميل، بدون انتظار أو تأخير</p>
+        <h3 style="font-weight:800;font-size:1rem;margin-bottom:8px;">تحميل فوري</h3>
+        <p style="font-size:0.87rem;opacity:0.75;line-height:1.7;">بعد الدفع مباشرةً تستلم رابط التحميل، بدون انتظار أو تأخير</p>
       </div>
-      <div class="hover-lift" style="background:rgba(255,255,255,0.08);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:28px 24px;text-align:center;color:#fff;box-shadow:0 4px 20px rgba(0,0,0,0.1);">
+      <div class="feature-card">
         <div style="font-size:2.4rem;margin-bottom:12px;">🖥️</div>
-        <h3 style="font-weight:800;font-size:1rem;margin-bottom:8px;color:#fff;">متوافقة مع Canva & PS</h3>
-        <p style="font-size:0.87rem;opacity:0.75;line-height:1.7;color:#fff;">جميع الملفات بصيغ عالية الدقة تعمل بسلاسة مع كل البرامج</p>
+        <h3 style="font-weight:800;font-size:1rem;margin-bottom:8px;">متوافقة مع Canva & PS</h3>
+        <p style="font-size:0.87rem;opacity:0.75;line-height:1.7;">جميع الملفات بصيغ عالية الدقة تعمل بسلاسة مع كل البرامج</p>
       </div>
-      <div class="hover-lift" style="background:rgba(255,255,255,0.08);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:28px 24px;text-align:center;color:#fff;box-shadow:0 4px 20px rgba(0,0,0,0.1);">
+      <div class="feature-card">
         <div style="font-size:2.4rem;margin-bottom:12px;">🎁</div>
-        <h3 style="font-weight:800;font-size:1rem;margin-bottom:8px;color:#fff;">هدايا ومكافآت مجانية</h3>
-        <p style="font-size:0.87rem;opacity:0.75;line-height:1.7;color:#fff;">موك أب احترافية وقوالب جاهزة تُوفر عليك ساعات من العمل</p>
+        <h3 style="font-weight:800;font-size:1rem;margin-bottom:8px;">هدايا ومكافآت مجانية</h3>
+        <p style="font-size:0.87rem;opacity:0.75;line-height:1.7;">موك أب احترافية وقوالب جاهزة تُوفر عليك ساعات من العمل</p>
       </div>
-      <div class="hover-lift" style="background:rgba(255,255,255,0.08);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:28px 24px;text-align:center;color:#fff;box-shadow:0 4px 20px rgba(0,0,0,0.1);">
+      <div class="feature-card">
         <div style="font-size:2.4rem;margin-bottom:12px;">🔒</div>
-        <h3 style="font-weight:800;font-size:1rem;margin-bottom:8px;color:#fff;">ترخيص تجاري كامل</h3>
-        <p style="font-size:0.87rem;opacity:0.75;line-height:1.7;color:#fff;">استخدم الخلفيات في مشاريعك الشخصية والتجارية بلا قيود</p>
+        <h3 style="font-weight:800;font-size:1rem;margin-bottom:8px;">ترخيص تجاري كامل</h3>
+        <p style="font-size:0.87rem;opacity:0.75;line-height:1.7;">استخدم الخلفيات في مشاريعك الشخصية والتجارية بلا قيود</p>
       </div>
-      <div class="hover-lift" style="background:rgba(255,255,255,0.08);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:28px 24px;text-align:center;color:#fff;box-shadow:0 4px 20px rgba(0,0,0,0.1);">
+      <div class="feature-card">
         <div style="font-size:2.4rem;margin-bottom:12px;">🔄</div>
-        <h3 style="font-weight:800;font-size:1rem;margin-bottom:8px;color:#fff;">تحديثات مجانية للأبد</h3>
-        <p style="font-size:0.87rem;opacity:0.75;line-height:1.7;color:#fff;">ادفع مرة واحدة واستمتع بجميع الإضافات والتحديثات المستقبلية</p>
+        <h3 style="font-weight:800;font-size:1rem;margin-bottom:8px;">تحديثات مجانية للأبد</h3>
+        <p style="font-size:0.87rem;opacity:0.75;line-height:1.7;">ادفع مرة واحدة واستمتع بجميع الإضافات والتحديثات المستقبلية</p>
       </div>
     </div>
   </div>
 </section>
-<!-- Gallery -->
+<!-- ══ Gallery ══ -->
 <section id="gallery" style="padding:100px 0;background:#ffffff;">
   <div style="max-width:1200px;margin:0 auto;padding:0 28px;">
     <div class="reveal" style="text-align:center;margin-bottom:56px;">
@@ -437,31 +551,25 @@
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:28px;">
       <!-- Card 1 -->
-      <div class="reveal gallery-card" style="border-radius:24px;overflow:hidden;position:relative;aspect-ratio:4/3;background:#f5f3ff;box-shadow:0 6px 30px rgba(139,92,246,0.12),0 2px 8px rgba(0,0,0,0.06);transition:transform 0.3s ease,box-shadow 0.3s ease;cursor:pointer;"
-        onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 50px rgba(139,92,246,0.2)';this.querySelector('.gal-overlay').style.opacity='1';"
-        onmouseout="this.style.transform='';this.style.boxShadow='0 6px 30px rgba(139,92,246,0.12),0 2px 8px rgba(0,0,0,0.06)';this.querySelector('.gal-overlay').style.opacity='0';">
+      <div class="reveal gallery-card">
         <img src="https://i.postimg.cc/vHvvxzLv/2.png" alt="ورقي فاخر" style="width:100%;height:100%;object-fit:cover;display:block;" />
-        <div class="gal-overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(76,29,149,0.7) 0%,transparent 60%);display:flex;align-items:flex-end;padding:20px 24px;opacity:0;transition:opacity 0.35s ease;">
+        <div class="gal-overlay">
           <span style="color:#fff;font-weight:700;font-size:0.95rem;background:rgba(255,255,255,0.18);backdrop-filter:blur(8px);padding:6px 16px;border-radius:50px;border:1px solid rgba(255,255,255,0.25);">✨ ورقي فاخر</span>
         </div>
         <div style="position:absolute;top:14px;right:14px;background:linear-gradient(135deg,#8b5cf6 0%,#7c3aed 100%);color:#fff;font-size:0.78rem;font-weight:700;padding:5px 14px;border-radius:50px;box-shadow:0 3px 10px rgba(139,92,246,0.35);">ورقي فاخر</div>
       </div>
       <!-- Card 2 -->
-      <div class="reveal gallery-card" style="border-radius:24px;overflow:hidden;position:relative;aspect-ratio:4/3;background:#f5f3ff;box-shadow:0 6px 30px rgba(139,92,246,0.12),0 2px 8px rgba(0,0,0,0.06);transition:transform 0.3s ease,box-shadow 0.3s ease;cursor:pointer;"
-        onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 50px rgba(139,92,246,0.2)';this.querySelector('.gal-overlay').style.opacity='1';"
-        onmouseout="this.style.transform='';this.style.boxShadow='0 6px 30px rgba(139,92,246,0.12),0 2px 8px rgba(0,0,0,0.06)';this.querySelector('.gal-overlay').style.opacity='0';">
+      <div class="reveal gallery-card">
         <img src="https://i.postimg.cc/NMT6s7jP/3.png" alt="عصري أنيق" style="width:100%;height:100%;object-fit:cover;display:block;" />
-        <div class="gal-overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(76,29,149,0.7) 0%,transparent 60%);display:flex;align-items:flex-end;padding:20px 24px;opacity:0;transition:opacity 0.35s ease;">
+        <div class="gal-overlay">
           <span style="color:#fff;font-weight:700;font-size:0.95rem;background:rgba(255,255,255,0.18);backdrop-filter:blur(8px);padding:6px 16px;border-radius:50px;border:1px solid rgba(255,255,255,0.25);">✨ عصري أنيق</span>
         </div>
         <div style="position:absolute;top:14px;right:14px;background:linear-gradient(135deg,#8b5cf6 0%,#7c3aed 100%);color:#fff;font-size:0.78rem;font-weight:700;padding:5px 14px;border-radius:50px;box-shadow:0 3px 10px rgba(139,92,246,0.35);">عصري أنيق</div>
       </div>
       <!-- Card 3 -->
-      <div class="reveal gallery-card" style="border-radius:24px;overflow:hidden;position:relative;aspect-ratio:4/3;background:#f5f3ff;box-shadow:0 6px 30px rgba(139,92,246,0.12),0 2px 8px rgba(0,0,0,0.06);transition:transform 0.3s ease,box-shadow 0.3s ease;cursor:pointer;"
-        onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 50px rgba(139,92,246,0.2)';this.querySelector('.gal-overlay').style.opacity='1';"
-        onmouseout="this.style.transform='';this.style.boxShadow='0 6px 30px rgba(139,92,246,0.12),0 2px 8px rgba(0,0,0,0.06)';this.querySelector('.gal-overlay').style.opacity='0';">
+      <div class="reveal gallery-card">
         <img src="https://i.postimg.cc/WbsGVZLZ/4.png" alt="إبداعي مميز" style="width:100%;height:100%;object-fit:cover;display:block;" />
-        <div class="gal-overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(76,29,149,0.7) 0%,transparent 60%);display:flex;align-items:flex-end;padding:20px 24px;opacity:0;transition:opacity 0.35s ease;">
+        <div class="gal-overlay">
           <span style="color:#fff;font-weight:700;font-size:0.95rem;background:rgba(255,255,255,0.18);backdrop-filter:blur(8px);padding:6px 16px;border-radius:50px;border:1px solid rgba(255,255,255,0.25);">✨ إبداعي مميز</span>
         </div>
         <div style="position:absolute;top:14px;right:14px;background:linear-gradient(135deg,#8b5cf6 0%,#7c3aed 100%);color:#fff;font-size:0.78rem;font-weight:700;padding:5px 14px;border-radius:50px;box-shadow:0 3px 10px rgba(139,92,246,0.35);">إبداعي مميز</div>
@@ -476,7 +584,7 @@
     </div>
   </div>
 </section>
-<!-- What's Inside -->
+<!-- ══ What's Inside ══ -->
 <section style="padding:100px 0;background:#fff;">
   <div style="max-width:1200px;margin:0 auto;padding:0 28px;">
     <div class="reveal" style="text-align:center;margin-bottom:56px;">
@@ -485,22 +593,22 @@
       <p style="color:#6b7280;font-size:1.05rem;max-width:560px;margin:0 auto;">شفافية تامة – كل ما يوجد داخل الحزمة موضَّح أمامك</p>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;">
-      <div class="reveal hover-lift" style="background:linear-gradient(160deg,#f9fafb 0%,#f5f3ff 100%);border:1px solid rgba(139,92,246,0.1);border-radius:24px;padding:32px 28px;box-shadow:0 4px 20px rgba(139,92,246,0.06);">
+      <div class="reveal inside-card">
         <div style="width:56px;height:56px;border-radius:16px;margin-bottom:18px;background:linear-gradient(135deg,rgba(139,92,246,0.1),rgba(124,58,237,0.15));display:flex;align-items:center;justify-content:center;font-size:1.8rem;">🖼️</div>
         <h3 style="font-weight:800;font-size:1.05rem;color:#111827;margin-bottom:10px;">+110 خلفية ورقية</h3>
         <p style="color:#6b7280;font-size:0.9rem;line-height:1.7;">PNG/JPG بدقة عالية جداً تصل إلى 4K، متنوعة الأنماط والألوان</p>
       </div>
-      <div class="reveal hover-lift" style="background:linear-gradient(160deg,#f9fafb 0%,#f5f3ff 100%);border:1px solid rgba(139,92,246,0.1);border-radius:24px;padding:32px 28px;box-shadow:0 4px 20px rgba(139,92,246,0.06);">
+      <div class="reveal inside-card">
         <div style="width:56px;height:56px;border-radius:16px;margin-bottom:18px;background:linear-gradient(135deg,rgba(139,92,246,0.1),rgba(124,58,237,0.15));display:flex;align-items:center;justify-content:center;font-size:1.8rem;">📦</div>
         <h3 style="font-weight:800;font-size:1.05rem;color:#111827;margin-bottom:10px;">حزمة موك أب</h3>
         <p style="color:#6b7280;font-size:0.9rem;line-height:1.7;">موك أب احترافية جاهزة لعرض تصاميمك بطريقة مبهرة</p>
       </div>
-      <div class="reveal hover-lift" style="background:linear-gradient(160deg,#f9fafb 0%,#f5f3ff 100%);border:1px solid rgba(139,92,246,0.1);border-radius:24px;padding:32px 28px;box-shadow:0 4px 20px rgba(139,92,246,0.06);">
+      <div class="reveal inside-card">
         <div style="width:56px;height:56px;border-radius:16px;margin-bottom:18px;background:linear-gradient(135deg,rgba(139,92,246,0.1),rgba(124,58,237,0.15));display:flex;align-items:center;justify-content:center;font-size:1.8rem;">📐</div>
         <h3 style="font-weight:800;font-size:1.05rem;color:#111827;margin-bottom:10px;">قوالب جاهزة</h3>
         <p style="color:#6b7280;font-size:0.9rem;line-height:1.7;">قوالب Canva مُعدَّة مسبقاً قابلة للتعديل الفوري</p>
       </div>
-      <div class="reveal hover-lift" style="background:linear-gradient(160deg,#f9fafb 0%,#f5f3ff 100%);border:1px solid rgba(139,92,246,0.1);border-radius:24px;padding:32px 28px;box-shadow:0 4px 20px rgba(139,92,246,0.06);">
+      <div class="reveal inside-card">
         <div style="width:56px;height:56px;border-radius:16px;margin-bottom:18px;background:linear-gradient(135deg,rgba(139,92,246,0.1),rgba(124,58,237,0.15));display:flex;align-items:center;justify-content:center;font-size:1.8rem;">📚</div>
         <h3 style="font-weight:800;font-size:1.05rem;color:#111827;margin-bottom:10px;">دليل الاستخدام</h3>
         <p style="color:#6b7280;font-size:0.9rem;line-height:1.7;">دليل مفصل يشرح كيفية الاستفادة القصوى من الحزمة</p>
@@ -508,7 +616,7 @@
     </div>
   </div>
 </section>
-<!-- Bonus -->
+<!-- ══ Bonus Section ══ -->
 <section id="bonus" style="padding:100px 0;background:linear-gradient(160deg,#f5f3ff 0%,#ede9fe 100%);position:relative;overflow:hidden;">
   <div class="dots-pattern-purple" style="position:absolute;inset:0;pointer-events:none;"></div>
   <div style="max-width:1200px;margin:0 auto;padding:0 28px;position:relative;z-index:1;">
@@ -533,7 +641,7 @@
     </div>
   </div>
 </section>
-<!-- Comparison -->
+<!-- ══ Comparison ══ -->
 <section id="comparison" style="padding:100px 0;background:linear-gradient(160deg,#f9fafb 0%,#f5f3ff 100%);">
   <div style="max-width:1200px;margin:0 auto;padding:0 28px;">
     <div class="reveal" style="text-align:center;margin-bottom:56px;">
@@ -542,7 +650,7 @@
       <p style="color:#6b7280;font-size:1.05rem;max-width:560px;margin:0 auto;">مقارنة بسيطة وواضحة بين المحتوى العادي وحزمتنا الاحترافية</p>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;">
-      <!-- Bad -->
+      <!-- Bad Column -->
       <div class="comp-card reveal hover-lift" style="background:#fff;border:1px solid #f3f4f6;border-radius:28px;padding:40px 36px;box-shadow:0 6px 30px rgba(0,0,0,0.07);">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:28px;">
           <div style="width:48px;height:48px;border-radius:16px;background:#fee2e2;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;">😞</div>
@@ -564,7 +672,7 @@
           <div style="width:26px;height:26px;border-radius:50%;background:#fee2e2;color:#dc2626;display:flex;align-items:center;justify-content:center;font-size:0.8rem;flex-shrink:0;">✕</div>بدون ترخيص تجاري واضح
         </div>
       </div>
-      <!-- Good -->
+      <!-- Good Column -->
       <div class="comp-card reveal hover-lift" style="background:linear-gradient(160deg,#4c1d95 0%,#6d28d9 50%,#7c3aed 100%);border-radius:28px;padding:40px 36px;box-shadow:0 20px 60px rgba(139,92,246,0.35);position:relative;overflow:hidden;">
         <div style="position:absolute;top:0;left:0;right:0;height:50%;background:linear-gradient(to bottom,rgba(255,255,255,0.06),transparent);pointer-events:none;"></div>
         <div style="position:relative;z-index:1;">
@@ -595,7 +703,7 @@
     </div>
   </div>
 </section>
-<!-- Testimonials -->
+<!-- ══ Testimonials ══ -->
 <section id="testimonials" style="padding:100px 0;background:linear-gradient(160deg,#f5f3ff 0%,#ede9fe 100%);position:relative;overflow:hidden;">
   <div class="dots-pattern-purple" style="position:absolute;inset:0;pointer-events:none;"></div>
   <div style="max-width:1200px;margin:0 auto;padding:0 28px;position:relative;z-index:1;">
@@ -605,9 +713,8 @@
       <p style="color:#6b7280;font-size:1.05rem;max-width:560px;margin:0 auto;">تقييمات حقيقية من مصممين ورواد أعمال استخدموا حزمتنا</p>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;">
-      <div class="reveal testi-card" style="background:#fff;border-radius:24px;padding:30px 28px;box-shadow:0 6px 30px rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.08);transition:transform 0.3s ease,box-shadow 0.3s ease;"
-        onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 16px 40px rgba(139,92,246,0.15)';"
-        onmouseout="this.style.transform='';this.style.boxShadow='0 6px 30px rgba(139,92,246,0.08)';">
+      <!-- Testi 1 -->
+      <div class="reveal testi-card">
         <div style="color:#f59e0b;font-size:0.9rem;margin-bottom:14px;letter-spacing:2px;">★★★★★</div>
         <p style="color:#374151;font-size:0.95rem;line-height:1.75;margin-bottom:20px;font-style:italic;">"والله استثمار ممتاز! الخلفيات بجودة عالية جداً وكميتها وفيرة. وفّرت عليّ ساعات من البحث والتصميم. أنصح بها بشدة!"</p>
         <div style="display:flex;align-items:center;gap:12px;">
@@ -618,9 +725,8 @@
           </div>
         </div>
       </div>
-      <div class="reveal testi-card" style="background:#fff;border-radius:24px;padding:30px 28px;box-shadow:0 6px 30px rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.08);transition:transform 0.3s ease,box-shadow 0.3s ease;"
-        onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 16px 40px rgba(139,92,246,0.15)';"
-        onmouseout="this.style.transform='';this.style.boxShadow='0 6px 30px rgba(139,92,246,0.08)';">
+      <!-- Testi 2 -->
+      <div class="reveal testi-card">
         <div style="color:#f59e0b;font-size:0.9rem;margin-bottom:14px;letter-spacing:2px;">★★★★★</div>
         <p style="color:#374151;font-size:0.95rem;line-height:1.75;margin-bottom:20px;font-style:italic;">"اشتريت الحزمة وما ندمت! استخدمتها في Canva ومشت زي الحلاوة. الموك أب المجانية أفضل من أي شيء اشتريته قبل."</p>
         <div style="display:flex;align-items:center;gap:12px;">
@@ -631,9 +737,8 @@
           </div>
         </div>
       </div>
-      <div class="reveal testi-card" style="background:#fff;border-radius:24px;padding:30px 28px;box-shadow:0 6px 30px rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.08);transition:transform 0.3s ease,box-shadow 0.3s ease;"
-        onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 16px 40px rgba(139,92,246,0.15)';"
-        onmouseout="this.style.transform='';this.style.boxShadow='0 6px 30px rgba(139,92,246,0.08)';">
+      <!-- Testi 3 -->
+      <div class="reveal testi-card">
         <div style="color:#f59e0b;font-size:0.9rem;margin-bottom:14px;letter-spacing:2px;">★★★★★</div>
         <p style="color:#374151;font-size:0.95rem;line-height:1.75;margin-bottom:20px;font-style:italic;">"السعر لا يُصدق مقارنة بالجودة! استخدمتها في مشاريع عملائي وكلهم انبهروا. الدعم عبر واتساب كان سريع جداً."</p>
         <div style="display:flex;align-items:center;gap:12px;">
@@ -644,9 +749,8 @@
           </div>
         </div>
       </div>
-      <div class="reveal testi-card" style="background:#fff;border-radius:24px;padding:30px 28px;box-shadow:0 6px 30px rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.08);transition:transform 0.3s ease,box-shadow 0.3s ease;"
-        onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 16px 40px rgba(139,92,246,0.15)';"
-        onmouseout="this.style.transform='';this.style.boxShadow='0 6px 30px rgba(139,92,246,0.08)';">
+      <!-- Testi 4 -->
+      <div class="reveal testi-card">
         <div style="color:#f59e0b;font-size:0.9rem;margin-bottom:14px;letter-spacing:2px;">★★★★★</div>
         <p style="color:#374151;font-size:0.95rem;line-height:1.75;margin-bottom:20px;font-style:italic;">"منذ اشتريت الحزمة، تصاميمي تبدو أكثر احترافية بكثير. العملاء لاحظوا الفرق وزادت طلباتي. شكراً زهراء تكنولوجي!"</p>
         <div style="display:flex;align-items:center;gap:12px;">
@@ -657,9 +761,8 @@
           </div>
         </div>
       </div>
-      <div class="reveal testi-card" style="background:#fff;border-radius:24px;padding:30px 28px;box-shadow:0 6px 30px rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.08);transition:transform 0.3s ease,box-shadow 0.3s ease;"
-        onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 16px 40px rgba(139,92,246,0.15)';"
-        onmouseout="this.style.transform='';this.style.boxShadow='0 6px 30px rgba(139,92,246,0.08)';">
+      <!-- Testi 5 -->
+      <div class="reveal testi-card">
         <div style="color:#f59e0b;font-size:0.9rem;margin-bottom:14px;letter-spacing:2px;">★★★★★</div>
         <p style="color:#374151;font-size:0.95rem;line-height:1.75;margin-bottom:20px;font-style:italic;">"خلفيات راقية ومتنوعة، ما توقعت إنها تكون بهالجودة بهالسعر البسيط. التحميل كان فوري وما في أي مشكلة. أنصح بها!"</p>
         <div style="display:flex;align-items:center;gap:12px;">
@@ -670,9 +773,8 @@
           </div>
         </div>
       </div>
-      <div class="reveal testi-card" style="background:#fff;border-radius:24px;padding:30px 28px;box-shadow:0 6px 30px rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.08);transition:transform 0.3s ease,box-shadow 0.3s ease;"
-        onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 16px 40px rgba(139,92,246,0.15)';"
-        onmouseout="this.style.transform='';this.style.boxShadow='0 6px 30px rgba(139,92,246,0.08)';">
+      <!-- Testi 6 -->
+      <div class="reveal testi-card">
         <div style="color:#f59e0b;font-size:0.9rem;margin-bottom:14px;letter-spacing:2px;">★★★★★</div>
         <p style="color:#374151;font-size:0.95rem;line-height:1.75;margin-bottom:20px;font-style:italic;">"استخدمت الخلفيات في تصميم هوية بصرية كاملة لعميل ومن جاب ردود فعل رائعة. حزمة ممتازة وقيمتها أكبر بكثير من سعرها."</p>
         <div style="display:flex;align-items:center;gap:12px;">
@@ -686,7 +788,7 @@
     </div>
   </div>
 </section>
-<!-- Pricing -->
+<!-- ══ Pricing ══ -->
 <section id="prices" style="padding:100px 0;background:#fff;position:relative;overflow:hidden;">
   <div style="position:absolute;inset:0;background:linear-gradient(160deg,transparent 0%,rgba(139,92,246,0.03) 100%);pointer-events:none;"></div>
   <div style="max-width:1200px;margin:0 auto;padding:0 28px;position:relative;z-index:1;">
@@ -695,13 +797,14 @@
       <h2 style="font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;color:#111827;margin-bottom:14px;">سعر لا يُقاوَم <span class="text-gradient">لقيمة استثنائية</span></h2>
       <p style="color:#6b7280;font-size:1.05rem;max-width:560px;margin:0 auto;">عرض محدود – احصل على الحزمة الكاملة بسعر لن يتكرر</p>
     </div>
-    <div class="reveal pricing-card-inner" style="max-width:580px;margin:0 auto;background:linear-gradient(160deg,#4c1d95 0%,#6d28d9 50%,#7c3aed 100%);border-radius:36px;padding:56px 52px;text-align:center;position:relative;overflow:hidden;box-shadow:0 40px 100px rgba(139,92,246,0.4),0 10px 30px rgba(0,0,0,0.1);color:#fff;">
+    <div class="reveal pricing-card-inner" style="max-width:580px;margin:0 auto;background:linear-gradient(160deg,#4c1d95 0%,#6d28d9 50%,#7c3aed 100%);border-radius:36px;padding:56px 52px;text-align:center;position:relative;overflow:hidden;box-shadow:0 40px 100px rgba(139,92,246,0.4),0 10px 30px rgba(0,0,0,0.1);color:#fff;" class="pricing-inner-pad">
+      <!-- Decorative overlays -->
       <div style="position:absolute;top:0;left:0;right:0;height:50%;background:linear-gradient(to bottom,rgba(255,255,255,0.08),transparent);pointer-events:none;"></div>
       <div style="position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,0.1) 0%,transparent 70%);pointer-events:none;"></div>
       <div style="position:absolute;bottom:-40px;left:-40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,0.07) 0%,transparent 70%);pointer-events:none;"></div>
       <div style="position:relative;z-index:1;">
         <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.2);border-radius:50px;padding:6px 18px;margin-bottom:16px;font-size:0.85rem;font-weight:700;color:#fff;">🔥 عرض محدود حصري</div>
-        <div style="display:inline-block;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;font-size:0.82rem;font-weight:800;padding:5px 16px;border-radius:50px;margin-bottom:20px;box-shadow:0 3px 12px rgba(245,158,11,0.4);">وفّر أكثر من 80%</div>
+        <div style="display:inline-block;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;font-size:0.82rem;font-weight:800;padding:5px 16px;border-radius:50px;margin-bottom:20px;box-shadow:0 3px 12px rgba(245,158,11,0.4);display:block;">وفّر أكثر من 80%</div>
         <p style="font-size:1.35rem;font-weight:800;margin-bottom:24px;opacity:0.9;">الحزمة الشاملة الكاملة</p>
         <div style="margin-bottom:8px;">
           <span style="font-size:1.2rem;text-decoration:line-through;opacity:0.5;margin-left:12px;">15$</span>
@@ -728,7 +831,7 @@
             </div>
           </div>
         </div>
-        <!-- Features -->
+        <!-- Feature List -->
         <div style="text-align:right;margin-bottom:36px;">
           <div style="display:flex;align-items:center;gap:12px;padding:11px 0;font-size:0.95rem;font-weight:600;color:rgba(255,255,255,0.92);border-bottom:1px solid rgba(255,255,255,0.1);">
             <div style="width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:0.75rem;flex-shrink:0;color:#a7f3d0;">✓</div>+110 خلفية ورقية احترافية عالية الدقة
@@ -752,7 +855,7 @@
             <div style="width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:0.75rem;flex-shrink:0;color:#a7f3d0;">✓</div>دعم واتساب مباشر في أي وقت
           </div>
         </div>
-        <a href="https://wa.me/message/GISCK6Y5YCFYK1" target="_blank" rel="noreferrer"
+        <a href="https://wa.me/9647515538709" target="_blank" rel="noreferrer"
           class="shimmer-btn"
           style="display:block;color:#fff;font-family:'Cairo',sans-serif;font-weight:900;font-size:1.15rem;padding:18px 48px;border-radius:50px;text-decoration:none;box-shadow:0 8px 30px rgba(0,0,0,0.25);transition:all 0.3s ease;margin-bottom:16px;border:2px solid rgba(255,255,255,0.3);"
           onmouseover="this.style.transform='translateY(-3px) scale(1.02)';this.style.boxShadow='0 16px 40px rgba(0,0,0,0.3)';"
@@ -763,26 +866,26 @@
     </div>
   </div>
 </section>
-<!-- FAQ -->
+<!-- ══ FAQ ══ -->
 <section id="faq" style="padding:100px 0;background:linear-gradient(160deg,#f5f3ff 0%,#ede9fe 100%);">
   <div style="max-width:1200px;margin:0 auto;padding:0 28px;">
     <div class="reveal" style="text-align:center;margin-bottom:56px;">
       <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.2);border-radius:50px;padding:6px 18px;margin-bottom:18px;font-size:0.85rem;font-weight:700;color:#7c3aed;">❓ أسئلة شائعة</div>
       <h2 style="font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;color:#111827;margin-bottom:14px;">إجابات على <span class="text-gradient">أكثر أسئلتكم</span></h2>
     </div>
-    <div style="max-width:760px;margin:0 auto;" id="faq-container">
-      <!-- FAQ items injected by JS -->
-    </div>
+    <div style="max-width:760px;margin:0 auto;" id="faq-container"></div>
   </div>
 </section>
-<!-- Footer -->
+<!-- ══ Footer ══ -->
 <footer style="background:linear-gradient(160deg,#1e0745 0%,#2d0a6e 50%,#4c1d95 100%);padding:60px 0 30px;color:#fff;position:relative;overflow:hidden;">
   <div class="footer-dots" style="position:absolute;inset:0;pointer-events:none;"></div>
   <div style="max-width:1200px;margin:0 auto;padding:0 28px;position:relative;z-index:1;">
     <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:40px;margin-bottom:48px;">
+      <!-- Brand -->
       <div style="max-width:340px;">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
-          <img src="https://i.postimg.cc/sghHQSxJ/photo-2025-07-03-17-55-37.jpg" alt="زهراء تكنولوجي" style="width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid rgba(139,92,246,0.4);" />
+          <img src="https://i.postimg.cc/sghHQSxJ/photo-2025-07-03-17-55-37.jpg" alt="زهراء تكنولوجي"
+            style="width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid rgba(139,92,246,0.4);" />
           <div>
             <span style="display:block;font-size:1.1rem;font-weight:800;color:#fff;">زهراء تكنولوجي</span>
             <span style="display:block;font-size:0.7rem;color:#a78bfa;font-weight:500;">Zahraa Technology</span>
@@ -790,93 +893,112 @@
         </div>
         <p style="color:rgba(255,255,255,0.55);font-size:0.9rem;line-height:1.75;">نوفر حزم تصميم احترافية للمصممين ورواد الأعمال الرقميين. جودة استثنائية بأسعار في متناول الجميع.</p>
       </div>
+      <!-- Quick Links -->
       <div>
         <h4 style="font-size:0.95rem;font-weight:700;margin-bottom:16px;color:#fff;">روابط سريعة</h4>
-        <a href="#hero" style="display:block;color:rgba(255,255,255,0.55);font-size:0.88rem;text-decoration:none;margin-bottom:10px;transition:color 0.25s;" onmouseover="this.style.color='#c4b5fd';" onmouseout="this.style.color='rgba(255,255,255,0.55)';">الرئيسية</a>
-        <a href="#gallery" style="display:block;color:rgba(255,255,255,0.55);font-size:0.88rem;text-decoration:none;margin-bottom:10px;transition:color 0.25s;" onmouseover="this.style.color='#c4b5fd';" onmouseout="this.style.color='rgba(255,255,255,0.55)';">معرض الأعمال</a>
-        <a href="#bonus" style="display:block;color:rgba(255,255,255,0.55);font-size:0.88rem;text-decoration:none;margin-bottom:10px;transition:color 0.25s;" onmouseover="this.style.color='#c4b5fd';" onmouseout="this.style.color='rgba(255,255,255,0.55)';">المكافآت</a>
-        <a href="#prices" style="display:block;color:rgba(255,255,255,0.55);font-size:0.88rem;text-decoration:none;margin-bottom:10px;transition:color 0.25s;" onmouseover="this.style.color='#c4b5fd';" onmouseout="this.style.color='rgba(255,255,255,0.55)';">الأسعار</a>
-        <a href="#faq" style="display:block;color:rgba(255,255,255,0.55);font-size:0.88rem;text-decoration:none;margin-bottom:10px;transition:color 0.25s;" onmouseover="this.style.color='#c4b5fd';" onmouseout="this.style.color='rgba(255,255,255,0.55)';">الأسئلة الشائعة</a>
+        <a href="#hero" style="display:block;color:rgba(255,255,255,0.55);font-size:0.88rem;text-decoration:none;margin-bottom:10px;transition:color 0.25s;"
+          onmouseover="this.style.color='#c4b5fd';" onmouseout="this.style.color='rgba(255,255,255,0.55)';">الرئيسية</a>
+        <a href="#gallery" style="display:block;color:rgba(255,255,255,0.55);font-size:0.88rem;text-decoration:none;margin-bottom:10px;transition:color 0.25s;"
+          onmouseover="this.style.color='#c4b5fd';" onmouseout="this.style.color='rgba(255,255,255,0.55)';">معرض الأعمال</a>
+        <a href="#bonus" style="display:block;color:rgba(255,255,255,0.55);font-size:0.88rem;text-decoration:none;margin-bottom:10px;transition:color 0.25s;"
+          onmouseover="this.style.color='#c4b5fd';" onmouseout="this.style.color='rgba(255,255,255,0.55)';">المكافآت</a>
+        <a href="#prices" style="display:block;color:rgba(255,255,255,0.55);font-size:0.88rem;text-decoration:none;margin-bottom:10px;transition:color 0.25s;"
+          onmouseover="this.style.color='#c4b5fd';" onmouseout="this.style.color='rgba(255,255,255,0.55)';">الأسعار</a>
+        <a href="#faq" style="display:block;color:rgba(255,255,255,0.55);font-size:0.88rem;text-decoration:none;margin-bottom:10px;transition:color 0.25s;"
+          onmouseover="this.style.color='#c4b5fd';" onmouseout="this.style.color='rgba(255,255,255,0.55)';">الأسئلة الشائعة</a>
       </div>
+      <!-- Contact -->
       <div>
         <h4 style="font-size:0.95rem;font-weight:700;margin-bottom:16px;color:#fff;">تواصل معنا</h4>
-        <a href="https://wa.me/message/GISCK6Y5YCFYK1" target="_blank" rel="noreferrer" style="display:block;color:rgba(255,255,255,0.55);font-size:0.88rem;text-decoration:none;margin-bottom:10px;transition:color 0.25s;" onmouseover="this.style.color='#c4b5fd';" onmouseout="this.style.color='rgba(255,255,255,0.55)';">📱 واتساب</a>
-        <a href="#prices" style="display:block;color:rgba(255,255,255,0.55);font-size:0.88rem;text-decoration:none;margin-bottom:10px;transition:color 0.25s;" onmouseover="this.style.color='#c4b5fd';" onmouseout="this.style.color='rgba(255,255,255,0.55)';">🛒 شراء مباشر</a>
+        <a href="https://wa.me/9647515538709" target="_blank" rel="noreferrer"
+          style="display:block;color:rgba(255,255,255,0.55);font-size:0.88rem;text-decoration:none;margin-bottom:10px;transition:color 0.25s;"
+          onmouseover="this.style.color='#c4b5fd';" onmouseout="this.style.color='rgba(255,255,255,0.55)';">📱 واتساب</a>
+        <a href="#prices"
+          style="display:block;color:rgba(255,255,255,0.55);font-size:0.88rem;text-decoration:none;margin-bottom:10px;transition:color 0.25s;"
+          onmouseover="this.style.color='#c4b5fd';" onmouseout="this.style.color='rgba(255,255,255,0.55)';">🛒 شراء مباشر</a>
       </div>
     </div>
+    <!-- Bottom bar -->
     <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:28px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;">
       <p style="color:rgba(255,255,255,0.4);font-size:0.85rem;">© 2025 زهراء تكنولوجي – جميع الحقوق محفوظة</p>
-      <a href="https://wa.me/message/GISCK6Y5YCFYK1" target="_blank" rel="noreferrer"
-        style="display:inline-flex;align-items:center;gap:8px;background:#25d366;color:#fff;font-weight:700;font-size:0.88rem;padding:10px 22px;border-radius:50px;text-decoration:none;box-shadow:0 4px 14px rgba(37,211,102,0.35);transition:all 0.3s ease;"
+      <a href="https://wa.me/9647515538709" target="_blank" rel="noreferrer"
+        style="display:inline-flex;align-items:center;gap:8px;background:#25d366;color:#fff;font-family:'Cairo',sans-serif;font-weight:700;font-size:0.88rem;padding:10px 22px;border-radius:50px;text-decoration:none;box-shadow:0 4px 14px rgba(37,211,102,0.35);transition:all 0.3s ease;"
         onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 22px rgba(37,211,102,0.5)';"
         onmouseout="this.style.transform='';this.style.boxShadow='0 4px 14px rgba(37,211,102,0.35)';">
-        <svg width="18" height="18" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <svg width="18" height="18" fill="white" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
         تواصل عبر واتساب
       </a>
     </div>
   </div>
 </footer>
-<!-- Floating WhatsApp -->
-<a href="https://wa.me/message/GISCK6Y5YCFYK1" target="_blank" rel="noreferrer"
-  title="تواصل عبر واتساب"
-  class="animate-float"
-  style="position:fixed;bottom:32px;left:32px;width:60px;height:60px;border-radius:50%;background:#25d366;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.7rem;box-shadow:0 6px 24px rgba(37,211,102,0.5);text-decoration:none;z-index:999;transition:transform 0.3s ease;"
-  onmouseover="this.style.transform='scale(1.15)';"
-  onmouseout="this.style.transform='';">
-  <svg width="28" height="28" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+<!-- ══ Floating WhatsApp Button ══ -->
+<a href="https://wa.me/9647515538709" target="_blank" rel="noreferrer"
+  title="تواصل عبر واتساب" class="wa-float">
+  <svg width="28" height="28" fill="white" viewBox="0 0 24 24">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
 </a>
+<!-- ══ JavaScript ══ -->
 <script>
-  // ── Constants ──
-  const WA_LINK = 'https://wa.me/message/GISCK6Y5YCFYK1';
-  // ── Countdown (shared timer) ──
-  let totalSecs = 23 * 3600 + 47 * 60 + 33;
-  function pad(n) { return String(n).padStart(2, '0'); }
-  function updateCountdowns() {
-    totalSecs--;
-    if (totalSecs < 0) totalSecs = 23 * 3600 + 47 * 60 + 33;
-    const h = Math.floor(totalSecs / 3600);
-    const m = Math.floor((totalSecs % 3600) / 60);
-    const s = totalSecs % 60;
-    // Banner
-    const bh = document.getElementById('bh');
-    const bm = document.getElementById('bm');
-    const bs = document.getElementById('bs');
-    if (bh) bh.textContent = pad(h);
-    if (bm) bm.textContent = pad(m);
-    if (bs) bs.textContent = pad(s);
-    // Price section
-    const ph = document.getElementById('ph');
-    const pm = document.getElementById('pm');
-    const ps = document.getElementById('ps');
-    if (ph) ph.textContent = pad(h);
-    if (pm) pm.textContent = pad(m);
-    if (ps) ps.textContent = pad(s);
-    // Pop animation on second change
-    popBlock('banner-s');
-    popBlock('price-s');
-    if (s === 59) { popBlock('banner-m'); popBlock('price-m'); }
-    if (m === 59 && s === 59) { popBlock('banner-h'); popBlock('price-h'); }
+  /* ─── Shared Countdown Timer ─── */
+  // Initialize from localStorage if available (persists across refreshes)
+  const TIMER_KEY = 'zahraa_countdown_end';
+  let endTime = parseInt(localStorage.getItem(TIMER_KEY) || '0');
+  if (!endTime || endTime < Date.now()) {
+    endTime = Date.now() + (23 * 3600 + 47 * 60 + 33) * 1000;
+    localStorage.setItem(TIMER_KEY, endTime);
   }
+  function pad(n) { return String(n).padStart(2, '0'); }
   function popBlock(id) {
     const el = document.getElementById(id);
     if (!el) return;
     el.classList.remove('countdown-pop');
-    void el.offsetWidth; // reflow
+    void el.offsetWidth;
     el.classList.add('countdown-pop');
     setTimeout(() => el.classList.remove('countdown-pop'), 350);
   }
+  function updateCountdowns() {
+    const remaining = Math.max(0, Math.floor((endTime - Date.now()) / 1000));
+    if (remaining === 0) {
+      endTime = Date.now() + (23 * 3600 + 47 * 60 + 33) * 1000;
+      localStorage.setItem(TIMER_KEY, endTime);
+    }
+    const h = Math.floor(remaining / 3600);
+    const m = Math.floor((remaining % 3600) / 60);
+    const s = remaining % 60;
+    const hStr = pad(h), mStr = pad(m), sStr = pad(s);
+    // Banner
+    const bh = document.getElementById('bh');
+    const bm = document.getElementById('bm');
+    const bs = document.getElementById('bs');
+    if (bh && bh.textContent !== hStr) { bh.textContent = hStr; popBlock('banner-h'); }
+    if (bm && bm.textContent !== mStr) { bm.textContent = mStr; popBlock('banner-m'); }
+    if (bs && bs.textContent !== sStr) { bs.textContent = sStr; popBlock('banner-s'); }
+    // Price section
+    const ph = document.getElementById('ph');
+    const pm = document.getElementById('pm');
+    const ps = document.getElementById('ps');
+    if (ph && ph.textContent !== hStr) { ph.textContent = hStr; popBlock('price-h'); }
+    if (pm && pm.textContent !== mStr) { pm.textContent = mStr; popBlock('price-m'); }
+    if (ps && ps.textContent !== sStr) { ps.textContent = sStr; popBlock('price-s'); }
+  }
+  updateCountdowns();
   setInterval(updateCountdowns, 1000);
-  // ── Scroll Progress ──
+  /* ─── Scroll Progress Bar ─── */
   window.addEventListener('scroll', () => {
     const doc = document.documentElement;
-    const scrolled = doc.scrollTop;
+    const scrolled = doc.scrollTop || document.body.scrollTop;
     const total = doc.scrollHeight - doc.clientHeight;
     const pct = total > 0 ? (scrolled / total) * 100 : 0;
-    document.getElementById('scrollProgress').style.width = pct + '%';
+    const bar = document.getElementById('scrollProgress');
+    if (bar) bar.style.width = pct + '%';
   }, { passive: true });
-  // ── Navbar scroll effect ──
+  /* ─── Navbar scroll effect ─── */
   window.addEventListener('scroll', () => {
     const nav = document.getElementById('navbar');
+    if (!nav) return;
     if (window.scrollY > 30) {
       nav.style.background = 'rgba(255,255,255,0.97)';
       nav.style.borderBottom = '1px solid rgba(139,92,246,0.12)';
@@ -887,12 +1009,17 @@
       nav.style.boxShadow = 'none';
     }
   }, { passive: true });
-  // ── Reveal on scroll ──
+  /* ─── Reveal on Scroll (IntersectionObserver) ─── */
   const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-  // ── Smooth scroll ──
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.08 });
+  function observeReveal(el) { revealObserver.observe(el); }
+  document.querySelectorAll('.reveal').forEach(observeReveal);
+  /* ─── Smooth Scroll for anchor links ─── */
   document.addEventListener('click', (e) => {
     const anchor = e.target.closest('a[href^="#"]');
     if (anchor) {
@@ -906,51 +1033,106 @@
       }
     }
   });
-  // ── FAQ ──
+  /* ─── FAQ Accordion ─── */
   const faqs = [
-    { q: 'ما صيغة الملفات وهل تعمل مع Canva؟', a: 'الملفات بصيغة PNG وJPG عالية الدقة، تعمل بشكل مثالي مع Canva وAdobe Photoshop وأي برنامج تصميم آخر. ما عليك سوى رفعها واستخدامها فوراً.' },
-    { q: 'كيف أستلم الحزمة بعد الدفع؟', a: 'بعد إتمام الدفع مباشرةً، ستُرسَل لك رسالة عبر واتساب تحتوي على رابط التحميل. الاستلام فوري ولا يستغرق أكثر من دقائق.' },
-    { q: 'هل يمكنني استخدام الخلفيات في مشاريع تجارية؟', a: 'نعم بالكامل! الترخيص يشمل الاستخدام الشخصي والتجاري. يمكنك استخدامها في مشاريع عملائك وعلاماتك التجارية بدون أي قيود.' },
-    { q: 'هل هناك تحديثات مستقبلية للحزمة؟', a: 'نعم! كل من يشتري الحزمة يحصل تلقائياً على جميع التحديثات المستقبلية مجاناً. نضيف خلفيات جديدة باستمرار.' },
-    { q: 'ما طرق الدفع المتاحة؟', a: 'ندعم معظم طرق الدفع المتاحة في منطقتك. تواصل معنا عبر واتساب لمعرفة الطريقة الأنسب لك وإتمام عملية الشراء بسهولة.' },
-    { q: 'ماذا تشمل الهدايا المجانية بالضبط؟', a: 'الهدايا تشمل: مجموعة موك أب احترافية جاهزة للعرض، وقوالب تصميم جاهزة يمكنك تخصيصها مباشرة. كلها ملفات عالية الجودة.' },
+    {
+      q: 'ما صيغة الملفات وهل تعمل مع Canva؟',
+      a: 'الملفات بصيغة PNG وJPG عالية الدقة، تعمل بشكل مثالي مع Canva وAdobe Photoshop وأي برنامج تصميم آخر. ما عليك سوى رفعها واستخدامها فوراً.'
+    },
+    {
+      q: 'كيف أستلم الحزمة بعد الدفع؟',
+      a: 'بعد إتمام الدفع مباشرةً، ستُرسَل لك رسالة عبر واتساب تحتوي على رابط التحميل. الاستلام فوري ولا يستغرق أكثر من دقائق.'
+    },
+    {
+      q: 'هل يمكنني استخدام الخلفيات في مشاريع تجارية؟',
+      a: 'نعم بالكامل! الترخيص يشمل الاستخدام الشخصي والتجاري. يمكنك استخدامها في مشاريع عملائك وعلاماتك التجارية بدون أي قيود.'
+    },
+    {
+      q: 'هل هناك تحديثات مستقبلية للحزمة؟',
+      a: 'نعم! كل من يشتري الحزمة يحصل تلقائياً على جميع التحديثات المستقبلية مجاناً. نضيف خلفيات جديدة باستمرار.'
+    },
+    {
+      q: 'ما طرق الدفع المتاحة؟',
+      a: 'ندعم معظم طرق الدفع المتاحة في منطقتك. تواصل معنا عبر واتساب لمعرفة الطريقة الأنسب لك وإتمام عملية الشراء بسهولة.'
+    },
+    {
+      q: 'ماذا تشمل الهدايا المجانية بالضبط؟',
+      a: 'الهدايا تشمل: مجموعة موك أب احترافية جاهزة للعرض، وقوالب تصميم جاهزة يمكنك تخصيصها مباشرة. كلها ملفات عالية الجودة.'
+    }
   ];
   const faqContainer = document.getElementById('faq-container');
   let openFaqIdx = null;
   faqs.forEach((faq, i) => {
+    // Wrapper
     const wrapper = document.createElement('div');
     wrapper.className = 'reveal';
-    wrapper.style.cssText = 'background:#fff;border-radius:20px;margin-bottom:14px;box-shadow:0 4px 16px rgba(139,92,246,0.07);border:1px solid rgba(139,92,246,0.08);overflow:hidden;';
+    wrapper.style.cssText = [
+      'background:#fff',
+      'border-radius:20px',
+      'margin-bottom:14px',
+      'box-shadow:0 4px 16px rgba(139,92,246,0.07)',
+      'border:1px solid rgba(139,92,246,0.08)',
+      'overflow:hidden'
+    ].join(';');
+    // Button
     const btn = document.createElement('button');
-    btn.style.cssText = 'width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;background:none;border:none;cursor:pointer;font-family:Cairo,sans-serif;font-weight:700;font-size:1rem;color:#111827;text-align:right;';
+    btn.style.cssText = [
+      'width:100%',
+      'display:flex',
+      'align-items:center',
+      'justify-content:space-between',
+      'gap:16px',
+      'padding:20px 24px',
+      'background:none',
+      'border:none',
+      'cursor:pointer',
+      'font-family:Cairo,sans-serif',
+      'font-weight:700',
+      'font-size:1rem',
+      'color:#111827',
+      'text-align:right'
+    ].join(';');
     btn.innerHTML = `
       <span>${faq.q}</span>
-      <span class="faq-icon-btn" id="faq-icon-${i}" style="width:32px;height:32px;border-radius:50%;background:rgba(139,92,246,0.1);color:#7c3aed;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;transition:all 0.3s ease;">+</span>
+      <span
+        id="faq-icon-${i}"
+        class="faq-icon-btn"
+        style="width:32px;height:32px;border-radius:50%;background:rgba(139,92,246,0.1);color:#7c3aed;font-size:1.2rem;flex-shrink:0;"
+      >+</span>
     `;
+    // Answer
     const answer = document.createElement('div');
     answer.className = 'faq-answer';
     answer.id = `faq-answer-${i}`;
     answer.textContent = faq.a;
+    // Click handler
     btn.addEventListener('click', () => {
+      const icon = document.getElementById(`faq-icon-${i}`);
+      const ans = document.getElementById(`faq-answer-${i}`);
       if (openFaqIdx === i) {
+        // Close current
         openFaqIdx = null;
-        answer.classList.remove('open');
-        document.getElementById(`faq-icon-${i}`).classList.remove('open');
+        ans.classList.remove('open');
+        icon.classList.remove('open');
       } else {
+        // Close previous
         if (openFaqIdx !== null) {
-          document.getElementById(`faq-answer-${openFaqIdx}`).classList.remove('open');
-          document.getElementById(`faq-icon-${openFaqIdx}`).classList.remove('open');
+          const prevAns = document.getElementById(`faq-answer-${openFaqIdx}`);
+          const prevIcon = document.getElementById(`faq-icon-${openFaqIdx}`);
+          if (prevAns) prevAns.classList.remove('open');
+          if (prevIcon) prevIcon.classList.remove('open');
         }
+        // Open new
         openFaqIdx = i;
-        answer.classList.add('open');
-        document.getElementById(`faq-icon-${i}`).classList.add('open');
+        ans.classList.add('open');
+        icon.classList.add('open');
       }
     });
     wrapper.appendChild(btn);
     wrapper.appendChild(answer);
     faqContainer.appendChild(wrapper);
-    // Observe newly created reveal elements
-    revealObserver.observe(wrapper);
+    // Observe for reveal animation
+    observeReveal(wrapper);
   });
 </script>
 </body>
